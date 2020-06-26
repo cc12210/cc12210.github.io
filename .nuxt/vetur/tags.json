@@ -1,8 +1,14 @@
 {
-  "Logo": {
-    "description": "Auto imported from components/Logo.vue"
+  "HomeContent": {
+    "description": "Auto imported from components/homePage/homeContent.vue"
   },
-  "LazyLogo": {
-    "description": "Auto imported from components/Logo.vue"
+  "LazyHomeContent": {
+    "description": "Auto imported from components/homePage/homeContent.vue"
+  },
+  "TitleHead": {
+    "description": "Auto imported from components/homePage/titleHead.vue"
+  },
+  "LazyTitleHead": {
+    "description": "Auto imported from components/homePage/titleHead.vue"
   }
 }
