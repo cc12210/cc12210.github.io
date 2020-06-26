@@ -1,33 +1,21 @@
-## 曹小诚
+私以为GO语言闭包与JS很相似，记录一下GO的学习过程
 
-### Markdown
+```go
+func calc(base int) (func(int) int, func(int) int) {
+	add := func(addSum int) int {
+		base += addSum
+		return base
+	}
+	sub := func(subSum int) int {
+		base -= subSum
+		return base
+	}
+	return add, sub
+}
 
-markdown高亮
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+func main() {
+	add, sub := calc(100)
+	fmt.Println(add(55))
+	fmt.Println(sub(55))
+}
 ```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/cc12210/cc12210.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
