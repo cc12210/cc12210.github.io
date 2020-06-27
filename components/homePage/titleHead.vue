@@ -2,12 +2,12 @@
   <div class="title-head">
     <a-row type="flex" justify="center">
       <a-col :sm="0" :xs="12">
-        <div class="min-device-title">
+        <div @click="backHome" class="min-device-title">
           {{ title }}
         </div>
       </a-col>
       <a-col :md="4" :sm="4" :xs="0">
-        <div class="left-title">
+        <div @click="backHome" class="left-title">
           {{ title }}
         </div>
       </a-col>
@@ -43,6 +43,11 @@ export default {
       default: "",
     },
   },
+  methods: {
+    backHome() {
+      location.href = "/";
+    },
+  },
 };
 </script>
 
@@ -64,12 +69,14 @@ export default {
     font-weight: 600;
     line-height: 50px;
     text-align: center;
+    cursor: pointer;
   }
   .left-title {
     font-size: 24px;
     color: #007fff;
     height: 50px;
     line-height: 50px;
+    cursor: pointer;
   }
   .title-item {
     color: #71777c;

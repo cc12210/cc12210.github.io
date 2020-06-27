@@ -39,7 +39,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: ["ant-design-vue/dist/antd.css"],
+  css: ["ant-design-vue/dist/antd.css", "@/assets/css/global.css"],
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
@@ -69,17 +69,17 @@ export default {
    ** See https://nuxtjs.org/api/configuration-build/
    */
   build: {
-    loaders: {
-      test: /\.md$/,
-      use: [
-        {
-          loader: "html-loader",
-        },
-        {
-          loader: "markdown-loader",
-          options: {},
-        },
-      ],
-    },
+    // loaders: {
+    //   test: /\.md$/,
+    //   use: [
+    //     {
+    //       loader: "html-loader",
+    //     },
+    //     {
+    //       loader: "markdown-loader",
+    //       options: {},
+    //     },
+    //   ],
+    // },
   },
 };

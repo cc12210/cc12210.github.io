@@ -21,9 +21,11 @@ export default {};
 .home-content {
   box-sizing: border-box;
   background: #f8f9fa;
-  padding: 74px 24px 24px;
+  padding: 74px 6px 6px;
   .left-title {
     height: 100%;
+    box-sizing: border-box;
+    padding: 0 10px;
     overflow: scroll;
   }
 }

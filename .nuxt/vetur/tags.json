@@ -5,6 +5,12 @@
   "LazyHomeContent": {
     "description": "Auto imported from components/homePage/homeContent.vue"
   },
+  "MdListItem": {
+    "description": "Auto imported from components/homePage/mdListItem.vue"
+  },
+  "LazyMdListItem": {
+    "description": "Auto imported from components/homePage/mdListItem.vue"
+  },
   "TitleHead": {
     "description": "Auto imported from components/homePage/titleHead.vue"
   },
