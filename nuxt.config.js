@@ -2,8 +2,8 @@ const routerBase =
   process.env.DEPLOY_ENV === "GH_PAGES"
     ? {
         router: {
-          base: "/<repository-name>/"
-        }
+          base: "/<repository-name>/",
+        },
       }
     : {};
 
@@ -31,10 +31,10 @@ export default {
       {
         hid: "description",
         name: "description",
-        content: process.env.npm_package_description || ""
-      }
+        content: process.env.npm_package_description || "",
+      },
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
   /*
    ** Global CSS
@@ -44,7 +44,7 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: ["@/plugins/antd-ui"],
+  plugins: ["@/plugins/antd-ui", "@/plugins/highlightjs"],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -57,10 +57,29 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: [],
+  modules: ["@nuxtjs/markdownit"],
+  // markdownit: {
+  //   preset: "default",
+  //   linkify: true,
+  //   breaks: true,
+  //   use: ["markdown-it-div", "markdown-it-attrs"],
+  // },
   /*
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
-  build: {}
+  build: {
+    loaders: {
+      test: /\.md$/,
+      use: [
+        {
+          loader: "html-loader",
+        },
+        {
+          loader: "markdown-loader",
+          options: {},
+        },
+      ],
+    },
+  },
 };

@@ -1,9 +1,9 @@
 <template>
-  <div class="home">
-    <titleHead :title="homeTitle" :list="tabList" activeTitle="首页" />
+  <div class="info-detail">
+    <titleHead :title="homeTitle" :list="tabList" />
     <homeContent>
       <div slot="left-content">
-        左侧内容
+        <div v-html="test"></div>
       </div>
     </homeContent>
   </div>
@@ -13,15 +13,22 @@
 import titleHead from "../components/homePage/titleHead";
 import homeContent from "../components/homePage/homeContent";
 import { tabList, homeTitle } from "../util/constant";
+import test from "../assets/md/test.md";
 export default {
   head: {
     title: "曹小诚的个人空间",
   },
   components: { titleHead, homeContent },
+  computed: {
+    test() {
+      return test;
+    },
+  },
   data() {
     return {
       tabList: tabList,
       homeTitle: homeTitle,
+      content: "",
     };
   },
   mounted() {
@@ -30,4 +37,11 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="less" scoped>
+.info-detail {
+  .left-content {
+    height: 300px;
+    overflow: scroll;
+  }
+}
+</style>
