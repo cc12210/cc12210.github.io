@@ -8,7 +8,7 @@ cache:
 
 branches:
   only:
-    - gh-pages
+    - dev
 
 install:
   - npm install
