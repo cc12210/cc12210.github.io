@@ -9,8 +9,8 @@
     "export": "nuxt export",
     "serve": "nuxt serve",
     "generate": "DEPLOY_ENV=GH_PAGES nuxt generate",
-    "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt generate",
-    "deploy": "push-dir --dir=dist --branch=dev --cleanup"
+    "generate:dev": "DEPLOY_ENV=GH_PAGES nuxt generate",
+    "deploy": "push-dir --dir=dist --branch=master --cleanup"
   },
   "dependencies": {
     "@nuxtjs/markdownit": "^1.2.9",
