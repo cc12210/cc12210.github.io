@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="vue,代码规范,vue规范," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Vue 组件代码规范1 前言 2 代码风格 2.1 缩进 2.2 单行最长限制 2.3 模块书写顺序 3 template 部分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue代码规范">
+<meta property="og:url" content="http://yoursite.com/2019/05/13/2019-05-13-vue%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/index.html">
+<meta property="og:site_name" content="曹小诚的个人空间">
+<meta property="og:description" content="Vue 组件代码规范1 前言 2 代码风格 2.1 缩进 2.2 单行最长限制 2.3 模块书写顺序 3 template 部分">
+<meta property="article:published_time" content="2019-05-13T07:38:00.000Z">
+<meta property="article:modified_time" content="2019-05-14T08:17:59.000Z">
+<meta property="article:author" content="cc12210">
+<meta property="article:tag" content="vue">
+<meta property="article:tag" content="代码规范">
+<meta property="article:tag" content="vue规范">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/05/13/2019-05-13-vue代码规范/"/>
+
+
+
+
+
+  <title>vue代码规范 | 曹小诚的个人空间</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">曹小诚的个人空间</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/13/2019-05-13-vue%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cc12210">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="曹小诚的个人空间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vue代码规范</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-13T15:38:00+08:00">
+                2019-05-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">默认分类</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Vue-组件代码规范"><a href="#Vue-组件代码规范" class="headerlink" title="Vue 组件代码规范"></a>Vue 组件代码规范</h1><p><a href="#1">1 前言</a></p>
+<p><a href="#2">2 代码风格</a></p>
+<p><a href="#2.1">2.1 缩进</a></p>
+<p><a href="#2.2">2.2 单行最长限制</a></p>
+<p><a href="#2.3">2.3 模块书写顺序</a></p>
+<p><a href="#3">3 template 部分</a></p>
+<a id="more"></a>
+
+<p><a href="#3.1">3.1 根节点</a></p>
+<p><a href="#3.2">3.2 标签</a></p>
+<p><a href="#3.3">3.3 属性</a></p>
+<p><a href="#3.4">3.4 指令</a></p>
+<p><a href="#3.5">3.5 插值（Mustache）</a></p>
+<p><a href="#3.6">3.6 空格</a></p>
+<p><a href="#3.7">3.7 变量</a></p>
+<p><a href="#4">4 javascript 部分</a></p>
+<p><a href="#4.1">4.1 props</a></p>
+<p><a href="#4.2">4.2 data</a></p>
+<p><a href="#4.3">4.3 变量</a></p>
+<p><a href="#4.4">4.4 其他</a></p>
+<p><a href="#5">5 style 部分</a></p>
+<p><a href="#6">6 参考</a></p>
+<h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1 前言"></a><a style="color: #333" name="1">1 前言</a></h2><p>任何问题或建议，欢迎跟我们讨论: <a href="mailto:fe-styleguide@baidu.com">fe-styleguide@baidu.com</a></p>
+<h2 id="2-代码风格"><a href="#2-代码风格" class="headerlink" title="2 代码风格"></a><a style="color: #333" name="2">2 代码风格</a></h2><h3 id="2-1-缩进"><a href="#2-1-缩进" class="headerlink" title="2.1 缩进"></a><a style="color: #333" name="2.1">2.1 缩进</a></h3><h4 id="强制-使用-4-个空格做为一个缩进层级，不允许使用-2-个空格或-tab-字符"><a href="#强制-使用-4-个空格做为一个缩进层级，不允许使用-2-个空格或-tab-字符" class="headerlink" title="[强制] 使用 4 个空格做为一个缩进层级，不允许使用 2 个空格或 tab 字符"></a>[强制] 使用 <code>4</code> 个空格做为一个缩进层级，不允许使用 <code>2</code> 个空格或 <code>tab</code> 字符</h4><h3 id="2-2-单行最长限制"><a href="#2-2-单行最长限制" class="headerlink" title="2.2 单行最长限制"></a><a style="color: #333" name="2.2">2.2 单行最长限制</a></h3><h4 id="强制-每行不得超过-120-个字符"><a href="#强制-每行不得超过-120-个字符" class="headerlink" title="[强制] 每行不得超过 120 个字符"></a>[强制] 每行不得超过 <code>120</code> 个字符</h4><h3 id="2-3-模块书写顺序"><a href="#2-3-模块书写顺序" class="headerlink" title="2.3 模块书写顺序"></a><a style="color: #333" name="2.3">2.3 模块书写顺序</a></h3><h4 id="建议-template-gt-script-gt-style"><a href="#建议-template-gt-script-gt-style" class="headerlink" title="[建议] template -&gt; script -&gt; style"></a>[建议] <code>template</code> -&gt; <code>script</code> -&gt; <code>style</code></h4><h2 id="3-template-部分"><a href="#3-template-部分" class="headerlink" title="3 template 部分"></a><a style="color: #333" name="3">3 template 部分</a></h2><h3 id="3-1-根节点"><a href="#3-1-根节点" class="headerlink" title="3.1 根节点"></a><a style="color: #333" name="3.1">3.1 根节点</a></h3><h4 id="强制-template-根节点只允许包含一个直接子节点，以下情况都是不允许的："><a href="#强制-template-根节点只允许包含一个直接子节点，以下情况都是不允许的：" class="headerlink" title="[强制] template 根节点只允许包含一个直接子节点，以下情况都是不允许的："></a>[强制] <code>template</code> 根节点只允许包含一个直接子节点，以下情况都是不允许的：</h4><ul>
+<li>根结点为空；</li>
+<li>根结点是文字；</li>
+<li>根结点有多个元素；</li>
+<li>在根结点使用循环；</li>
+<li>在根结点使用 template 和 slot；</li>
+<li>在根结点使用 v-if，但是没有 v-else；</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span></span></span><br><span class="line"><span class="tag">  &gt;</span><span class="tag">&lt;<span class="name">div</span>&gt;</span>one<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span>two<span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">template</span></span></span><br><span class="line"><span class="tag">&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"x in list"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span><span class="tag">&lt;<span class="name">template</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">template</span>&gt;</span><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-if</span>=<span class="string">"title"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// good</span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span><span class="tag">&lt;<span class="name">div</span>&gt;</span>one<span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-标签"><a href="#3-2-标签" class="headerlink" title="3.2 标签"></a><a style="color: #333" name="3.2">3.2 标签</a></h3><h4 id="强制-自定义组件的标签名不得使用-HTML-中默认已定义的标签（reserved-HTML-elements），要求至少由两个单词组成，并且符合-kebab-case"><a href="#强制-自定义组件的标签名不得使用-HTML-中默认已定义的标签（reserved-HTML-elements），要求至少由两个单词组成，并且符合-kebab-case" class="headerlink" title="[强制] 自定义组件的标签名不得使用 HTML 中默认已定义的标签（reserved HTML elements），要求至少由两个单词组成，并且符合 kebab-case"></a>[强制] 自定义组件的标签名不得使用 HTML 中默认已定义的标签（reserved HTML elements），要求至少由两个单词组成，并且符合 <code>kebab-case</code></h4><p>解释：</p>
+<p>避免和 HTML 保留字段冲突导致错误。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">sub</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">import</span> OtherComponent <span class="keyword">from</span> <span class="string">"./OtherComponent.vue"</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line">    components: &#123;</span><br><span class="line">      sub: OtherComponent,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// good</span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">other-component</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">import</span> OtherComponent <span class="keyword">from</span> <span class="string">"./OtherComponent.vue"</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line">    components: &#123;</span><br><span class="line">      OtherComponent,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="name">component</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mycomponent</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">myComponent</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">MyComponent</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">// good</span><br><span class="line"><span class="tag">&lt;<span class="name">my-component</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>预留的 html 标签包括：</p>
+</blockquote>
+<blockquote>
+<p><code>html</code>,<code>body</code>,<code>base</code>,<code>head</code>,<code>link</code>,<code>meta</code>,<code>style</code>,<code>title</code>,<code>address</code>,<code>article</code>,<code>aside</code>,<code>footer</code>,<code>header</code>,<code>h1</code>,<code>h2</code>,<code>h3</code>,<code>h4</code>,<code>h5</code>,<code>h6</code>,<code>hgroup</code>,<code>nav</code>,<code>section</code>,<code>div</code>,<code>dd</code>,<code>dl</code>,<code>dt</code>,<code>figcaption</code>,<code>figure</code>,<code>picture</code>,<code>hr</code>,<code>img</code>,<code>li</code>,<code>main</code>,<code>ol</code>,<code>p</code>,<code>pre</code>,<code>ul</code>,<code>a</code>,<code>b</code>,<code>abbr</code>,<code>bdi</code>,<code>bdo</code>,<code>br</code>,<code>cite</code>,<code>code</code>,<code>data</code>,<code>dfn</code>,<code>em</code>,<code>i</code>,<code>kbd</code>,<code>mark</code>,<code>q</code>,<code>rp</code>,<code>rt</code>,<code>rtc</code>,<code>ruby</code>,<code>s</code>,<code>samp</code>,<code>small</code>,<code>span</code>,<code>strong</code>,<code>sub</code>,<code>sup</code>,<code>time</code>,<code>u</code>,<code>var</code>,<code>wbr</code>,<code>area</code>,<code>audio</code>,<code>map</code>,<code>track</code>,<code>video</code>,<code>embed</code>,<code>object</code>,<code>param</code>,<code>source</code>,<code>canvas</code>,<code>script</code>,<code>noscript</code>,<code>del</code>,<code>ins</code>,<code>caption</code>,<code>col</code>,<code>colgroup</code>,<code>table</code>,<code>thead</code>,<code>tbody</code>,<code>td</code>,<code>th</code>,<code>tr</code>,<code>button</code>,<code>datalist</code>,<code>fieldset</code>,<code>form</code>,<code>input</code>,<code>label</code>,<code>legend</code>,<code>meter</code>,<code>optgroup</code>,<code>option</code>,<code>output</code>,<code>progress</code>,<code>select</code>,<code>textarea</code>,<code>details</code>,<code>dialog</code>,<code>menu</code>,<code>menuitem</code>,<code>summary</code>,<code>content</code>,<code>element</code>,<code>shadow</code>,<code>template</code>,<code>blockquote</code>,<code>iframe</code>,<code>tfoot</code>；</p>
+</blockquote>
+<blockquote>
+<p>预留的 SVG 标签包括：</p>
+</blockquote>
+<blockquote>
+<p><code>svg</code>,<code>animate</code>,<code>circle</code>,<code>clippath</code>,<code>cursor</code>,<code>defs</code>,<code>desc</code>,<code>ellipse</code>,<code>filter</code>,<code>font-face</code>,<code>foreignObject</code>,<code>g</code>,<code>glyph</code>,<code>image</code>,<code>line</code>,<code>marker</code>,<code>mask</code>,<code>missing-glyph</code>,<code>path</code>,<code>pattern</code>,<code>polygon</code>,<code>polyline</code>,<code>rect</code>,<code>switch</code>,<code>symbol</code>,<code>text</code>,<code>textpath</code>,<code>tspan</code>,<code>use</code>,<code>view</code></p>
+</blockquote>
+<h4 id="强制-html-void-element-不需要闭合，其它类型标签都需要闭合"><a href="#强制-html-void-element-不需要闭合，其它类型标签都需要闭合" class="headerlink" title="[强制]html void element 不需要闭合，其它类型标签都需要闭合"></a>[强制]<a href="https://www.w3.org/TR/html51/syntax.html#void-elements" target="_blank" rel="noopener">html void element</a> 不需要闭合，其它类型标签都需要闭合</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span>&gt;</span><span class="tag">&lt;/<span class="name">input</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>&gt;</span><span class="tag">&lt;/<span class="name">br</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// good</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="强制-非根结点的-template-标签里必须有一个以上的子结点"><a href="#强制-非根结点的-template-标签里必须有一个以上的子结点" class="headerlink" title="[强制] 非根结点的 template 标签里必须有一个以上的子结点"></a>[强制] 非根结点的 <code>template</code> 标签里必须有一个以上的子结点</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// good</span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// good</span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="强制-template-标签上不能带有-key-属性"><a href="#强制-template-标签上不能带有-key-属性" class="headerlink" title="[强制] template 标签上不能带有 key 属性"></a>[强制] <code>template</code> 标签上不能带有 <code>key</code> 属性</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">template</span> <span class="attr">key</span>=<span class="string">"x"</span>&gt;</span><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-bind:key</span>=<span class="string">"y"</span>&gt;</span><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">template</span> <span class="attr">:key</span>=<span class="string">"z"</span>&gt;</span><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// good</span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">key</span>=<span class="string">"x"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">template</span>&gt;</span><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="强制-如果自定义标签中没有内容，需要以自闭合标签形式出现"><a href="#强制-如果自定义标签中没有内容，需要以自闭合标签形式出现" class="headerlink" title="[强制] 如果自定义标签中没有内容，需要以自闭合标签形式出现"></a>[强制] 如果自定义标签中没有内容，需要以自闭合标签形式出现</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="name">c-title</span> <span class="attr">:url</span>=<span class="string">"url"</span> <span class="attr">:label-type</span>=<span class="string">"type"</span>&gt;</span><span class="tag">&lt;/<span class="name">c-title</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// good</span><br><span class="line"><span class="tag">&lt;<span class="name">c-title</span> <span class="attr">:url</span>=<span class="string">"url"</span> <span class="attr">:label-type</span>=<span class="string">"type"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="强制-标签右括号-gt-的位置："><a href="#强制-标签右括号-gt-的位置：" class="headerlink" title="[强制] 标签右括号 &gt; 的位置："></a>[强制] 标签右括号 <code>&gt;</code> 的位置：</h4><ul>
+<li>元素只有一行时，右括号与元素保持在同一行。</li>
+<li>多行元素（元素最后一个属性与左括号 <code>&lt;</code> 不在同一行）时，右括号 <code>&gt;</code> 需要另起一行，缩进与左括号 <code>&lt;</code> 保持对齐。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"foo"</span> <span class="attr">class</span>=<span class="string">"bar"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// good</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"foo"</span> <span class="attr">class</span>=<span class="string">"bar"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"foo"</span> <span class="attr">class</span>=<span class="string">"bar"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// good</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"foo"</span> <span class="attr">class</span>=<span class="string">"bar"</span>&gt;</span></span><br><span class="line">  some message</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="name">c-title</span> <span class="attr">:text</span>=<span class="string">"text"</span> <span class="attr">:url</span>=<span class="string">"url"</span> <span class="attr">:label-type</span>=<span class="string">"type"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">// good</span><br><span class="line"><span class="tag">&lt;<span class="name">c-title</span> <span class="attr">:text</span>=<span class="string">"text"</span> <span class="attr">:url</span>=<span class="string">"url"</span> <span class="attr">:label-type</span>=<span class="string">"type"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="建议-自闭合标签的-gt-前不用添加空格"><a href="#建议-自闭合标签的-gt-前不用添加空格" class="headerlink" title="[建议] 自闭合标签的 /&gt; 前不用添加空格"></a>[建议] 自闭合标签的 <code>/&gt;</code> 前不用添加空格</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="name">c-title</span> <span class="attr">:url</span>=<span class="string">"url"</span> <span class="attr">:label-type</span>=<span class="string">"type"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">// good</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">c-title</span> <span class="attr">:url</span>=<span class="string">"url"</span> <span class="attr">:label-type</span>=<span class="string">"type"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-属性"><a href="#3-3-属性" class="headerlink" title="3.3 属性"></a><a  style="color: #333" name="3.3">3.3 属性</a></h3><h4 id="强制-属性值必须用双引号包围"><a href="#强制-属性值必须用双引号包围" class="headerlink" title="[强制] 属性值必须用双引号包围"></a>[强制] 属性值必须用双引号包围</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c-color"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// good</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c-color"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="强制-模板中的属性命名需要符合-kebab-case"><a href="#强制-模板中的属性命名需要符合-kebab-case" class="headerlink" title="[强制] 模板中的属性命名需要符合 kebab-case"></a>[强制] 模板中的属性命名需要符合 <code>kebab-case</code></h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="name">my-component</span> <span class="attr">greetingText</span>=<span class="string">"hi"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">// good</span><br><span class="line"><span class="tag">&lt;<span class="name">my-component</span> <span class="attr">greeting-text</span>=<span class="string">"hi"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="强制-class-style-属性值不能设置空字符串"><a href="#强制-class-style-属性值不能设置空字符串" class="headerlink" title="[强制] class / style 属性值不能设置空字符串"></a>[强制] <code>class</code> / <code>style</code> 属性值不能设置空字符串</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// good</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="建议-布尔类型的属性值为-true-时，建议不添加属性值"><a href="#建议-布尔类型的属性值为-true-时，建议不添加属性值" class="headerlink" title="[建议] 布尔类型的属性值为 true 时，建议不添加属性值"></a>[建议] 布尔类型的属性值为 <code>true</code> 时，建议不添加属性值</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="name">c-title</span> <span class="attr">text</span>=<span class="string">"带箭头标题"</span> <span class="attr">:arrow</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">// good</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">disabled</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">c-title</span> <span class="attr">text</span>=<span class="string">"带箭头标题"</span> <span class="attr">arrow</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">c-title</span> <span class="attr">text</span>=<span class="string">"带箭头标题"</span> <span class="attr">:arrow</span>=<span class="string">"false"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="强制-当组件的属性多于-2-个时，必须分成多行，每行写一个属性；只有属性个数小于或等于-2-个时，可以写在一行内"><a href="#强制-当组件的属性多于-2-个时，必须分成多行，每行写一个属性；只有属性个数小于或等于-2-个时，可以写在一行内" class="headerlink" title="[强制] 当组件的属性多于 2 个时，必须分成多行，每行写一个属性；只有属性个数小于或等于 2 个时，可以写在一行内"></a>[强制] 当组件的属性多于 <code>2</code> 个时，必须分成多行，每行写一个属性；只有属性个数小于或等于 <code>2</code> 个时，可以写在一行内</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="name">c-title</span> <span class="attr">:text</span>=<span class="string">"text"</span> <span class="attr">:url</span>=<span class="string">"url"</span> <span class="attr">:label-type</span>=<span class="string">"type"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">// good</span><br><span class="line"><span class="tag">&lt;<span class="name">c-title</span> <span class="attr">:text</span>=<span class="string">"text"</span> <span class="attr">:url</span>=<span class="string">"url"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">c-title</span> <span class="attr">:text</span>=<span class="string">"text"</span> <span class="attr">:url</span>=<span class="string">"url"</span> <span class="attr">:label-type</span>=<span class="string">"type"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="建议-当元素有多个属性时，应该按照统一的顺序书写"><a href="#建议-当元素有多个属性时，应该按照统一的顺序书写" class="headerlink" title="[建议] 当元素有多个属性时，应该按照统一的顺序书写"></a>[建议] 当元素有多个属性时，应该按照统一的顺序书写</h4><p>优先级顺序：</p>
+<ol>
+<li>定义（提供组件的选项）<ul>
+<li>is</li>
+</ul>
+</li>
+<li>列表渲染（创建多个变化的相同元素）<ul>
+<li>v-for</li>
+</ul>
+</li>
+<li>条件渲染（元素是否渲染/显示）<ul>
+<li>v-if</li>
+<li>v-else-if</li>
+<li>v-else</li>
+<li>v-show</li>
+<li>v-cloak</li>
+</ul>
+</li>
+<li>渲染方式（改变元素的渲染方式）<ul>
+<li>v-pre/v-once</li>
+</ul>
+</li>
+<li>全局感知（需要超越组件的知识）<ul>
+<li>id</li>
+</ul>
+</li>
+<li>唯一的特性（需要唯一值的特性）<ul>
+<li>ref</li>
+<li>key</li>
+<li>slot</li>
+</ul>
+</li>
+<li>双向绑定（把绑定和事件结合起来）<ul>
+<li>v-model</li>
+</ul>
+</li>
+<li>未绑定的属性</li>
+<li>其它绑定（所有普通的绑定）<ul>
+<li>v-bind</li>
+</ul>
+</li>
+<li>事件（组件事件监听器）<ul>
+<li>v-on</li>
+</ul>
+</li>
+<li>内容（覆写元素的内容）<ul>
+<li>v-html</li>
+<li>v-text</li>
+</ul>
+</li>
+</ol>
+<h4 id="强制-不能有重复的属性，class-和-style-除外"><a href="#强制-不能有重复的属性，class-和-style-除外" class="headerlink" title="[强制] 不能有重复的属性，class 和 style 除外"></a>[强制] 不能有重复的属性，<code>class</code> 和 <code>style</code> 除外</h4><p>解释：</p>
+<p>这里重复的属性包括以下两种情况：</p>
+<ol>
+<li>属性名完全一样：如有多个 <code>foo</code> 或者有多个 <code>:foo</code></li>
+<li>有一个普通属性和一个 <code>v-bind</code> 动态绑定的属性，动态绑定的属性名与普通属性名重复</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="name">c-title</span> <span class="attr">foo</span>=<span class="string">"abc"</span> <span class="attr">:foo</span>=<span class="string">"def"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">c-title</span> <span class="attr">foo</span>=<span class="string">"def"</span> <span class="attr">foo</span>=<span class="string">"abc"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">c-title</span> <span class="attr">class</span>=<span class="string">"def"</span> <span class="attr">class</span>=<span class="string">"abc"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">c-title</span> <span class="attr">style</span>=<span class="string">"def"</span> <span class="attr">style</span>=<span class="string">"abc"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">// good</span><br><span class="line"><span class="tag">&lt;<span class="name">c-title</span> <span class="attr">:foo</span>=<span class="string">"def"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">c-title</span> <span class="attr">foo</span>=<span class="string">"abc"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">c-title</span> <span class="attr">class</span>=<span class="string">"c-color"</span> <span class="attr">:class</span>=<span class="string">"&#123;'c-selected': selected&#125;"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">c-title</span> <span class="attr">style</span>=<span class="string">"color: #000;"</span> <span class="attr">:style</span>=<span class="string">"&#123;width: '100px'&#125;"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="建议-slot-命名采用-kebab-case"><a href="#建议-slot-命名采用-kebab-case" class="headerlink" title="[建议] slot 命名采用 kebab-case"></a>[建议] <code>slot</code> 命名采用 <code>kebab-case</code></h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">slot</span> <span class="attr">name</span>=<span class="string">"header-left"</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">slot</span>=<span class="string">"header-left"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="建议-ref-命名采用-PascalCase"><a href="#建议-ref-命名采用-PascalCase" class="headerlink" title="[建议] ref 命名采用 PascalCase"></a>[建议] <code>ref</code> 命名采用 <code>PascalCase</code></h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ref</span>=<span class="string">"userInfo"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-4-指令"><a href="#3-4-指令" class="headerlink" title="3.4 指令"></a><a style="color: #333" name="3.4">3.4 指令</a></h3><h4 id="强制-在使用-v-for-的元素上添加-key，以便维护内部组件及其子树的状态"><a href="#强制-在使用-v-for-的元素上添加-key，以便维护内部组件及其子树的状态" class="headerlink" title="[强制] 在使用 v-for 的元素上添加 key，以便维护内部组件及其子树的状态"></a>[强制] 在使用 <code>v-for</code> 的元素上添加 <code>key</code>，以便维护内部组件及其子树的状态</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"todo in todos"</span> <span class="attr">:key</span>=<span class="string">"todo.id"</span>&gt;</span></span><br><span class="line">    &#123;&#123; todo.text &#125;&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="建议-不要把-v-if-和-v-for-同时用在同一个元素上"><a href="#建议-不要把-v-if-和-v-for-同时用在同一个元素上" class="headerlink" title="[建议] 不要把 v-if 和 v-for 同时用在同一个元素上"></a>[建议] 不要把 <code>v-if</code> 和 <code>v-for</code> 同时用在同一个元素上</h4><p>解释：</p>
+<p>当 Vue 处理指令时，<code>v-for</code> 比 <code>v-if</code> 具有更高的优先级。所以如果想要使用 <code>v-if</code> 判断 <code>v-for</code> 元素列表是否显示，将两个指令同时应用在同一个元素的方法就是错误的。引入这个规则是为了避免引起困惑。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"user in users"</span> <span class="attr">v-if</span>=<span class="string">"user.isActive"</span> <span class="attr">:key</span>=<span class="string">"user.id"</span>&gt;</span></span><br><span class="line">    &#123;&#123; user.name &#125;&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// good</span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"user in activeUsers"</span> <span class="attr">:key</span>=<span class="string">"user.id"</span>&gt;</span></span><br><span class="line">      &#123;&#123; user.name &#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line">    computed: &#123;</span><br><span class="line"><span class="actionscript">      activeUsers: <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">return</span> <span class="keyword">this</span>.users.filter(<span class="function"><span class="keyword">function</span> <span class="params">(user)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">          <span class="keyword">return</span> user.isActive;</span></span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="建议-以下指令统一使用缩写"><a href="#建议-以下指令统一使用缩写" class="headerlink" title="[建议] 以下指令统一使用缩写"></a>[建议] 以下指令统一使用缩写</h4><ul>
+<li>使用 <code>:</code> 表示 <code>v-bind:</code></li>
+<li>使用 <code>@</code> 表示 <code>v-on:</code></li>
+</ul>
+<h3 id="3-5-插值（Mustache）"><a href="#3-5-插值（Mustache）" class="headerlink" title="3.5 插值（Mustache）"></a><a style="color: #333" name="3.5">3.5 插值（Mustache）</a></h3><h4 id="建议-插值左右添加一个空格"><a href="#建议-插值左右添加一个空格" class="headerlink" title="[建议] 插值左右添加一个空格"></a>[建议] 插值左右添加一个空格</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;&#123; text &#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;&#123;text&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// good</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;&#123; text &#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-6-空格"><a href="#3-6-空格" class="headerlink" title="3.6 空格"></a><a style="color: #333" name="3.6">3.6 空格</a></h3><h4 id="强制-不能有多余空格"><a href="#强制-不能有多余空格" class="headerlink" title="[强制] 不能有多余空格"></a>[强制] 不能有多余空格</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"foo"</span> <span class="attr">:style</span>=<span class="string">"bar"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// good</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"foo"</span> <span class="attr">:style</span>=<span class="string">"bar"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-7-变量"><a href="#3-7-变量" class="headerlink" title="3.7 变量"></a><a style="color: #333" name="3.7">3.7 变量</a></h3><h4 id="强制-不能有多余的变量"><a href="#强制-不能有多余的变量" class="headerlink" title="[强制] 不能有多余的变量"></a>[强制] 不能有多余的变量</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- "i" is defined but never used. --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"i in 5"</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// good</span><br><span class="line"><span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"i in 5"</span>&gt;</span>&#123;&#123; i &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="强制-禁止在插值中使用-this"><a href="#强制-禁止在插值中使用-this" class="headerlink" title="[强制] 禁止在插值中使用 this"></a>[强制] 禁止在插值中使用 <code>this</code></h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">:href</span>=<span class="string">"this.url"</span>&gt;</span></span><br><span class="line">  &#123;&#123; this.text &#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// good</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">:href</span>=<span class="string">"url"</span>&gt;</span></span><br><span class="line">  &#123;&#123; text &#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-javascript-部分"><a href="#4-javascript-部分" class="headerlink" title="4 javascript 部分"></a><a style="color: #333" name="4">4 javascript 部分</a></h2><h3 id="4-1-props"><a href="#4-1-props" class="headerlink" title="4.1 props"></a><a style="color: #333" name="4.1">4.1 props</a></h3><h4 id="强制-指定-props-类型"><a href="#强制-指定-props-类型" class="headerlink" title="[强制] 指定 props 类型"></a>[强制] 指定 <code>props</code> 类型</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="actionscript">    props: [<span class="string">'status'</span>]</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// good</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line">    props: &#123;</span><br><span class="line"><span class="javascript">        status: <span class="built_in">String</span></span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="强制-如果-props-没有指定为-required-或者-required-为-false，则需要指定默认值"><a href="#强制-如果-props-没有指定为-required-或者-required-为-false，则需要指定默认值" class="headerlink" title="[强制] 如果 props 没有指定为 required 或者 required 为 false，则需要指定默认值"></a>[强制] 如果 <code>props</code> 没有指定为 <code>required</code> 或者 <code>required</code> 为 <code>false</code>，则需要指定默认值</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line">    props: &#123;</span><br><span class="line"><span class="javascript">      a: <span class="built_in">Number</span>,</span></span><br><span class="line"><span class="javascript">      b: [<span class="built_in">Number</span>, <span class="built_in">String</span>],</span></span><br><span class="line">      c: &#123;</span><br><span class="line"><span class="javascript">        type: <span class="built_in">Number</span>,</span></span><br><span class="line">      &#125;,</span><br><span class="line">      d: &#123;</span><br><span class="line"><span class="javascript">        type: <span class="built_in">Number</span>,</span></span><br><span class="line"><span class="actionscript">        required: <span class="literal">false</span>,</span></span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// good</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line">    props: &#123;</span><br><span class="line">      a: &#123;</span><br><span class="line"><span class="javascript">        type: <span class="built_in">Number</span>,</span></span><br><span class="line"><span class="actionscript">        required: <span class="literal">true</span>,</span></span><br><span class="line">      &#125;,</span><br><span class="line">      b: &#123;</span><br><span class="line"><span class="javascript">        type: [<span class="built_in">Number</span>, <span class="built_in">String</span>],</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">default</span>: <span class="number">0</span>,</span></span><br><span class="line">      &#125;,</span><br><span class="line">      c: &#123;</span><br><span class="line"><span class="javascript">        type: <span class="built_in">Number</span>,</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">default</span>: <span class="number">0</span>,</span></span><br><span class="line"><span class="actionscript">        required: <span class="literal">false</span>,</span></span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="强制-props-提供的默认值必须满足校验条件"><a href="#强制-props-提供的默认值必须满足校验条件" class="headerlink" title="[强制] props 提供的默认值必须满足校验条件"></a>[强制] <code>props</code> 提供的默认值必须满足校验条件</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line">    props: &#123;</span><br><span class="line">        propA: &#123;</span><br><span class="line"><span class="javascript">            type: <span class="built_in">String</span>,</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">default</span>: &#123;&#125;</span></span><br><span class="line">        &#125;,</span><br><span class="line">        propB: &#123;</span><br><span class="line"><span class="javascript">            type: <span class="built_in">String</span>,</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">default</span>: []</span></span><br><span class="line">        &#125;,</span><br><span class="line">        propC: &#123;</span><br><span class="line"><span class="javascript">            type: <span class="built_in">Object</span>,</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">default</span>: []</span></span><br><span class="line">        &#125;,</span><br><span class="line">        propD: &#123;</span><br><span class="line"><span class="javascript">            type: <span class="built_in">Array</span>,</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">default</span>: []</span></span><br><span class="line">        &#125;,</span><br><span class="line">        propE: &#123;</span><br><span class="line"><span class="javascript">            type: <span class="built_in">Object</span>,</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">default</span>: &#123;</span></span><br><span class="line"><span class="actionscript">                message: <span class="string">'hello'</span></span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// good</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line">    props: &#123;</span><br><span class="line"><span class="javascript">        propA: <span class="built_in">Number</span>,</span></span><br><span class="line"><span class="javascript">        propB: [<span class="built_in">String</span>, <span class="built_in">Number</span>],</span></span><br><span class="line">        propD: &#123;</span><br><span class="line"><span class="javascript">            type: <span class="built_in">Number</span>,</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">default</span>: <span class="number">100</span></span></span><br><span class="line">        &#125;,</span><br><span class="line">        propE: &#123;</span><br><span class="line"><span class="javascript">            type: <span class="built_in">Object</span>,</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">default</span>() &#123;</span></span><br><span class="line"><span class="actionscript">                <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="actionscript">                    message: <span class="string">'hello'</span></span></span><br><span class="line">                &#125;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="强制-在-props-中声明的属性，其属性名应该始终符合-camelCase"><a href="#强制-在-props-中声明的属性，其属性名应该始终符合-camelCase" class="headerlink" title="[强制] 在 props 中声明的属性，其属性名应该始终符合 camelCase"></a>[强制] 在 <code>props</code> 中声明的属性，其属性名应该始终符合 <code>camelCase</code></h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line">    props: &#123;</span><br><span class="line"><span class="javascript">      <span class="string">"greeting-text"</span>: <span class="built_in">String</span>,</span></span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// good</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line">    props: &#123;</span><br><span class="line"><span class="javascript">      greetingText: <span class="built_in">String</span>,</span></span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-data"><a href="#4-2-data" class="headerlink" title="4.2 data"></a><a style="color: #333" name="4.2">4.2 data</a></h3><h4 id="强制-data-必须是一个函数"><a href="#强制-data-必须是一个函数" class="headerlink" title="[强制] data 必须是一个函数"></a>[强制] <code>data</code> 必须是一个函数</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line">    data: &#123;</span><br><span class="line">      b: 1,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// good</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line">    data() &#123;</span><br><span class="line"><span class="actionscript">      <span class="keyword">return</span> &#123;</span></span><br><span class="line">        b: 1,</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="强制-data-中禁止使用-computed-中的变量"><a href="#强制-data-中禁止使用-computed-中的变量" class="headerlink" title="[强制] data 中禁止使用 computed 中的变量"></a>[强制] <code>data</code> 中禁止使用 <code>computed</code> 中的变量</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line">    props: &#123;</span><br><span class="line">      a: &#123;</span><br><span class="line"><span class="javascript">        type: <span class="built_in">String</span>,</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">default</span>: <span class="number">0</span>,</span></span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    data() &#123;</span><br><span class="line"><span class="actionscript">      <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="actionscript">        d: <span class="keyword">this</span>.f,</span></span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    computed: &#123;</span><br><span class="line">      f() &#123;</span><br><span class="line"><span class="actionscript">        <span class="keyword">return</span> <span class="keyword">this</span>.a * <span class="number">10</span>;</span></span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="强制-props-data-computed-methods-中不能有重复的-key"><a href="#强制-props-data-computed-methods-中不能有重复的-key" class="headerlink" title="[强制] props, data, computed, methods 中不能有重复的 key"></a>[强制] <code>props</code>, <code>data</code>, <code>computed</code>, <code>methods</code> 中不能有重复的 <code>key</code></h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line">    props: &#123;</span><br><span class="line"><span class="javascript">      foo: <span class="built_in">String</span>,</span></span><br><span class="line">    &#125;,</span><br><span class="line">    data() &#123;</span><br><span class="line"><span class="actionscript">      <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="actionscript">        foo: <span class="literal">null</span>,</span></span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    computed: &#123;</span><br><span class="line">      foo() &#123;</span><br><span class="line"><span class="actionscript">        <span class="keyword">return</span> <span class="string">"foo"</span>;</span></span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// good</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line">    props: &#123;</span><br><span class="line"><span class="javascript">      foo: <span class="built_in">String</span>,</span></span><br><span class="line">    &#125;,</span><br><span class="line">    data() &#123;</span><br><span class="line"><span class="actionscript">      <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="actionscript">        bar: <span class="literal">null</span>,</span></span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    computed: &#123;</span><br><span class="line">      baz() &#123;</span><br><span class="line"><span class="actionscript">        <span class="keyword">return</span> foo + bar;</span></span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3-变量"><a href="#4-3-变量" class="headerlink" title="4.3 变量"></a><a style="color: #333" name="4.3">4.3 变量</a></h3><h4 id="强制-不能使用-Vue-中的保留字段命名变量"><a href="#强制-不能使用-Vue-中的保留字段命名变量" class="headerlink" title="[强制] 不能使用 Vue 中的保留字段命名变量"></a>[强制] 不能使用 Vue 中的保留字段命名变量</h4><p>解释：</p>
+<p>Vue 使用 <code>_</code> 前缀来定义其自身的私有属性，所以使用相同的前缀 (比如 <code>_update</code>) 有覆写实例属性的风险。即便你检查确认 Vue 当前版本没有用到这个属性名，也不能保证和将来的版本没有冲突。</p>
+<p>对于 <code>$</code> 前缀来说，其在 Vue 生态系统中的目的是暴露给用户的一个特殊的实例属性，所以把它用于私有属性并不合适。</p>
+<p>不过，我们推荐把这两个前缀结合为 <code>$_</code>，作为一个用户定义的私有属性的约定，以确保不会和 Vue 自身相冲突。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line">    props: &#123;</span><br><span class="line"><span class="javascript">      $el: <span class="built_in">String</span>,</span></span><br><span class="line">    &#125;,</span><br><span class="line">    data() &#123;</span><br><span class="line"><span class="actionscript">      <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="actionscript">        _foo: <span class="literal">null</span>,</span></span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    computed: &#123;</span><br><span class="line">      $on() &#123;</span><br><span class="line"><span class="actionscript">        <span class="keyword">return</span> <span class="number">2</span>;</span></span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">      $nextTick() &#123;&#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-4-其它"><a href="#4-4-其它" class="headerlink" title="4.4 其它"></a><a style="color: #333" name="4.4">4.4 其它</a></h3><h4 id="建议-组件中使用-emit-事件时携带的参数，个数不应该超过-2-个。建议将数据参数以-Object-形式传递，将事件参数-event-放在最后"><a href="#建议-组件中使用-emit-事件时携带的参数，个数不应该超过-2-个。建议将数据参数以-Object-形式传递，将事件参数-event-放在最后" class="headerlink" title="[建议] 组件中使用 $emit 事件时携带的参数，个数不应该超过 2 个。建议将数据参数以 Object 形式传递，将事件参数 event 放在最后"></a>[建议] 组件中使用 <code>$emit</code> 事件时携带的参数，个数不应该超过 <code>2</code> 个。建议将数据参数以 <code>Object</code> 形式传递，将事件参数 <code>event</code> 放在最后</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line">onClick(event) &#123;</span><br><span class="line">    <span class="keyword">this</span>.$emit(<span class="string">'click'</span>, <span class="keyword">this</span>.value1, <span class="keyword">this</span>.value2, event);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line">onClick(event) &#123;</span><br><span class="line">   <span class="keyword">this</span>.$emit(</span><br><span class="line">       <span class="string">'click'</span>,</span><br><span class="line">       &#123;</span><br><span class="line">           value1: <span class="keyword">this</span>.value1,</span><br><span class="line">           value2: <span class="keyword">this</span>.value2</span><br><span class="line">       &#125;,</span><br><span class="line">       event</span><br><span class="line">   );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line">onClick(event) &#123;</span><br><span class="line">   <span class="keyword">this</span>.$emit(<span class="string">'click'</span>, event);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-style-部分"><a href="#5-style-部分" class="headerlink" title="5 style 部分"></a><a style="color: #333" name="5">5 style 部分</a></h2><h4 id="建议-为组件样式设置作用域"><a href="#建议-为组件样式设置作用域" class="headerlink" title="[建议] 为组件样式设置作用域"></a>[建议] 为组件样式设置作用域</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span>&gt;</span></span><br><span class="line"><span class="css">  <span class="selector-class">.button</span> &#123;</span></span><br><span class="line">    border: none;</span><br><span class="line">    border-radius: 2px;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="6-参考"><a href="#6-参考" class="headerlink" title="6 参考"></a><a style="color: #333" name="6">6 参考</a></h2><ul>
+<li><a href="https://cn.vuejs.org/v2/style-guide/" target="_blank" rel="noopener">vue 代码风格指南</a></li>
+<li><a href="https://github.com/ecomfe/spec/blob/master/html-style-guide.md" target="_blank" rel="noopener">ecomfe HTML 编码规范</a></li>
+<li><a href="https://github.com/ecomfe/spec/blob/master/javascript-style-guide.md" target="_blank" rel="noopener">ecomfe JavaScript 编码规范</a></li>
+<li><a href="https://github.com/ecomfe/spec/blob/master/es-next-style-guide.md" target="_blank" rel="noopener">ecomfe JavaScript 编码规范 - ESNext 补充篇（草案）</a></li>
+<li><a href="https://github.com/ecomfe/spec/blob/master/css-style-guide.md" target="_blank" rel="noopener">ecomfe CSS 编码规范</a></li>
+<li><a href="https://github.com/ecomfe/spec/blob/master/less-code-style.md" target="_blank" rel="noopener">ecomfe less 编码规范</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vue/" rel="tag"># vue</a>
+          
+            <a href="/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" rel="tag"># 代码规范</a>
+          
+            <a href="/tags/vue%E8%A7%84%E8%8C%83/" rel="tag"># vue规范</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/07/2019-05-07-betterScroll%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" rel="next" title="betterScroll踩坑记录">
+                <i class="fa fa-chevron-left"></i> betterScroll踩坑记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/15/2019-05-15-%E7%BB%9F%E4%B8%80%E7%9A%84%E5%8A%9F%E8%83%BD%E6%80%A7%E4%BB%A3%E7%A0%81/" rel="prev" title="统一的功能性代码">
+                统一的功能性代码 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">cc12210</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">99</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">87</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue-组件代码规范"><span class="nav-number">1.</span> <span class="nav-text">Vue 组件代码规范</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-前言"><span class="nav-number">1.1.</span> <span class="nav-text">1 前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-代码风格"><span class="nav-number">1.2.</span> <span class="nav-text">2 代码风格</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-缩进"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 缩进</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#强制-使用-4-个空格做为一个缩进层级，不允许使用-2-个空格或-tab-字符"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">[强制] 使用 4 个空格做为一个缩进层级，不允许使用 2 个空格或 tab 字符</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-单行最长限制"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 单行最长限制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#强制-每行不得超过-120-个字符"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">[强制] 每行不得超过 120 个字符</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-模块书写顺序"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 模块书写顺序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#建议-template-gt-script-gt-style"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">[建议] template -&gt; script -&gt; style</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-template-部分"><span class="nav-number">1.3.</span> <span class="nav-text">3 template 部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-根节点"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 根节点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#强制-template-根节点只允许包含一个直接子节点，以下情况都是不允许的："><span class="nav-number">1.3.1.1.</span> <span class="nav-text">[强制] template 根节点只允许包含一个直接子节点，以下情况都是不允许的：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-标签"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 标签</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#强制-自定义组件的标签名不得使用-HTML-中默认已定义的标签（reserved-HTML-elements），要求至少由两个单词组成，并且符合-kebab-case"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">[强制] 自定义组件的标签名不得使用 HTML 中默认已定义的标签（reserved HTML elements），要求至少由两个单词组成，并且符合 kebab-case</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#强制-html-void-element-不需要闭合，其它类型标签都需要闭合"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">[强制]html void element 不需要闭合，其它类型标签都需要闭合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#强制-非根结点的-template-标签里必须有一个以上的子结点"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">[强制] 非根结点的 template 标签里必须有一个以上的子结点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#强制-template-标签上不能带有-key-属性"><span class="nav-number">1.3.2.4.</span> <span class="nav-text">[强制] template 标签上不能带有 key 属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#强制-如果自定义标签中没有内容，需要以自闭合标签形式出现"><span class="nav-number">1.3.2.5.</span> <span class="nav-text">[强制] 如果自定义标签中没有内容，需要以自闭合标签形式出现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#强制-标签右括号-gt-的位置："><span class="nav-number">1.3.2.6.</span> <span class="nav-text">[强制] 标签右括号 &gt; 的位置：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#建议-自闭合标签的-gt-前不用添加空格"><span class="nav-number">1.3.2.7.</span> <span class="nav-text">[建议] 自闭合标签的 &#x2F;&gt; 前不用添加空格</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-属性"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#强制-属性值必须用双引号包围"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">[强制] 属性值必须用双引号包围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#强制-模板中的属性命名需要符合-kebab-case"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">[强制] 模板中的属性命名需要符合 kebab-case</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#强制-class-style-属性值不能设置空字符串"><span class="nav-number">1.3.3.3.</span> <span class="nav-text">[强制] class &#x2F; style 属性值不能设置空字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#建议-布尔类型的属性值为-true-时，建议不添加属性值"><span class="nav-number">1.3.3.4.</span> <span class="nav-text">[建议] 布尔类型的属性值为 true 时，建议不添加属性值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#强制-当组件的属性多于-2-个时，必须分成多行，每行写一个属性；只有属性个数小于或等于-2-个时，可以写在一行内"><span class="nav-number">1.3.3.5.</span> <span class="nav-text">[强制] 当组件的属性多于 2 个时，必须分成多行，每行写一个属性；只有属性个数小于或等于 2 个时，可以写在一行内</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#建议-当元素有多个属性时，应该按照统一的顺序书写"><span class="nav-number">1.3.3.6.</span> <span class="nav-text">[建议] 当元素有多个属性时，应该按照统一的顺序书写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#强制-不能有重复的属性，class-和-style-除外"><span class="nav-number">1.3.3.7.</span> <span class="nav-text">[强制] 不能有重复的属性，class 和 style 除外</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#建议-slot-命名采用-kebab-case"><span class="nav-number">1.3.3.8.</span> <span class="nav-text">[建议] slot 命名采用 kebab-case</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#建议-ref-命名采用-PascalCase"><span class="nav-number">1.3.3.9.</span> <span class="nav-text">[建议] ref 命名采用 PascalCase</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-指令"><span class="nav-number">1.3.4.</span> <span class="nav-text">3.4 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#强制-在使用-v-for-的元素上添加-key，以便维护内部组件及其子树的状态"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">[强制] 在使用 v-for 的元素上添加 key，以便维护内部组件及其子树的状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#建议-不要把-v-if-和-v-for-同时用在同一个元素上"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">[建议] 不要把 v-if 和 v-for 同时用在同一个元素上</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#建议-以下指令统一使用缩写"><span class="nav-number">1.3.4.3.</span> <span class="nav-text">[建议] 以下指令统一使用缩写</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-插值（Mustache）"><span class="nav-number">1.3.5.</span> <span class="nav-text">3.5 插值（Mustache）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#建议-插值左右添加一个空格"><span class="nav-number">1.3.5.1.</span> <span class="nav-text">[建议] 插值左右添加一个空格</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-空格"><span class="nav-number">1.3.6.</span> <span class="nav-text">3.6 空格</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#强制-不能有多余空格"><span class="nav-number">1.3.6.1.</span> <span class="nav-text">[强制] 不能有多余空格</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-变量"><span class="nav-number">1.3.7.</span> <span class="nav-text">3.7 变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#强制-不能有多余的变量"><span class="nav-number">1.3.7.1.</span> <span class="nav-text">[强制] 不能有多余的变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#强制-禁止在插值中使用-this"><span class="nav-number">1.3.7.2.</span> <span class="nav-text">[强制] 禁止在插值中使用 this</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-javascript-部分"><span class="nav-number">1.4.</span> <span class="nav-text">4 javascript 部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-props"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 props</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#强制-指定-props-类型"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">[强制] 指定 props 类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#强制-如果-props-没有指定为-required-或者-required-为-false，则需要指定默认值"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">[强制] 如果 props 没有指定为 required 或者 required 为 false，则需要指定默认值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#强制-props-提供的默认值必须满足校验条件"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">[强制] props 提供的默认值必须满足校验条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#强制-在-props-中声明的属性，其属性名应该始终符合-camelCase"><span class="nav-number">1.4.1.4.</span> <span class="nav-text">[强制] 在 props 中声明的属性，其属性名应该始终符合 camelCase</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-data"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2 data</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#强制-data-必须是一个函数"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">[强制] data 必须是一个函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#强制-data-中禁止使用-computed-中的变量"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">[强制] data 中禁止使用 computed 中的变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#强制-props-data-computed-methods-中不能有重复的-key"><span class="nav-number">1.4.2.3.</span> <span class="nav-text">[强制] props, data, computed, methods 中不能有重复的 key</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-变量"><span class="nav-number">1.4.3.</span> <span class="nav-text">4.3 变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#强制-不能使用-Vue-中的保留字段命名变量"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">[强制] 不能使用 Vue 中的保留字段命名变量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-其它"><span class="nav-number">1.4.4.</span> <span class="nav-text">4.4 其它</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#建议-组件中使用-emit-事件时携带的参数，个数不应该超过-2-个。建议将数据参数以-Object-形式传递，将事件参数-event-放在最后"><span class="nav-number">1.4.4.1.</span> <span class="nav-text">[建议] 组件中使用 $emit 事件时携带的参数，个数不应该超过 2 个。建议将数据参数以 Object 形式传递，将事件参数 event 放在最后</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-style-部分"><span class="nav-number">1.5.</span> <span class="nav-text">5 style 部分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#建议-为组件样式设置作用域"><span class="nav-number">1.5.0.1.</span> <span class="nav-text">[建议] 为组件样式设置作用域</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-参考"><span class="nav-number">1.6.</span> <span class="nav-text">6 参考</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cc12210</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

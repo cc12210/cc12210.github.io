@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="javascript,js,规范," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="2.4. 注释2.4.1. 单行注释·[强制][rule038] 必须独占一行。&#x2F;&#x2F; 后跟一个空格，缩进与下一行被注释说明的代码一致。 2.4.2. 多行注释·[建议] 避免使用 &#x2F;*...*&#x2F; 这样的多行注释。有多行注释内容时，使用多个单行注释。 2.4.3. 文档化注释·[强制] 为了便于代码阅读和自文档化，以下内容必须包含以&#x2F;**...*&#x2F; 形式的块注释中。 解释 文件 namespace">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript编码规范 三 (注释)">
+<meta property="og:url" content="http://yoursite.com/2019/01/18/2019-01-18-javascript%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83_%E4%B8%89_(%E6%B3%A8%E9%87%8A)/index.html">
+<meta property="og:site_name" content="曹小诚的个人空间">
+<meta property="og:description" content="2.4. 注释2.4.1. 单行注释·[强制][rule038] 必须独占一行。&#x2F;&#x2F; 后跟一个空格，缩进与下一行被注释说明的代码一致。 2.4.2. 多行注释·[建议] 避免使用 &#x2F;*...*&#x2F; 这样的多行注释。有多行注释内容时，使用多个单行注释。 2.4.3. 文档化注释·[强制] 为了便于代码阅读和自文档化，以下内容必须包含以&#x2F;**...*&#x2F; 形式的块注释中。 解释 文件 namespace">
+<meta property="article:published_time" content="2019-01-18T02:07:00.000Z">
+<meta property="article:modified_time" content="2019-02-20T06:18:52.000Z">
+<meta property="article:author" content="cc12210">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="js">
+<meta property="article:tag" content="规范">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/18/2019-01-18-javascript编码规范_三_(注释)/"/>
+
+
+
+
+
+  <title>javascript编码规范 三 (注释) | 曹小诚的个人空间</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">曹小诚的个人空间</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/18/2019-01-18-javascript%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83_%E4%B8%89_(%E6%B3%A8%E9%87%8A)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cc12210">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="曹小诚的个人空间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">javascript编码规范 三 (注释)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-18T10:07:00+08:00">
+                2019-01-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">默认分类</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="2-4-注释"><a href="#2-4-注释" class="headerlink" title="2.4. 注释"></a>2.4. 注释</h3><h3 id="2-4-1-单行注释"><a href="#2-4-1-单行注释" class="headerlink" title="2.4.1. 单行注释"></a>2.4.1. 单行注释</h3><p>·[强制][rule038] 必须独占一行。// 后跟一个空格，缩进与下一行被注释说明的代码一致。</p>
+<h4 id="2-4-2-多行注释"><a href="#2-4-2-多行注释" class="headerlink" title="2.4.2. 多行注释"></a>2.4.2. 多行注释</h4><p>·[建议] 避免使用 <code>/*...*/</code> 这样的多行注释。有多行注释内容时，使用多个单行注释。</p>
+<h4 id="2-4-3-文档化注释"><a href="#2-4-3-文档化注释" class="headerlink" title="2.4.3. 文档化注释"></a>2.4.3. 文档化注释</h4><p>·[强制] 为了便于代码阅读和自文档化，以下内容必须包含以<code>/**...*/</code> 形式的块注释中。</p>
+<h5 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h5><ol>
+<li>文件</li>
+<li>namespace</li>
+<li>类</li>
+<li>函数或方法</li>
+<li>类属性</li>
+<li>事件</li>
+<li>全局变量</li>
+<li>常量</li>
+<li>AMD 模块</li>
+</ol>
+<p>·[强制] 文档注释前必须空一行。</p>
+<p>·[建议] 自文档化的文档说明 what，而不是 how。</p>
+<h3 id="2-4-4-类型定义"><a href="#2-4-4-类型定义" class="headerlink" title="2.4.4. 类型定义"></a>2.4.4. 类型定义</h3><p>·[强制] 类型定义都是以 { 开始, 以 } 结束。</p>
+<a id="more"></a>
+
+<h4 id="解释-1"><a href="#解释-1" class="headerlink" title="解释"></a>解释</h4><p>常用类型如：{string}, {number}, {boolean}, {Object}, {Function}, {RegExp}, {Array}, {Date}。</p>
+<p>类型不仅局限于内置的类型，也可以是自定义的类型。比如定义了一个类 Developer，就可以使用它来定义一个参数和返回值的类型。</p>
+<p>·[强制] 对于基本类型 {string}, {number}, {boolean}，首字母必须小写。</p>
+<table>
+<thead>
+<tr>
+<th>类型定义</th>
+<th>语法示例</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>String</td>
+<td>{string}</td>
+<td>–</td>
+</tr>
+<tr>
+<td>Number</td>
+<td>{number}</td>
+<td>–</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>{boolean}</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>{Object}</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Function</td>
+<td>{Function}</td>
+<td>-</td>
+</tr>
+<tr>
+<td>RegExp</td>
+<td>{RegExp}</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Array</td>
+<td>{Array}</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>{Date}</td>
+<td>-</td>
+</tr>
+<tr>
+<td>单一类型集合</td>
+<td>{Array.<string>}</td>
+<td>string 类型的数组</td>
+</tr>
+<tr>
+<td>多类型</td>
+<td>{(number ｜ boolean)}</td>
+<td>可能是 number 类型, 也可能是 boolean 类型</td>
+</tr>
+<tr>
+<td>允许为 null</td>
+<td>{?number}</td>
+<td>可能是 number, 也可能是 null</td>
+</tr>
+<tr>
+<td>不允许为 null</td>
+<td>{!Object}</td>
+<td>Object 类型, 但不是 null</td>
+</tr>
+<tr>
+<td>Function 类型</td>
+<td>{function(number, boolean)}</td>
+<td>函数, 形参类型</td>
+</tr>
+<tr>
+<td>Function 带返回值</td>
+<td>{function(number, boolean):string}</td>
+<td>函数, 形参, 返回值类型</td>
+</tr>
+<tr>
+<td>参数可选</td>
+<td>@param {string=} name</td>
+<td>可选参数, =为类型后缀</td>
+</tr>
+<tr>
+<td>可变参数</td>
+<td>@param {…number} args</td>
+<td>变长参数, …为类型前缀</td>
+</tr>
+<tr>
+<td>任意类型</td>
+<td>{*}</td>
+<td>任意类型</td>
+</tr>
+<tr>
+<td>可选任意类型</td>
+<td>@param {*=} name</td>
+<td>可选参数，类型不限</td>
+</tr>
+<tr>
+<td>可变任意类型</td>
+<td>@param {…*} args</td>
+<td>变长参数，类型不限</td>
+</tr>
+</tbody></table>
+<h3 id="2-4-5-文件注释"><a href="#2-4-5-文件注释" class="headerlink" title="2.4.5. 文件注释"></a>2.4.5. 文件注释</h3><p>·[强制] 文件顶部必须包含文件注释，用 @file 标识文件说明。</p>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@file </span>Describe the file</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<p>·[建议] 文件注释中可以用 @author 标识开发者信息。</p>
+<h4 id="解释-2"><a href="#解释-2" class="headerlink" title="解释"></a>解释</h4><p>开发者信息能够体现开发人员对文件的贡献，并且能够让遇到问题或希望了解相关信息的人找到维护人。通常情况文件在被创建时标识的是创建者。</p>
+<p>随着项目的进展，越来越多的人加入，参与这个文件的开发，新的作者应该被加入 @author 标识。</p>
+<p>@author 标识具有多人时，原则是按照 责任 进行排序。通常的说就是如果有问题，就是找第一个人应该比找第二个人有效。</p>
+<p>比如文件的创建者由于各种原因，模块移交给了其他人或其他团队，后来因为新增需求，其他人在新增代码时，添加 @author 标识应该把自己的名字添加在创建人的前面。</p>
+<p>@author 中的名字不允许被删除。任何劳动成果都应该被尊重。</p>
+<p>业务项目中，一个文件可能被多人频繁修改，并且每个人的维护时间都可能不会很长，不建议为文件增加 @author 标识。通过版本控制系统追踪变更，按业务逻辑单元确定模块的维护责任人，通过文档与 wiki 跟踪和查询，是更好的责任管理方式。</p>
+<p>对于业务逻辑无关的技术型基础项目，特别是开源的公共项目，应使用 @author 标识。</p>
+<h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@file </span>Describe the file</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author <span class="variable">author</span></span>-name(mail-name<span class="doctag">@domain</span>.com)</span></span><br><span class="line"><span class="comment"> *         author-name2(mail-name2<span class="doctag">@domain</span>.com)</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-6-命名空间注释"><a href="#2-4-6-命名空间注释" class="headerlink" title="2.4.6. 命名空间注释"></a>2.4.6. 命名空间注释</h3><p>·[建议] 命名空间使用 @namespace 标识。</p>
+<h4 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@namespace</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> util = &#123;&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-7-类注释"><a href="#2-4-7-类注释" class="headerlink" title="2.4.7. 类注释"></a>2.4.7. 类注释</h3><p>·[建议] 使用 @class 标记类或构造函数。</p>
+<h4 id="解释-3"><a href="#解释-3" class="headerlink" title="解释"></a>解释</h4><p>对于使用对象 constructor 属性来定义的构造函数，可以使用 @constructor 来标记。</p>
+<h4 id="示例-3"><a href="#示例-3" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 描述</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@class</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Developer</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// constructor body</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>·[建议] 使用 @extends 标记类的继承信息。</p>
+<h4 id="示例-4"><a href="#示例-4" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 描述</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@class</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@extends <span class="variable">Developer</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fronteer</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  Developer.call(<span class="keyword">this</span>);</span><br><span class="line">  <span class="comment">// constructor body</span></span><br><span class="line">&#125;</span><br><span class="line">util.inherits(Fronteer, Developer);</span><br></pre></td></tr></table></figure>
+
+<p>·[强制] 使用包装方式扩展类成员时， 必须通过 @lends 进行重新指向。</p>
+<h4 id="解释-4"><a href="#解释-4" class="headerlink" title="解释"></a>解释</h4><p>没有 @lends 标记将无法为该类生成包含扩展类成员的文档。</p>
+<h4 id="示例-5"><a href="#示例-5" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 类描述</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@class</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@extends <span class="variable">Developer</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fronteer</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  Developer.call(<span class="keyword">this</span>);</span><br><span class="line">  <span class="comment">// constructor body</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">util.extend(</span><br><span class="line">  Fronteer.prototype,</span><br><span class="line">  <span class="comment">/** <span class="doctag">@lends </span>Fronteer.prototype */</span> &#123;</span><br><span class="line">    _getLevel: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// TODO</span></span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>·[强制] 类的属性或方法等成员信息使用 @public / @protected / @private 中的任意一个，指明可访问性。</p>
+<h4 id="解释-5"><a href="#解释-5" class="headerlink" title="解释"></a>解释</h4><p>生成的文档中将有可访问性的标记，避免用户直接使用非 public 的属性或方法。</p>
+<h4 id="示例-6"><a href="#示例-6" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 类描述</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@class</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@extends <span class="variable">Developer</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> Fronteer = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  Developer.call(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 属性描述</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@type <span class="type">&#123;string&#125;</span></span></span></span><br><span class="line"><span class="comment">   * <span class="doctag">@private</span></span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">this</span>._level = <span class="string">"T12"</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// constructor body</span></span><br><span class="line">&#125;;</span><br><span class="line">util.inherits(Fronteer, Developer);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 方法描述</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@private</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;string&#125;</span> </span>返回值描述</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">Fronteer.prototype._getLevel = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-8-函数-方法注释"><a href="#2-4-8-函数-方法注释" class="headerlink" title="2.4.8. 函数/方法注释"></a>2.4.8. 函数/方法注释</h3><p>·[强制] 函数/方法注释必须包含函数说明，有参数和返回值时必须使用注释标识。</p>
+<p>·[强制] 参数和返回值注释必须包含类型信息和说明。</p>
+<p>·[建议] 当函数是内部函数，外部不可访问时，可以使用 @inner 标识。</p>
+<h4 id="示例-7"><a href="#示例-7" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 函数描述</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;string&#125;</span> </span>p1 参数1的说明</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;string&#125;</span> </span>p2 参数2的说明，比较长</span></span><br><span class="line"><span class="comment"> *     那就换行了.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number=&#125;</span> </span>p3 参数3的说明（可选）</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;Object&#125;</span> </span>返回值描述</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">p1, p2, p3</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> p3 = p3 || <span class="number">10</span>;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    p1: p1,</span><br><span class="line">    p2: p2,</span><br><span class="line">    p3: p3,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>·[强制] 对 Object 中各项的描述， 必须使用 @param 标识。</p>
+<h4 id="示例-8"><a href="#示例-8" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 函数描述</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;Object&#125;</span> </span>option 参数描述</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;string&#125;</span> </span>option.url option项描述</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;string=&#125;</span> </span>option.method option项描述，可选参数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">option</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// TODO</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>·[建议] 重写父类方法时， 应当添加 @override 标识。如果重写的形参个数、类型、顺序和返回值类型均未发生变化，可省略 @param 、@return ，仅用 @override 标识，否则仍应作完整注释。</p>
+<h4 id="解释-6"><a href="#解释-6" class="headerlink" title="解释"></a>解释</h4><p>简而言之，当子类重写的方法能直接套用父类的方法注释时可省略对参数与返回值的注释。<br>###2.4.9. 事件注释<br>·[强制] 必须使用 @event 标识事件，事件参数的标识与方法描述的参数标识相同。</p>
+<h4 id="示例-9"><a href="#示例-9" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 值变更时触发</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@event</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;Object&#125;</span> </span>e e描述</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;string&#125;</span> </span>e.before before描述</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;string&#125;</span> </span>e.after after描述</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">onchange: <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>·[强制] 在会广播事件的函数前使用 @fires 标识广播的事件，在广播事件代码前使用 @event 标识事件。</p>
+<p>·[建议] 对于事件对象的注释，使用 @param 标识，生成文档时可读性更好。</p>
+<h4 id="示例-10"><a href="#示例-10" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 点击处理</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@fires </span>Select#change</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@private</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">Select.prototype.clickHandler = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 值变更时触发</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@event </span>Select#change</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param <span class="type">&#123;Object&#125;</span> </span>e e描述</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param <span class="type">&#123;string&#125;</span> </span>e.before before描述</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param <span class="type">&#123;string&#125;</span> </span>e.after after描述</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">this</span>.fire(<span class="string">"change"</span>, &#123;</span><br><span class="line">    before: <span class="string">"foo"</span>,</span><br><span class="line">    after: <span class="string">"bar"</span>,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-10-常量注释"><a href="#2-4-10-常量注释" class="headerlink" title="2.4.10. 常量注释"></a>2.4.10. 常量注释</h3><p>·[强制] 常量必须使用 @const 标记，并包含说明和类型信息。</p>
+<p>####示例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 常量说明</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@const</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@type <span class="type">&#123;string&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> REQUEST_URL = <span class="string">"myurl.do"</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-11-复杂类型注释¶"><a href="#2-4-11-复杂类型注释¶" class="headerlink" title="2.4.11. 复杂类型注释¶"></a>2.4.11. 复杂类型注释¶</h3><p>·[建议] 对于类型未定义的复杂结构的注释，可以使用 @typedef 标识来定义。</p>
+<p>####示例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// `namespaceA~` 可以换成其它 namepaths 前缀，目的是为了生成文档中能显示 `@typedef` 定义的类型和链接。</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 服务器</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@typedef <span class="type">&#123;Object&#125;</span> </span>namespaceA~Server</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@property <span class="type">&#123;string&#125;</span> </span>host 主机</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@property <span class="type">&#123;number&#125;</span> </span>port 端口</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 服务器列表</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@type <span class="type">&#123;Array.&lt;namespaceA~Server&gt;&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> servers = [</span><br><span class="line">  &#123;</span><br><span class="line">    host: <span class="string">"1.2.3.4"</span>,</span><br><span class="line">    port: <span class="number">8080</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    host: <span class="string">"1.2.3.5"</span>,</span><br><span class="line">    port: <span class="number">8081</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-12-AMD-模块注释"><a href="#2-4-12-AMD-模块注释" class="headerlink" title="2.4.12. AMD 模块注释"></a>2.4.12. AMD 模块注释</h3><p>·[强制] AMD 模块使用 @module 或 @exports 标识。</p>
+<h4 id="解释-7"><a href="#解释-7" class="headerlink" title="解释"></a>解释</h4><p>@exports 与 @module 都可以用来标识模块，区别在于 @module 可以省略模块名称。而只使用 @exports 时在 namepaths 中可以省略 module: 前缀。</p>
+<h4 id="示例-11"><a href="#示例-11" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="function"><span class="keyword">function</span> (<span class="params">require</span>) </span>&#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * foo description</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@exports <span class="variable">Foo</span></span></span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">var</span> foo = &#123;</span><br><span class="line">    <span class="comment">// TODO</span></span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * baz description</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@return <span class="type">&#123;boolean&#125;</span> </span>return description</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  foo.baz = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// TODO</span></span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> foo;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="也可以在-exports-变量前使用-module-标识："><a href="#也可以在-exports-变量前使用-module-标识：" class="headerlink" title="也可以在 exports 变量前使用 @module 标识："></a>也可以在 exports 变量前使用 @module 标识：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="function"><span class="keyword">function</span> (<span class="params">require</span>) </span>&#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * module description.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@module <span class="variable">foo</span></span></span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">var</span> exports = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * bar description</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  exports.bar = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// TODO</span></span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> exports;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="如果直接使用-factory-的-exports-参数，还可以："><a href="#如果直接使用-factory-的-exports-参数，还可以：" class="headerlink" title="如果直接使用 factory 的 exports 参数，还可以："></a>如果直接使用 factory 的 exports 参数，还可以：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * module description.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@module</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">define(<span class="function"><span class="keyword">function</span> (<span class="params">require, exports</span>) </span>&#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * bar description</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  exports.bar = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// TODO</span></span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> exports;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>·[强制] 对于已使用 @module 标识为 AMD 模块 的引用，在 namepaths 中必须增加 module: 作前缀。</p>
+<h4 id="解释-8"><a href="#解释-8" class="headerlink" title="解释"></a>解释</h4><p>namepaths 没有 module: 前缀时，生成的文档中将无法正确生成链接。</p>
+<h4 id="示例-12"><a href="#示例-12" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 点击处理</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@fires </span>module:Select#change</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@private</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">Select.prototype.clickHandler = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 值变更时触发</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@event </span>module:Select#change</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param <span class="type">&#123;Object&#125;</span> </span>e e描述</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param <span class="type">&#123;string&#125;</span> </span>e.before before描述</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param <span class="type">&#123;string&#125;</span> </span>e.after after描述</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">this</span>.fire(<span class="string">"change"</span>, &#123;</span><br><span class="line">    before: <span class="string">"foo"</span>,</span><br><span class="line">    after: <span class="string">"bar"</span>,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>·[建议] 对于类定义的模块，可以使用 @alias 标识构建函数。</p>
+<h4 id="示例-13"><a href="#示例-13" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * A module representing a jacket.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@module <span class="variable">jacket</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">define(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@class</span></span></span><br><span class="line"><span class="comment">   * <span class="doctag">@alias </span>module:jacket</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">var</span> Jacket = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> Jacket;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>·[建议] 多模块定义时，可以使用 @exports 标识各个模块。</p>
+<h4 id="示例-14"><a href="#示例-14" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// one module</span></span><br><span class="line">define(<span class="string">"html/utils"</span>, <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Utility functions to ease working with DOM elements.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@exports </span>html/utils</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> exports = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> exports;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// another module</span></span><br><span class="line">define(<span class="string">"tag"</span>, <span class="comment">/** <span class="doctag">@exports </span>tag */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> exports = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> exports;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>·[建议] 对于 exports 为 Object 的模块，可以使用 @namespace 标识。</p>
+<h4 id="解释-9"><a href="#解释-9" class="headerlink" title="解释"></a>解释</h4><p>使用 @namespace 而不是 @module 或 @exports 时，对模块的引用可以省略 module: 前缀。<br>·[建议] 对于 exports 为类名的模块，使用 @class 和 @exports 标识。</p>
+<h4 id="示例-15"><a href="#示例-15" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 只使用 @class Bar 时，类方法和属性都必须增加 @name Bar#methodName 来标识，与 @exports 配合可以免除这一麻烦，并且在引用时可以省去 module: 前缀。</span></span><br><span class="line"><span class="comment">// 另外需要注意类名需要使用 var 定义的方式。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Bar description</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see <span class="variable">foo</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@exports  <span class="variable">Bar</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@class</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> Bar = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// TODO</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * baz description</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;(string|Array)&#125;</span> </span>return description</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">Bar.prototype.baz = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// TODO</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-13-细节注释"><a href="#2-4-13-细节注释" class="headerlink" title="2.4.13. 细节注释"></a>2.4.13. 细节注释</h3><p>对于内部实现、不容易理解的逻辑说明、摘要信息等，我们可能需要编写细节注释。</p>
+<p>·[建议] 细节注释遵循单行注释的格式。说明必须换行时，每行是一个单行注释的起始。</p>
+<h4 id="示例-16"><a href="#示例-16" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">p1, p2</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 这里对具体内部逻辑进行说明</span></span><br><span class="line">    <span class="comment">// 说明太长需要换行</span></span><br><span class="line">    <span class="keyword">for</span> (...) &#123;</span><br><span class="line">        ....</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>·[强制] 有时我们会使用一些特殊标记进行说明。特殊标记必须使用单行注释的形式。下面列举了一些常用标记：</p>
+<h4 id="解释-10"><a href="#解释-10" class="headerlink" title="解释"></a>解释</h4><ul>
+<li>TODO: 有功能待实现。此时需要对将要实现的功能进行简单说明。</li>
+<li>FIXME: 该处代码运行没问题，但可能由于时间赶或者其他原因，需要修正。此时需要对如何修正进行简单说明</li>
+<li>HACK: 为修正某些问题而写的不太好或者使用了某些诡异手段的代码。此时需要对思路或诡异手段进行描述。</li>
+<li>XXX: 该处存在陷阱。此时需要对陷阱进行描述。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+            <a href="/tags/js/" rel="tag"># js</a>
+          
+            <a href="/tags/%E8%A7%84%E8%8C%83/" rel="tag"># 规范</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/14/2019-01-14-webpack%E6%89%93%E5%8C%85%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E8%B7%AF/" rel="next" title="webpack打包性能优化之路">
+                <i class="fa fa-chevron-left"></i> webpack打包性能优化之路
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/18/2019-01-18-javascript%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83_%E5%9B%9B_(%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7%EF%BC%9A%E5%8F%98%E9%87%8F%EF%BC%8C%E6%9D%A1%E4%BB%B6%EF%BC%8C%E5%BE%AA%E7%8E%AF)/" rel="prev" title="javascript编码规范 四 (语言特性：变量，条件，循环)">
+                javascript编码规范 四 (语言特性：变量，条件，循环) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">cc12210</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">99</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">87</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-注释"><span class="nav-number">1.</span> <span class="nav-text">2.4. 注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-1-单行注释"><span class="nav-number">2.</span> <span class="nav-text">2.4.1. 单行注释</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-2-多行注释"><span class="nav-number">2.1.</span> <span class="nav-text">2.4.2. 多行注释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-3-文档化注释"><span class="nav-number">2.2.</span> <span class="nav-text">2.4.3. 文档化注释</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#解释"><span class="nav-number">2.2.1.</span> <span class="nav-text">解释</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-4-类型定义"><span class="nav-number">3.</span> <span class="nav-text">2.4.4. 类型定义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解释-1"><span class="nav-number">3.1.</span> <span class="nav-text">解释</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-5-文件注释"><span class="nav-number">4.</span> <span class="nav-text">2.4.5. 文件注释</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例"><span class="nav-number">4.1.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解释-2"><span class="nav-number">4.2.</span> <span class="nav-text">解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-1"><span class="nav-number">4.3.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-6-命名空间注释"><span class="nav-number">5.</span> <span class="nav-text">2.4.6. 命名空间注释</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-2"><span class="nav-number">5.1.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-7-类注释"><span class="nav-number">6.</span> <span class="nav-text">2.4.7. 类注释</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解释-3"><span class="nav-number">6.1.</span> <span class="nav-text">解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-3"><span class="nav-number">6.2.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-4"><span class="nav-number">6.3.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解释-4"><span class="nav-number">6.4.</span> <span class="nav-text">解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-5"><span class="nav-number">6.5.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解释-5"><span class="nav-number">6.6.</span> <span class="nav-text">解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-6"><span class="nav-number">6.7.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-8-函数-方法注释"><span class="nav-number">7.</span> <span class="nav-text">2.4.8. 函数&#x2F;方法注释</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-7"><span class="nav-number">7.1.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-8"><span class="nav-number">7.2.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解释-6"><span class="nav-number">7.3.</span> <span class="nav-text">解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-9"><span class="nav-number">7.4.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-10"><span class="nav-number">7.5.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-10-常量注释"><span class="nav-number">8.</span> <span class="nav-text">2.4.10. 常量注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-11-复杂类型注释¶"><span class="nav-number">9.</span> <span class="nav-text">2.4.11. 复杂类型注释¶</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-12-AMD-模块注释"><span class="nav-number">10.</span> <span class="nav-text">2.4.12. AMD 模块注释</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解释-7"><span class="nav-number">10.1.</span> <span class="nav-text">解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-11"><span class="nav-number">10.2.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#也可以在-exports-变量前使用-module-标识："><span class="nav-number">10.3.</span> <span class="nav-text">也可以在 exports 变量前使用 @module 标识：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如果直接使用-factory-的-exports-参数，还可以："><span class="nav-number">10.4.</span> <span class="nav-text">如果直接使用 factory 的 exports 参数，还可以：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解释-8"><span class="nav-number">10.5.</span> <span class="nav-text">解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-12"><span class="nav-number">10.6.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-13"><span class="nav-number">10.7.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-14"><span class="nav-number">10.8.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解释-9"><span class="nav-number">10.9.</span> <span class="nav-text">解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-15"><span class="nav-number">10.10.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-13-细节注释"><span class="nav-number">11.</span> <span class="nav-text">2.4.13. 细节注释</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-16"><span class="nav-number">11.1.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解释-10"><span class="nav-number">11.2.</span> <span class="nav-text">解释</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cc12210</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

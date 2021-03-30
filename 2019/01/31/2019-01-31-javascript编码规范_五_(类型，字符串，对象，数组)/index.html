@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="js,编码规范,规范," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="3.4. 类型3.4.1. 类型检测·[建议] 类型检测优先使用 typeof 。对象类型检测使用 instanceof 。null 或 undefined 的检测使用 &#x3D;&#x3D; null 。 示例1234567891011121314151617181920212223242526272829&#x2F;&#x2F; stringtypeof variable &#x3D;&#x3D;&#x3D; &quot;string&quot;;&#x2F;&#x2F; numbertypeof">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript编码规范 五 (类型，字符串，对象，数组)">
+<meta property="og:url" content="http://yoursite.com/2019/01/31/2019-01-31-javascript%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83_%E4%BA%94_(%E7%B1%BB%E5%9E%8B%EF%BC%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%8C%E5%AF%B9%E8%B1%A1%EF%BC%8C%E6%95%B0%E7%BB%84)/index.html">
+<meta property="og:site_name" content="曹小诚的个人空间">
+<meta property="og:description" content="3.4. 类型3.4.1. 类型检测·[建议] 类型检测优先使用 typeof 。对象类型检测使用 instanceof 。null 或 undefined 的检测使用 &#x3D;&#x3D; null 。 示例1234567891011121314151617181920212223242526272829&#x2F;&#x2F; stringtypeof variable &#x3D;&#x3D;&#x3D; &quot;string&quot;;&#x2F;&#x2F; numbertypeof">
+<meta property="article:published_time" content="2019-01-31T03:12:00.000Z">
+<meta property="article:modified_time" content="2019-01-31T03:12:44.000Z">
+<meta property="article:author" content="cc12210">
+<meta property="article:tag" content="js">
+<meta property="article:tag" content="编码规范">
+<meta property="article:tag" content="规范">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/31/2019-01-31-javascript编码规范_五_(类型，字符串，对象，数组)/"/>
+
+
+
+
+
+  <title>javascript编码规范 五 (类型，字符串，对象，数组) | 曹小诚的个人空间</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">曹小诚的个人空间</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/31/2019-01-31-javascript%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83_%E4%BA%94_(%E7%B1%BB%E5%9E%8B%EF%BC%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%8C%E5%AF%B9%E8%B1%A1%EF%BC%8C%E6%95%B0%E7%BB%84)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cc12210">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="曹小诚的个人空间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">javascript编码规范 五 (类型，字符串，对象，数组)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-31T11:12:00+08:00">
+                2019-01-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">默认分类</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="3-4-类型"><a href="#3-4-类型" class="headerlink" title="3.4. 类型"></a>3.4. 类型</h3><h3 id="3-4-1-类型检测"><a href="#3-4-1-类型检测" class="headerlink" title="3.4.1. 类型检测"></a>3.4.1. 类型检测</h3><p>·[建议] 类型检测优先使用 typeof 。对象类型检测使用 instanceof 。null 或 undefined 的检测使用 == null 。</p>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// string</span></span><br><span class="line"><span class="keyword">typeof</span> variable === <span class="string">"string"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// number</span></span><br><span class="line"><span class="keyword">typeof</span> variable === <span class="string">"number"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// boolean</span></span><br><span class="line"><span class="keyword">typeof</span> variable === <span class="string">"boolean"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Function</span></span><br><span class="line"><span class="keyword">typeof</span> variable === <span class="string">"function"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Object</span></span><br><span class="line"><span class="keyword">typeof</span> variable === <span class="string">"object"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// RegExp</span></span><br><span class="line">variable <span class="keyword">instanceof</span> <span class="built_in">RegExp</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Array</span></span><br><span class="line">variable <span class="keyword">instanceof</span> <span class="built_in">Array</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// null</span></span><br><span class="line">variable === <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// null or undefined</span></span><br><span class="line">variable == <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">typeof</span> variable === <span class="string">"undefined"</span>;</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h3 id="3-4-2-类型转换¶"><a href="#3-4-2-类型转换¶" class="headerlink" title="3.4.2. 类型转换¶"></a>3.4.2. 类型转换¶</h3><p>·[建议] 转换成 string 时，使用 + ‘’ 。</p>
+<h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line">num + <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">String</span>(num);</span><br><span class="line">num.toString();</span><br><span class="line"><span class="built_in">String</span>(num);</span><br></pre></td></tr></table></figure>
+
+<p>·[建议] 转换成 number 时，通常使用 + 。</p>
+<h4 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line">+str;</span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="built_in">Number</span>(str);</span><br></pre></td></tr></table></figure>
+
+<p>·[建议] string 转换成 number ，要转换的字符串结尾包含非数字并期望忽略时，使用 parseInt。</p>
+<h4 id="示例-3"><a href="#示例-3" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> width = <span class="string">"200px"</span>;</span><br><span class="line"><span class="built_in">parseInt</span>(width, <span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+
+<p>·[强制][rule086] 使用 parseInt 时，必须指定进制。</p>
+<h4 id="示例-4"><a href="#示例-4" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="built_in">parseInt</span>(str, <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="built_in">parseInt</span>(str);</span><br></pre></td></tr></table></figure>
+
+<p>·[建议] 转换成 boolean 时，使用 !! 。</p>
+<h4 id="示例-5"><a href="#示例-5" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">3.14</span>;</span><br><span class="line">!!num;</span><br></pre></td></tr></table></figure>
+
+<p>·[建议] number 去除小数点，使用 Math.floor / Math.round / Math.ceil ，不使用 parseInt。</p>
+<h4 id="示例-6"><a href="#示例-6" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> num = <span class="number">3.14</span>;</span><br><span class="line"><span class="built_in">Math</span>.ceil(num);</span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> num = <span class="number">3.14</span>;</span><br><span class="line"><span class="built_in">parseInt</span>(num, <span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-5-字符串"><a href="#3-5-字符串" class="headerlink" title="3.5. 字符串"></a>3.5. 字符串</h3><p>·[强制][rule089] 字符串开头和结束使用单引号 ‘ 。</p>
+<h4 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h4><ul>
+<li>输入单引号不需要按住 shift，方便输入。</li>
+<li>实际使用中，字符串经常用来拼接 HTML。为方便 HTML 中包含双引号而不需要转义写法。</li>
+</ul>
+<h4 id="示例-7"><a href="#示例-7" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"我是一个字符串"</span>;</span><br><span class="line"><span class="keyword">var</span> html = <span class="string">'&lt;div class="cls"&gt;拼接HTML可以省去双引号转义&lt;/div&gt;'</span>;</span><br></pre></td></tr></table></figure>
+
+<p>·[建议] 使用 数组 或 + 拼接字符串。</p>
+<h4 id="解释-1"><a href="#解释-1" class="headerlink" title="解释"></a>解释</h4><ul>
+<li>使用 + 拼接字符串，如果拼接的全部是 StringLiteral，压缩工具可以对其进行自动合并的优化。所以，静态字符串建议使用 + 拼接。</li>
+<li>在现代浏览器下，使用 + 拼接字符串，性能较数组的方式要高。</li>
+<li>如需要兼顾老旧浏览器，应尽量使用数组拼接字符串。</li>
+</ul>
+<h4 id="示例-8"><a href="#示例-8" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用数组拼接字符串</span></span><br><span class="line"><span class="keyword">var</span> str = [</span><br><span class="line">    <span class="comment">// 推荐换行开始并缩进开始第一个字符串, 对齐代码, 方便阅读.</span></span><br><span class="line">    <span class="string">'&lt;ul&gt;'</span>,</span><br><span class="line">        <span class="string">'&lt;li&gt;第一项&lt;/li&gt;'</span>,</span><br><span class="line">        <span class="string">'&lt;li&gt;第二项&lt;/li&gt;'</span>,</span><br><span class="line">    <span class="string">'&lt;/ul&gt;'</span></span><br><span class="line">].join(<span class="string">''</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 + 拼接字符串</span></span><br><span class="line"><span class="keyword">var</span> str2 = <span class="string">''</span> <span class="comment">// 建议第一个为空字符串, 第二个换行开始并缩进开始, 对齐代码, 方便阅读</span></span><br><span class="line">    + <span class="string">'&lt;ul&gt;'</span>,</span><br><span class="line">    +    <span class="string">'&lt;li&gt;第一项&lt;/li&gt;'</span>,</span><br><span class="line">    +    <span class="string">'&lt;li&gt;第二项&lt;/li&gt;'</span>,</span><br><span class="line">    + <span class="string">'&lt;/ul&gt;'</span>;</span><br></pre></td></tr></table></figure>
+
+<p>·[建议] 复杂的数据到视图字符串的转换过程，选用一种模板引擎。</p>
+<h4 id="解释-2"><a href="#解释-2" class="headerlink" title="解释"></a>解释</h4><p>使用模板引擎有如下好处：</p>
+<p>1.在开发过程中专注于数据，将视图生成的过程由另外一个层级维护，使程序逻辑结构更清晰。 2.优秀的模板引擎，通过模板编译技术和高质量的编译产物，能获得比手工拼接字符串更高的性能。</p>
+<ul>
+<li>artTemplate: 体积较小，在所有环境下性能高，语法灵活。</li>
+<li>dot.js: 体积小，在现代浏览器下性能高，语法灵活。</li>
+<li>etpl: 体积较小，在所有环境下性能高，模板复用性高，语法灵活。</li>
+<li>handlebars: 体积大，在所有环境下性能高，扩展性高。</li>
+<li>hogon: 体积小，在现代浏览器下性能高。</li>
+<li>nunjucks: 体积较大，性能一般，模板复用性高。<br>3.6. 对象<br>·[强制][rule092] 使用对象字面量 {} 创建新 Object 。</li>
+</ul>
+<h4 id="示例-9"><a href="#示例-9" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br></pre></td></tr></table></figure>
+
+<p>·[强制][rule094] 对象创建时，如果一个对象的所有 属性 均可以不添加引号，则所有 属性 不得添加引号。</p>
+<h4 id="示例-10"><a href="#示例-10" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> info = &#123;</span><br><span class="line">  name: <span class="string">"someone"</span>,</span><br><span class="line">  age: <span class="number">28</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>·[强制] 对象创建时，如果任何一个 属性 需要添加引号，则所有 属性 必须添加 ‘ 。</p>
+<h4 id="解释-3"><a href="#解释-3" class="headerlink" title="解释"></a>解释</h4><p>如果属性不符合 Identifier 和 NumberLiteral 的形式，就需要以 StringLiteral 的形式提供。</p>
+<h4 id="示例-11"><a href="#示例-11" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> info = &#123;</span><br><span class="line">  name: <span class="string">"someone"</span>,</span><br><span class="line">  age: <span class="number">28</span>,</span><br><span class="line">  <span class="string">"more-info"</span>: <span class="string">"..."</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> info = &#123;</span><br><span class="line">  name: <span class="string">"someone"</span>,</span><br><span class="line">  age: <span class="number">28</span>,</span><br><span class="line">  <span class="string">"more-info"</span>: <span class="string">"..."</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>·[强制][rule095] 不允许修改和扩展任何原生对象和宿主对象的原型。</p>
+<h4 id="示例-12"><a href="#示例-12" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 以下行为绝对禁止</span></span><br><span class="line"><span class="built_in">String</span>.prototype.trim = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>·[建议] 属性访问时，尽量使用 . 。</p>
+<h4 id="解释-4"><a href="#解释-4" class="headerlink" title="解释"></a>解释</h4><p>属性名符合 Identifier 的要求，就可以通过 . 来访问，否则就只能通过 [expr] 方式访问。</p>
+<p>通常在 JavaScript 中声明的对象，属性命名是使用 Camel 命名法，用 . 来访问更清晰简洁。部分特殊的属性(比如来自后端的 JSON)，可能采用不寻常的命名方式，可以通过 [expr] 方式访问。</p>
+<h4 id="示例-13"><a href="#示例-13" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">info.age;</span><br><span class="line">info[<span class="string">"more-info"</span>];</span><br></pre></td></tr></table></figure>
+
+<p>·[建议] for in 遍历对象时, 使用 hasOwnProperty 过滤掉原型中的属性。</p>
+<h4 id="示例-14"><a href="#示例-14" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> newInfo = &#123;&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> info) &#123;</span><br><span class="line">  <span class="keyword">if</span> (info.hasOwnProperty(key)) &#123;</span><br><span class="line">    newInfo[key] = info[key];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-7-数组"><a href="#3-7-数组" class="headerlink" title="3.7. 数组"></a>3.7. 数组</h3><p>·[强制][rule098] 使用数组字面量 [] 创建新数组，除非想要创建的是指定长度的数组。</p>
+<h4 id="示例-15"><a href="#示例-15" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> arr = [];</span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br></pre></td></tr></table></figure>
+
+<p>·[强制] 遍历数组不使用 for in。</p>
+<h4 id="解释-5"><a href="#解释-5" class="headerlink" title="解释"></a>解释</h4><p>数组对象可能存在数字以外的属性, 这种情况下 for in 不会得到正确结果.</p>
+<h4 id="示例-16"><a href="#示例-16" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>];</span><br><span class="line">arr.other = <span class="string">"other things"</span>; <span class="comment">// 这里仅作演示, 实际中应使用Object类型</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 正确的遍历方式</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, len = arr.length; i &lt; len; i++) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 错误的遍历方式</span></span><br><span class="line"><span class="keyword">for</span> (i <span class="keyword">in</span> arr) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>·[建议] 不因为性能的原因自己实现数组排序功能，尽量使用数组的 sort 方法。</p>
+<h4 id="解释-6"><a href="#解释-6" class="headerlink" title="解释"></a>解释</h4><p>自己实现的常规排序算法，在性能上并不优于数组默认的 sort 方法。以下两种场景可以自己实现排序：</p>
+<p>需要稳定的排序算法，达到严格一致的排序结果。<br>数据特点鲜明，适合使用桶排。<br>·[建议] 清空数组使用 .length = 0 。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/js/" rel="tag"># js</a>
+          
+            <a href="/tags/%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83/" rel="tag"># 编码规范</a>
+          
+            <a href="/tags/%E8%A7%84%E8%8C%83/" rel="tag"># 规范</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/18/2019-01-18-javascript%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83_%E5%9B%9B_(%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7%EF%BC%9A%E5%8F%98%E9%87%8F%EF%BC%8C%E6%9D%A1%E4%BB%B6%EF%BC%8C%E5%BE%AA%E7%8E%AF)/" rel="next" title="javascript编码规范 四 (语言特性：变量，条件，循环)">
+                <i class="fa fa-chevron-left"></i> javascript编码规范 四 (语言特性：变量，条件，循环)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/12/2019-02-12-javascript%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83_%E5%85%AD_(%E5%87%BD%E6%95%B0)/" rel="prev" title="javascript编码规范 六 (函数)">
+                javascript编码规范 六 (函数) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">cc12210</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">99</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">87</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-类型"><span class="nav-number">1.</span> <span class="nav-text">3.4. 类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-1-类型检测"><span class="nav-number">2.</span> <span class="nav-text">3.4.1. 类型检测</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例"><span class="nav-number">2.1.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-2-类型转换¶"><span class="nav-number">3.</span> <span class="nav-text">3.4.2. 类型转换¶</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-1"><span class="nav-number">3.1.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-2"><span class="nav-number">3.2.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-3"><span class="nav-number">3.3.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-4"><span class="nav-number">3.4.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-5"><span class="nav-number">3.5.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-6"><span class="nav-number">3.6.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-字符串"><span class="nav-number">4.</span> <span class="nav-text">3.5. 字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解释"><span class="nav-number">4.1.</span> <span class="nav-text">解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-7"><span class="nav-number">4.2.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解释-1"><span class="nav-number">4.3.</span> <span class="nav-text">解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-8"><span class="nav-number">4.4.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解释-2"><span class="nav-number">4.5.</span> <span class="nav-text">解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-9"><span class="nav-number">4.6.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-10"><span class="nav-number">4.7.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解释-3"><span class="nav-number">4.8.</span> <span class="nav-text">解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-11"><span class="nav-number">4.9.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-12"><span class="nav-number">4.10.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解释-4"><span class="nav-number">4.11.</span> <span class="nav-text">解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-13"><span class="nav-number">4.12.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-14"><span class="nav-number">4.13.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-数组"><span class="nav-number">5.</span> <span class="nav-text">3.7. 数组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-15"><span class="nav-number">5.1.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解释-5"><span class="nav-number">5.2.</span> <span class="nav-text">解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-16"><span class="nav-number">5.3.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解释-6"><span class="nav-number">5.4.</span> <span class="nav-text">解释</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cc12210</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
