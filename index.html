@@ -332,31 +332,18 @@
 
       
         
-          
-            <h3 id="Linux下升级node版本"><a href="#Linux下升级node版本" class="headerlink" title="Linux下升级node版本"></a>Linux下升级node版本</h3><h4 id="今天碰到一个问题，服务器上部署一个开源一言api项目，提示node版本过低，项目要求版本至少为14"><a href="#今天碰到一个问题，服务器上部署一个开源一言api项目，提示node版本过低，项目要求版本至少为14" class="headerlink" title="今天碰到一个问题，服务器上部署一个开源一言api项目，提示node版本过低，项目要求版本至少为14"></a>今天碰到一个问题，服务器上部署一个开源一言api项目，提示node版本过低，项目要求版本至少为14</h4><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line"></span><br><span class="line">v12.<span class="number">16</span>.<span class="number">1</span></span><br></pre></td></tr></table></figure>
+          <h3 id="Linux下升级node版本"><a href="#Linux下升级node版本" class="headerlink" title="Linux下升级node版本"></a>Linux下升级node版本</h3><h4 id="今天碰到一个问题，服务器上部署一个开源一言api项目，提示node版本过低，项目要求版本至少为14"><a href="#今天碰到一个问题，服务器上部署一个开源一言api项目，提示node版本过低，项目要求版本至少为14" class="headerlink" title="今天碰到一个问题，服务器上部署一个开源一言api项目，提示node版本过低，项目要求版本至少为14"></a>今天碰到一个问题，服务器上部署一个开源一言api项目，提示node版本过低，项目要求版本至少为14</h4><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line"></span><br><span class="line">v12.<span class="number">16</span>.<span class="number">1</span></span><br></pre></td></tr></table></figure>
 
 <p><img src="http://image.unknown-host.com/node-v.png" alt="node版本"></p>
 <h4 id="windows下的node版本管理器叫NVM，之前的文章有介绍"><a href="#windows下的node版本管理器叫NVM，之前的文章有介绍" class="headerlink" title="windows下的node版本管理器叫NVM，之前的文章有介绍"></a>windows下的node版本管理器叫NVM，之前的文章有介绍</h4><p>但是我们在linux下需要用到另一个版本管理工具</p>
-<h1 id="n"><a href="#n" class="headerlink" title="n"></a>n</h1><h4 id="1、首先我们需要全局安装n这个工具，使用npm包管理工具安装"><a href="#1、首先我们需要全局安装n这个工具，使用npm包管理工具安装" class="headerlink" title="1、首先我们需要全局安装n这个工具，使用npm包管理工具安装"></a>1、首先我们需要全局安装n这个工具，使用npm包管理工具安装</h4><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g n</span><br></pre></td></tr></table></figure>
-
-<h4 id="2、介绍一下n的常用命令"><a href="#2、介绍一下n的常用命令" class="headerlink" title="2、介绍一下n的常用命令"></a>2、介绍一下n的常用命令</h4><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">n 列出所有已安装的版本（使用n安装过的node版本），可按上下键进行版本选择</span><br><span class="line">n latest 安装最新版本-当前为<span class="number">15</span>.<span class="number">12</span>.<span class="number">0</span></span><br><span class="line">n stable 安装最新稳定版-当前为<span class="number">12</span>.<span class="number">16</span>.<span class="number">1</span></span><br><span class="line">n lts 安装最新长期支持版本-未尝试</span><br><span class="line">n rm [版本号] 删除指定版本</span><br><span class="line">n [版本号] 安装指定版本node</span><br><span class="line">n -h 帮助命令</span><br></pre></td></tr></table></figure>
-
-<h4 id="3、此时我选择使用-n-latest-安装最新的版本"><a href="#3、此时我选择使用-n-latest-安装最新的版本" class="headerlink" title="3、此时我选择使用 n latest 安装最新的版本"></a>3、此时我选择使用 n latest 安装最新的版本</h4><p><img src="http://image.unknown-host.com/n-latest.png" alt=" n latest"></p>
-<h4 id="4、验证是否成功"><a href="#4、验证是否成功" class="headerlink" title="4、验证是否成功"></a>4、验证是否成功</h4><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line"></span><br><span class="line">v12.<span class="number">16</span>.<span class="number">1</span></span><br></pre></td></tr></table></figure>
-<h3 id="发现还是失败了，主要原因是n这个插件模块安装node的路径与腾讯云服务器node的路径不一致"><a href="#发现还是失败了，主要原因是n这个插件模块安装node的路径与腾讯云服务器node的路径不一致" class="headerlink" title="发现还是失败了，主要原因是n这个插件模块安装node的路径与腾讯云服务器node的路径不一致"></a>发现还是失败了，主要原因是n这个插件模块安装node的路径与腾讯云服务器node的路径不一致</h3><h4 id="5、那么我们需要修改系统的环境变量"><a href="#5、那么我们需要修改系统的环境变量" class="headerlink" title="5、那么我们需要修改系统的环境变量"></a>5、那么我们需要修改系统的环境变量</h4><h5 id="5-1、查看当前node的位置"><a href="#5-1、查看当前node的位置" class="headerlink" title="5.1、查看当前node的位置"></a>5.1、查看当前node的位置</h5><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">which node</span><br><span class="line"></span><br><span class="line">/usr/local/lighthouse/softwares/nodejs/node-v12.<span class="number">16</span>.<span class="number">1</span>-linux-x64/bin/node</span><br></pre></td></tr></table></figure>
-
-<h5 id="5-2、编辑环境变量"><a href="#5-2、编辑环境变量" class="headerlink" title="5.2、编辑环境变量"></a>5.2、编辑环境变量</h5><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bash_profile   </span><br><span class="line"></span><br><span class="line">// 提示：按 i 键进入编辑模式，vim的操作后续我也出一篇文章</span><br></pre></td></tr></table></figure>
-<p>添加配置语句</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export N_PREFIX=/usr/local/lighthouse/softwares/nodejs/node-v12.<span class="number">16</span>.<span class="number">1</span>-linux-x64 #node实际安装位置，保留bin之前的文件路径即可</span><br><span class="line">export <span class="built_in">PATH</span>=$N_PREFIX/bin:$<span class="built_in">PATH</span></span><br><span class="line"></span><br><span class="line">// 提示：按 esc 退出编辑模式，然后按 :wq 保存并退出</span><br></pre></td></tr></table></figure>
-
-<p>执行source使修改生效</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.bash_profile</span><br></pre></td></tr></table></figure>
-<p>检查一下系统变量生效了没</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> $N_PREFIX</span><br></pre></td></tr></table></figure>
-<p><img src="http://image.unknown-host.com/node-source.png" alt=" n source"></p>
-<h4 id="6、最后重新执行3、4步骤即可"><a href="#6、最后重新执行3、4步骤即可" class="headerlink" title="6、最后重新执行3、4步骤即可"></a>6、最后重新执行3、4步骤即可</h4><p><img src="http://image.unknown-host.com/node-update-success.png" alt=" n success"></p>
-
-          
+<h1 id="n"><a href="#n" class="headerlink" title="n"></a>n</h1>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/03/30/2021-03-30-linux%E4%B8%8B%E5%8D%87%E7%BA%A7node%E7%89%88%E6%9C%AC/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
