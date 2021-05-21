@@ -262,6 +262,517 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/2019-02-20-javascript%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83_%E5%85%AB_(%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cc12210">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="曹小诚的个人空间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/20/2019-02-20-javascript%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83_%E5%85%AB_(%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1)/" itemprop="url">javascript编码规范 八 (浏览器对象)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-20T11:28:00+08:00">
+                2019-02-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">默认分类</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="4-浏览器环境">4. 浏览器环境</h3>
+<h3 id="4-1-模块化">4.1. 模块化</h3>
+<p>###4.1.1. AMD<br>
+·[强制] 使用 AMD 作为模块定义。</p>
+<h4 id="解释">解释</h4>
+<p>AMD 作为由社区认可的模块定义形式，提供多种重载提供灵活的使用方式，并且绝大多数优秀的 Library 都支持 AMD，适合作为规范。</p>
+<p>目前，比较成熟的 AMD Loader 有：</p>
+<ul>
+<li>官方实现的 requirejs</li>
+<li>百度自己实现的 esl<br>
+·[强制] 模块 id 必须符合标准。</li>
+</ul>
+<h4 id="解释-2">解释</h4>
+<p>模块 id 必须符合以下约束条件：</p>
+<ul>
+<li>类型为 string，并且是由 / 分割的一系列 terms 来组成。例如：this/is/a/module。</li>
+<li>term 应该符合 [a-zA-Z0-9_-]+ 规则。</li>
+<li>不应该有 .js 后缀。</li>
+<li>跟文件的路径保持一致。</li>
+</ul>
+<h3 id="4-1-2-define">4.1.2. define</h3>
+<p>·[建议] 定义模块时不要指明 id 和 dependencies 。</p>
+<h4 id="解释-3">解释</h4>
+<p>在 AMD 的设计思想里，模块名称是和所在路径相关的，匿名的模块更利于封包和迁移。模块依赖应在模块定义内部通过 local require 引用。</p>
+<p>所以，推荐使用 define(factory) 的形式进行模块定义。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/20/2019-02-20-javascript%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83_%E5%85%AB_(%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1)/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/2019-02-20-javascript%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83_%E4%B8%83_(%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cc12210">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="曹小诚的个人空间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/20/2019-02-20-javascript%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83_%E4%B8%83_(%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1)/" itemprop="url">javascript编码规范 七 (面向对象)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-20T11:22:00+08:00">
+                2019-02-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">默认分类</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="3-9-面向对象">3.9. 面向对象</h3>
+<p>·[强制] 类的继承方案，实现时需要修正 constructor。</p>
+<h4 id="解释">解释</h4>
+<p>通常使用其他 library 的类继承方案都会进行 constructor 修正。如果是自己实现的类继承方案，需要进行 constructor 修正。</p>
+<h4 id="示例">示例</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 构建类之间的继承关系</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;Function&#125;</span> </span>subClass 子类函数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;Function&#125;</span> </span>superClass 父类函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inherits</span>(<span class="params">subClass, superClass</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> F = <span class="keyword">new</span> <span class="built_in">Function</span>();</span><br><span class="line">  F.prototype = superClass.prototype;</span><br><span class="line">  subClass.prototype = <span class="keyword">new</span> F();</span><br><span class="line">  subClass.prototype.constructor = subClass;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>·[建议] 声明类时，保证 constructor 的正确性。</p>
+<h4 id="示例-2">示例</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 直接prototype等于对象时，需要修正constructor</span></span><br><span class="line">Animal.prototype = &#123;</span><br><span class="line">  <span class="keyword">constructor</span>: Animal,</span><br><span class="line"></span><br><span class="line">  jump: function () &#123;</span><br><span class="line">    alert(<span class="string">"animal "</span> + <span class="keyword">this</span>.name + <span class="string">" jump"</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这种方式扩展prototype则无需理会constructor</span></span><br><span class="line">Animal.prototype.jump = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">"animal "</span> + <span class="keyword">this</span>.name + <span class="string">" jump"</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>·[建议] 属性在构造函数中声明，方法在原型中声明。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/20/2019-02-20-javascript%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83_%E4%B8%83_(%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1)/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/12/2019-02-12-javascript%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83_%E5%85%AD_(%E5%87%BD%E6%95%B0)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cc12210">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="曹小诚的个人空间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/12/2019-02-12-javascript%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83_%E5%85%AD_(%E5%87%BD%E6%95%B0)/" itemprop="url">javascript编码规范 六 (函数)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-12T17:35:00+08:00">
+                2019-02-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">默认分类</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="3-8-函数">3.8. 函数</h3>
+<h4 id="3-8-1-函数长度">3.8.1. 函数长度</h4>
+<p>·[建议] 一个函数的长度控制在 50 行以内。</p>
+<h4 id="解释">解释</h4>
+<p>将过多的逻辑单元混在一个大函数中，易导致难以维护。一个清晰易懂的函数应该完成单一的逻辑单元。复杂的操作应进一步抽取，通过函数的调用来体现流程。</p>
+<p>特定算法等不可分割的逻辑允许例外。</p>
+<h4 id="示例">示例</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">syncViewStateOnUserAction</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (x.checked) &#123;</span><br><span class="line">    y.checked = <span class="literal">true</span>;</span><br><span class="line">    z.value = <span class="string">""</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    y.checked = <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (!a.value) &#123;</span><br><span class="line">    warning.innerText = <span class="string">"Please enter it"</span>;</span><br><span class="line">    submitButton.disabled = <span class="literal">true</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    warning.innerText = <span class="string">""</span>;</span><br><span class="line">    submitButton.disabled = <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 直接阅读该函数会难以明确其主线逻辑，因此下方是一种更合理的表达方式：</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">syncViewStateOnUserAction</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  syncXStateToView();</span><br><span class="line">  checkAAvailability();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">syncXStateToView</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (x.checked) &#123;</span><br><span class="line">    y.checked = <span class="literal">true</span>;</span><br><span class="line">    z.value = <span class="string">""</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    y.checked = <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkAAvailability</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!a.value) &#123;</span><br><span class="line">    displayWarningForAMissing();</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    clearWarnignForA();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/12/2019-02-12-javascript%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83_%E5%85%AD_(%E5%87%BD%E6%95%B0)/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/31/2019-01-31-javascript%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83_%E4%BA%94_(%E7%B1%BB%E5%9E%8B%EF%BC%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%8C%E5%AF%B9%E8%B1%A1%EF%BC%8C%E6%95%B0%E7%BB%84)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -365,8 +876,11 @@
 
       
         
-          <h3 id="3-4-类型"><a href="#3-4-类型" class="headerlink" title="3.4. 类型"></a>3.4. 类型</h3><h3 id="3-4-1-类型检测"><a href="#3-4-1-类型检测" class="headerlink" title="3.4.1. 类型检测"></a>3.4.1. 类型检测</h3><p>·[建议] 类型检测优先使用 typeof 。对象类型检测使用 instanceof 。null 或 undefined 的检测使用 == null 。</p>
-<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// string</span></span><br><span class="line"><span class="keyword">typeof</span> variable === <span class="string">"string"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// number</span></span><br><span class="line"><span class="keyword">typeof</span> variable === <span class="string">"number"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// boolean</span></span><br><span class="line"><span class="keyword">typeof</span> variable === <span class="string">"boolean"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Function</span></span><br><span class="line"><span class="keyword">typeof</span> variable === <span class="string">"function"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Object</span></span><br><span class="line"><span class="keyword">typeof</span> variable === <span class="string">"object"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// RegExp</span></span><br><span class="line">variable <span class="keyword">instanceof</span> <span class="built_in">RegExp</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Array</span></span><br><span class="line">variable <span class="keyword">instanceof</span> <span class="built_in">Array</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// null</span></span><br><span class="line">variable === <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// null or undefined</span></span><br><span class="line">variable == <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">typeof</span> variable === <span class="string">"undefined"</span>;</span><br></pre></td></tr></table></figure>
+          <h3 id="3-4-类型">3.4. 类型</h3>
+<h3 id="3-4-1-类型检测">3.4.1. 类型检测</h3>
+<p>·[建议] 类型检测优先使用 typeof 。对象类型检测使用 instanceof 。null 或 undefined 的检测使用 == null 。</p>
+<h4 id="示例">示例</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// string</span></span><br><span class="line"><span class="keyword">typeof</span> variable === <span class="string">"string"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// number</span></span><br><span class="line"><span class="keyword">typeof</span> variable === <span class="string">"number"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// boolean</span></span><br><span class="line"><span class="keyword">typeof</span> variable === <span class="string">"boolean"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Function</span></span><br><span class="line"><span class="keyword">typeof</span> variable === <span class="string">"function"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Object</span></span><br><span class="line"><span class="keyword">typeof</span> variable === <span class="string">"object"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// RegExp</span></span><br><span class="line">variable <span class="keyword">instanceof</span> <span class="built_in">RegExp</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Array</span></span><br><span class="line">variable <span class="keyword">instanceof</span> <span class="built_in">Array</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// null</span></span><br><span class="line">variable === <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// null or undefined</span></span><br><span class="line">variable == <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">typeof</span> variable === <span class="string">"undefined"</span>;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/01/31/2019-01-31-javascript%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83_%E4%BA%94_(%E7%B1%BB%E5%9E%8B%EF%BC%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%8C%E5%AF%B9%E8%B1%A1%EF%BC%8C%E6%95%B0%E7%BB%84)/#more" rel="contents">
@@ -523,12 +1037,16 @@
 
       
         
-          <h3 id="3-语言特性"><a href="#3-语言特性" class="headerlink" title="3. 语言特性"></a>3. 语言特性</h3><h3 id="3-1-变量"><a href="#3-1-变量" class="headerlink" title="3.1. 变量"></a>3.1. 变量</h3><p>·[强制][rule070] 变量在使用前必须通过 var 定义。</p>
-<h4 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h4><p>不通过 var 定义变量将导致变量污染全局环境。</p>
-<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">"MyName"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line">name = <span class="string">"MyName"</span>;</span><br></pre></td></tr></table></figure>
-
+          <h3 id="3-语言特性">3. 语言特性</h3>
+<h3 id="3-1-变量">3.1. 变量</h3>
+<p>·[强制][rule070] 变量在使用前必须通过 var 定义。</p>
+<h4 id="解释">解释</h4>
+<p>不通过 var 定义变量将导致变量污染全局环境。</p>
+<h4 id="示例">示例</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">"MyName"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line">name = <span class="string">"MyName"</span>;</span><br></pre></td></tr></table></figure>
 <p>·[强制][rule071] 每个 var 只能声明一个变量。</p>
-<h4 id="解释-1"><a href="#解释-1" class="headerlink" title="解释"></a>解释</h4><p>一个 var 声明多个变量，容易导致较长的行长度，并且在修改时容易造成逗号和分号的混淆。</p>
+<h4 id="解释-2">解释</h4>
+<p>一个 var 声明多个变量，容易导致较长的行长度，并且在修改时容易造成逗号和分号的混淆。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/01/18/2019-01-18-javascript%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83_%E5%9B%9B_(%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7%EF%BC%9A%E5%8F%98%E9%87%8F%EF%BC%8C%E6%9D%A1%E4%BB%B6%EF%BC%8C%E5%BE%AA%E7%8E%AF)/#more" rel="contents">
@@ -685,10 +1203,15 @@
 
       
         
-          <h3 id="2-4-注释"><a href="#2-4-注释" class="headerlink" title="2.4. 注释"></a>2.4. 注释</h3><h3 id="2-4-1-单行注释"><a href="#2-4-1-单行注释" class="headerlink" title="2.4.1. 单行注释"></a>2.4.1. 单行注释</h3><p>·[强制][rule038] 必须独占一行。// 后跟一个空格，缩进与下一行被注释说明的代码一致。</p>
-<h4 id="2-4-2-多行注释"><a href="#2-4-2-多行注释" class="headerlink" title="2.4.2. 多行注释"></a>2.4.2. 多行注释</h4><p>·[建议] 避免使用 <code>/*...*/</code> 这样的多行注释。有多行注释内容时，使用多个单行注释。</p>
-<h4 id="2-4-3-文档化注释"><a href="#2-4-3-文档化注释" class="headerlink" title="2.4.3. 文档化注释"></a>2.4.3. 文档化注释</h4><p>·[强制] 为了便于代码阅读和自文档化，以下内容必须包含以<code>/**...*/</code> 形式的块注释中。</p>
-<h5 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h5><ol>
+          <h3 id="2-4-注释">2.4. 注释</h3>
+<h3 id="2-4-1-单行注释">2.4.1. 单行注释</h3>
+<p>·[强制][rule038] 必须独占一行。// 后跟一个空格，缩进与下一行被注释说明的代码一致。</p>
+<h4 id="2-4-2-多行注释">2.4.2. 多行注释</h4>
+<p>·[建议] 避免使用 <code>/*...*/</code> 这样的多行注释。有多行注释内容时，使用多个单行注释。</p>
+<h4 id="2-4-3-文档化注释">2.4.3. 文档化注释</h4>
+<p>·[强制] 为了便于代码阅读和自文档化，以下内容必须包含以<code>/**...*/</code> 形式的块注释中。</p>
+<h5 id="解释">解释</h5>
+<ol>
 <li>文件</li>
 <li>namespace</li>
 <li>类</li>
@@ -701,7 +1224,8 @@
 </ol>
 <p>·[强制] 文档注释前必须空一行。</p>
 <p>·[建议] 自文档化的文档说明 what，而不是 how。</p>
-<h3 id="2-4-4-类型定义"><a href="#2-4-4-类型定义" class="headerlink" title="2.4.4. 类型定义"></a>2.4.4. 类型定义</h3><p>·[强制] 类型定义都是以 { 开始, 以 } 结束。</p>
+<h3 id="2-4-4-类型定义">2.4.4. 类型定义</h3>
+<p>·[强制] 类型定义都是以 { 开始, 以 } 结束。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/01/18/2019-01-18-javascript%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83_%E4%B8%89_(%E6%B3%A8%E9%87%8A)/#more" rel="contents">
@@ -858,12 +1382,17 @@
 
       
         
-          <h4 id="转载自：rocky191"><a href="#转载自：rocky191" class="headerlink" title="转载自：rocky191"></a>转载自：<a href="https://segmentfault.com/u/rocky191" target="_blank" rel="noopener">rocky191</a></h4><h4 id="文章原文地址：查看思否原文"><a href="#文章原文地址：查看思否原文" class="headerlink" title="文章原文地址：查看思否原文"></a>文章原文地址：<a href="https://segmentfault.com/a/1190000017867494" target="_blank" rel="noopener">查看思否原文</a></h4><hr>
-<h3 id="路由的懒加载"><a href="#路由的懒加载" class="headerlink" title="路由的懒加载"></a>路由的懒加载</h3><h4 id="（1）vue-router-文件中的-router-使用懒加载方式。如下图所示"><a href="#（1）vue-router-文件中的-router-使用懒加载方式。如下图所示" class="headerlink" title="（1）vue-router 文件中的 router 使用懒加载方式。如下图所示"></a>（1）vue-router 文件中的 router 使用懒加载方式。如下图所示</h4><p><img src="http://www.cc12210.xyz/usr/uploads/2019/01/3716857456.png" alt="4200619720-5c39b56ac5986_articlex.png"></p>
-<h4 id="（2）在-vue-文件中，也采用类似方式引入其他-vue-组件"><a href="#（2）在-vue-文件中，也采用类似方式引入其他-vue-组件" class="headerlink" title="（2）在 vue 文件中，也采用类似方式引入其他 vue 组件"></a>（2）在 vue 文件中，也采用类似方式引入其他 vue 组件</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> showImage = <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">"@/components/common/showImage"</span>);</span><br></pre></td></tr></table></figure>
-
+          <h4 id="转载自：-a-href-https-segmentfault-com-u-rocky191-rocky191-a">转载自：<a href="https://segmentfault.com/u/rocky191" target="_blank" rel="noopener">rocky191</a></h4>
+<h4 id="文章原文地址：-a-href-https-segmentfault-com-a-1190000017867494-查看思否原文-a">文章原文地址：<a href="https://segmentfault.com/a/1190000017867494" target="_blank" rel="noopener">查看思否原文</a></h4>
 <hr>
-<h3 id="启用-gzip-压缩和关闭-sourcemap"><a href="#启用-gzip-压缩和关闭-sourcemap" class="headerlink" title="启用 gzip 压缩和关闭 sourcemap"></a>启用 gzip 压缩和关闭 sourcemap</h3><p><img src="http://www.cc12210.xyz/usr/uploads/2019/01/3340238801.png" alt="174155842-5c39b56ac97f3_articlex.png"></p>
+<h3 id="路由的懒加载">路由的懒加载</h3>
+<h4 id="（1）vue-router-文件中的-router-使用懒加载方式。如下图所示">（1）vue-router 文件中的 router 使用懒加载方式。如下图所示</h4>
+<p><img src="http://www.cc12210.xyz/usr/uploads/2019/01/3716857456.png" alt="4200619720-5c39b56ac5986_articlex.png"></p>
+<h4 id="（2）在-vue-文件中，也采用类似方式引入其他-vue-组件">（2）在 vue 文件中，也采用类似方式引入其他 vue 组件</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> showImage = <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">"@/components/common/showImage"</span>);</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="启用-gzip-压缩和关闭-sourcemap">启用 gzip 压缩和关闭 sourcemap</h3>
+<p><img src="http://www.cc12210.xyz/usr/uploads/2019/01/3340238801.png" alt="174155842-5c39b56ac97f3_articlex.png"></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/01/14/2019-01-14-webpack%E6%89%93%E5%8C%85%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E8%B7%AF/#more" rel="contents">
@@ -1020,13 +1549,14 @@
 
       
         
-          <h3 id="2-2-4-语句"><a href="#2-2-4-语句" class="headerlink" title="2.2.4. 语句"></a>2.2.4. 语句</h3><p>·[强制][rule021] 不得省略语句结束的分号。</p>
+          <h3 id="2-2-4-语句">2.2.4. 语句</h3>
+<p>·[强制][rule021] 不得省略语句结束的分号。</p>
 <p>·[强制][rule022] 在 if / else / for / do / while 语句中，即使只有一行，也不得省略块 {…}。</p>
-<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">  callFunc();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">if</span> (condition) callFunc();</span><br><span class="line"><span class="keyword">if</span> (condition) callFunc();</span><br></pre></td></tr></table></figure>
-
+<h4 id="示例">示例</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">  callFunc();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">if</span> (condition) callFunc();</span><br><span class="line"><span class="keyword">if</span> (condition) callFunc();</span><br></pre></td></tr></table></figure>
 <p>·[强制][rule023] 函数定义结束不允许添加分号。</p>
-<h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">funcName</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">funcName</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果是函数表达式，分号是不允许省略的。</span></span><br><span class="line"><span class="keyword">var</span> funcName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;;</span><br></pre></td></tr></table></figure>
-
+<h4 id="示例-2">示例</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">funcName</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">funcName</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果是函数表达式，分号是不允许省略的。</span></span><br><span class="line"><span class="keyword">var</span> funcName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;;</span><br></pre></td></tr></table></figure>
 <p>·[强制][rule024] IIFE 必须在函数表达式外添加 (，非 IIFE 不得在函数表达式外添加 ( 。</p>
           <!--noindex-->
           <div class="post-button text-center">
@@ -1195,13 +1725,21 @@
 
       
         
-          <h3 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h3><p>JavaScript 在百度一直有着广泛的应用，特别是在浏览器端的行为管理。本文档的目标是使 JavaScript 代码风格保持一致，容易被理解和被维护。<br>虽然本文档是针对 JavaScript 设计的，但是在使用各种 JavaScript 的预编译语言时(如 TypeScript 等)时，适用的部分也应尽量遵循本文档的约定。</p>
-<h3 id="2-代码风格"><a href="#2-代码风格" class="headerlink" title="2. 代码风格"></a>2. 代码风格</h3><h4 id="2-1-文件"><a href="#2-1-文件" class="headerlink" title="2.1. 文件"></a>2.1. 文件</h4><p>·[建议] JavaScript 文件使用无 BOM 的 UTF-8 编码。</p>
+          <h3 id="1-前言">1. 前言</h3>
+<p>JavaScript 在百度一直有着广泛的应用，特别是在浏览器端的行为管理。本文档的目标是使 JavaScript 代码风格保持一致，容易被理解和被维护。<br>
+虽然本文档是针对 JavaScript 设计的，但是在使用各种 JavaScript 的预编译语言时(如 TypeScript 等)时，适用的部分也应尽量遵循本文档的约定。</p>
+<h3 id="2-代码风格">2. 代码风格</h3>
+<h4 id="2-1-文件">2.1. 文件</h4>
+<p>·[建议] JavaScript 文件使用无 BOM 的 UTF-8 编码。</p>
 <p>解释</p>
-<p>UTF-8 编码具有更广泛的适应性。BOM 在使用程序或工具处理文件时可能造成不必要的干扰。<br>·[建议] 在文件结尾处，保留一个空行。</p>
-<h3 id="2-2-结构"><a href="#2-2-结构" class="headerlink" title="2.2. 结构"></a>2.2. 结构</h3><h4 id="2-2-1-缩进"><a href="#2-2-1-缩进" class="headerlink" title="2.2.1. 缩进"></a>2.2.1. 缩进</h4><p>·[强制][rule003] 使用 4 个空格做为一个缩进层级，不允许使用 2 个空格 或 tab 字符。</p>
+<p>UTF-8 编码具有更广泛的适应性。BOM 在使用程序或工具处理文件时可能造成不必要的干扰。<br>
+·[建议] 在文件结尾处，保留一个空行。</p>
+<h3 id="2-2-结构">2.2. 结构</h3>
+<h4 id="2-2-1-缩进">2.2.1. 缩进</h4>
+<p>·[强制][rule003] 使用 4 个空格做为一个缩进层级，不允许使用 2 个空格 或 tab 字符。</p>
 <p>·[强制] switch 下的 case 和 default 必须增加一个缩进层级。</p>
-<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">switch</span> (variable) &#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="string">"1"</span>:</span><br><span class="line">    <span class="comment">// do...</span></span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">case</span> <span class="string">"2"</span>:</span><br><span class="line">    <span class="comment">// do...</span></span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">default</span>:</span><br><span class="line">  <span class="comment">// do...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">switch</span> (variable) &#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="string">"1"</span>:</span><br><span class="line">    <span class="comment">// do...</span></span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">case</span> <span class="string">"2"</span>:</span><br><span class="line">    <span class="comment">// do...</span></span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">default</span>:</span><br><span class="line">  <span class="comment">// do...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="示例">示例</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">switch</span> (variable) &#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="string">"1"</span>:</span><br><span class="line">    <span class="comment">// do...</span></span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">case</span> <span class="string">"2"</span>:</span><br><span class="line">    <span class="comment">// do...</span></span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">default</span>:</span><br><span class="line">  <span class="comment">// do...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">switch</span> (variable) &#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="string">"1"</span>:</span><br><span class="line">    <span class="comment">// do...</span></span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">case</span> <span class="string">"2"</span>:</span><br><span class="line">    <span class="comment">// do...</span></span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">default</span>:</span><br><span class="line">  <span class="comment">// do...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/01/08/2019-01-08-javascript%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83_%E4%B8%80_(%E7%BC%A9%E8%BF%9B%EF%BC%8C%E7%A9%BA%E6%A0%BC%EF%BC%8C%E6%8D%A2%E8%A1%8C)/#more" rel="contents">
@@ -1358,12 +1896,14 @@
 
       
         
-          <h3 id="在-U-盘建一个仓库文件夹"><a href="#在-U-盘建一个仓库文件夹" class="headerlink" title="在 U 盘建一个仓库文件夹"></a>在 U 盘建一个仓库文件夹</h3><p>在 U 盘建一个文件夹，名称随意。</p>
-<h4 id="在当前文件夹打开-Git-Bash，并初始化，加参数-bare"><a href="#在当前文件夹打开-Git-Bash，并初始化，加参数-bare" class="headerlink" title="在当前文件夹打开 Git Bash，并初始化，加参数--bare"></a>在当前文件夹打开 Git Bash，并初始化，加参数<code>--bare</code></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init --bare</span><br></pre></td></tr></table></figure>
-
-<h3 id="然后在本地创建仓库"><a href="#然后在本地创建仓库" class="headerlink" title="然后在本地创建仓库"></a>然后在本地创建仓库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
-
-<h4 id="正常的提交代码就行，设置一下-remote"><a href="#正常的提交代码就行，设置一下-remote" class="headerlink" title="正常的提交代码就行，设置一下 remote"></a>正常的提交代码就行，设置一下 remote</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote add usb H:&#x2F;Repo&#x2F;test</span><br><span class="line">usb是随意取得，后面跟的是U盘的路径</span><br></pre></td></tr></table></figure>
+          <h3 id="在-U-盘建一个仓库文件夹">在 U 盘建一个仓库文件夹</h3>
+<p>在 U 盘建一个文件夹，名称随意。</p>
+<h4 id="在当前文件夹打开-Git-Bash，并初始化，加参数-code-–bare-code">在当前文件夹打开 Git Bash，并初始化，加参数<code>–bare</code></h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init --bare</span><br></pre></td></tr></table></figure>
+<h3 id="然后在本地创建仓库">然后在本地创建仓库</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<h4 id="正常的提交代码就行，设置一下-remote">正常的提交代码就行，设置一下 remote</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote add usb H:&#x2F;Repo&#x2F;test</span><br><span class="line">usb是随意取得，后面跟的是U盘的路径</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/12/04/2018-12-04-%E5%B0%86U%E7%9B%98%E5%BD%93%E4%BD%9CGit%E4%B8%BB%E6%9C%BA/#more" rel="contents">
@@ -1404,479 +1944,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/01/2018-12-01-%E4%B8%80%E6%AE%B5%E7%A5%9E%E5%A5%87%E7%9A%84javascript/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="cc12210">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="曹小诚的个人空间">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/01/2018-12-01-%E4%B8%80%E6%AE%B5%E7%A5%9E%E5%A5%87%E7%9A%84javascript/" itemprop="url">一段神奇的javascript</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-01T23:34:00+08:00">
-                2018-12-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/" itemprop="url" rel="index">
-                    <span itemprop="name">默认分类</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ﾟωﾟﾉ= <span class="regexp">/｀ｍ´）ﾉ ~┻━┻   /</span><span class="comment">/*´∇｀*/</span> [<span class="string">'_'</span>]; o=(ﾟｰﾟ)  =_=<span class="number">3</span>; c=(ﾟΘﾟ) =(ﾟｰﾟ)-(ﾟｰﾟ); (ﾟДﾟ) =(ﾟΘﾟ)= (o^_^o)/ (o^_^o);(ﾟДﾟ)=&#123;ﾟΘﾟ: <span class="string">'_'</span> ,ﾟωﾟﾉ : ((ﾟωﾟﾉ==<span class="number">3</span>) +<span class="string">'_'</span>) [ﾟΘﾟ] ,ﾟｰﾟﾉ :(ﾟωﾟﾉ+ <span class="string">'_'</span>)[o^_^o -(ﾟΘﾟ)] ,ﾟДﾟﾉ:((ﾟｰﾟ==<span class="number">3</span>) +<span class="string">'_'</span>)[ﾟｰﾟ] &#125;; (ﾟДﾟ) [ﾟΘﾟ] =((ﾟωﾟﾉ==<span class="number">3</span>) +<span class="string">'_'</span>) [c^_^o];(ﾟДﾟ) [<span class="string">'c'</span>] = ((ﾟДﾟ)+<span class="string">'_'</span>) [ (ﾟｰﾟ)+(ﾟｰﾟ)-(ﾟΘﾟ) ];(ﾟДﾟ) [<span class="string">'o'</span>] = ((ﾟДﾟ)+<span class="string">'_'</span>) [ﾟΘﾟ];(ﾟoﾟ)=(ﾟДﾟ) [<span class="string">'c'</span>]+(ﾟДﾟ) [<span class="string">'o'</span>]+(ﾟωﾟﾉ +<span class="string">'_'</span>)[ﾟΘﾟ]+ ((ﾟωﾟﾉ==<span class="number">3</span>) +<span class="string">'_'</span>) [ﾟｰﾟ] + ((ﾟДﾟ) +<span class="string">'_'</span>) [(ﾟｰﾟ)+(ﾟｰﾟ)]+ ((ﾟｰﾟ==<span class="number">3</span>) +<span class="string">'_'</span>) [ﾟΘﾟ]+((ﾟｰﾟ==<span class="number">3</span>) +<span class="string">'_'</span>) [(ﾟｰﾟ) - (ﾟΘﾟ)]+(ﾟДﾟ) [<span class="string">'c'</span>]+((ﾟДﾟ)+<span class="string">'_'</span>) [(ﾟｰﾟ)+(ﾟｰﾟ)]+ (ﾟДﾟ) [<span class="string">'o'</span>]+((ﾟｰﾟ==<span class="number">3</span>) +<span class="string">'_'</span>) [ﾟΘﾟ];(ﾟДﾟ) [<span class="string">'_'</span>] =(o^_^o) [ﾟoﾟ] [ﾟoﾟ];(ﾟεﾟ)=((ﾟｰﾟ==<span class="number">3</span>) +<span class="string">'_'</span>) [ﾟΘﾟ]+ (ﾟДﾟ) .ﾟДﾟﾉ+((ﾟДﾟ)+<span class="string">'_'</span>) [(ﾟｰﾟ) + (ﾟｰﾟ)]+((ﾟｰﾟ==<span class="number">3</span>) +<span class="string">'_'</span>) [o^_^o -ﾟΘﾟ]+((ﾟｰﾟ==<span class="number">3</span>) +<span class="string">'_'</span>) [ﾟΘﾟ]+ (ﾟωﾟﾉ +<span class="string">'_'</span>) [ﾟΘﾟ]; (ﾟｰﾟ)+=(ﾟΘﾟ); (ﾟДﾟ)[ﾟεﾟ]=<span class="string">'\\'</span>; (ﾟДﾟ).ﾟΘﾟﾉ=(ﾟДﾟ+ ﾟｰﾟ)[o^_^o -(ﾟΘﾟ)];(oﾟｰﾟo)=(ﾟωﾟﾉ +<span class="string">'_'</span>)[c^_^o];(ﾟДﾟ) [ﾟoﾟ]=<span class="string">'\"'</span>;(ﾟДﾟ) [<span class="string">'_'</span>] ( (ﾟДﾟ) [<span class="string">'_'</span>] (ﾟεﾟ+(ﾟДﾟ)[ﾟoﾟ]+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ (ﾟｰﾟ)+ (ﾟΘﾟ)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((ﾟｰﾟ) + (ﾟΘﾟ))+ (ﾟｰﾟ)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ (ﾟｰﾟ)+ ((ﾟｰﾟ) + (ﾟΘﾟ))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((o^_^o) +(o^_^o))+ ((o^_^o) - (ﾟΘﾟ))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((o^_^o) +(o^_^o))+ (ﾟｰﾟ)+ (ﾟДﾟ)[ﾟεﾟ]+((ﾟｰﾟ) + (ﾟΘﾟ))+ (c^_^o)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟｰﾟ)+ ((o^_^o) - (ﾟΘﾟ))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((o^_^o) - (ﾟΘﾟ))+ (c^_^o)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ (ﾟｰﾟ)+ (ﾟΘﾟ)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((o^_^o) +(o^_^o))+ ((o^_^o) - (ﾟΘﾟ))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((o^_^o) +(o^_^o))+ (ﾟｰﾟ)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((ﾟｰﾟ) + (ﾟΘﾟ))+ (ﾟΘﾟ)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((ﾟｰﾟ) + (ﾟΘﾟ))+ ((o^_^o) +(o^_^o))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ (ﾟｰﾟ)+ ((ﾟｰﾟ) + (o^_^o))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟｰﾟ)+ (c^_^o)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((ﾟｰﾟ) + (ﾟΘﾟ))+ (ﾟΘﾟ)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((o^_^o) +(o^_^o))+ (o^_^o)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟｰﾟ)+ (c^_^o)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((o^_^o) +(o^_^o))+ (o^_^o)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((o^_^o) +(o^_^o))+ ((ﾟｰﾟ) + (ﾟΘﾟ))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ (ﾟｰﾟ)+ (o^_^o)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((ﾟｰﾟ) + (ﾟΘﾟ))+ (c^_^o)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟｰﾟ)+ (c^_^o)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((o^_^o) +(o^_^o))+ (o^_^o)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((o^_^o) +(o^_^o))+ ((ﾟｰﾟ) + (o^_^o))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ (ﾟｰﾟ)+ ((ﾟｰﾟ) + (ﾟΘﾟ))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ (ﾟｰﾟ)+ ((ﾟｰﾟ) + (ﾟΘﾟ))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((o^_^o) +(o^_^o))+ (ﾟｰﾟ)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟｰﾟ)+ (c^_^o)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((o^_^o) +(o^_^o))+ (o^_^o)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((ﾟｰﾟ) + (ﾟΘﾟ))+ ((ﾟｰﾟ) + (o^_^o))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((o^_^o) +(o^_^o))+ ((o^_^o) - (ﾟΘﾟ))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((o^_^o) +(o^_^o))+ ((o^_^o) - (ﾟΘﾟ))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((ﾟｰﾟ) + (ﾟΘﾟ))+ ((ﾟｰﾟ) + (o^_^o))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((o^_^o) +(o^_^o))+ ((ﾟｰﾟ) + (o^_^o))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟｰﾟ)+ ((o^_^o) - (ﾟΘﾟ))+ (ﾟДﾟ)[ﾟεﾟ]+((ﾟｰﾟ) + (ﾟΘﾟ))+ (ﾟΘﾟ)+ (ﾟДﾟ)[ﾟoﾟ]) (ﾟΘﾟ)) (<span class="string">'_'</span>);</span><br></pre></td></tr></table></figure>
-<h3 id="Parting-is-such-sweet-sorrow-离别是如此甜蜜的悲伤"><a href="#Parting-is-such-sweet-sorrow-离别是如此甜蜜的悲伤" class="headerlink" title="Parting is such sweet sorrow(离别是如此甜蜜的悲伤)"></a>Parting is such sweet sorrow(离别是如此甜蜜的悲伤)</h3><h3 id="转换的网址"><a href="#转换的网址" class="headerlink" title="转换的网址"></a><a href="http://utf-8.jp/public/aaencode.html" target="_blank" rel="noopener">转换的网址</a></h3>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/19/2018-11-19-ajax%E7%9A%84%E7%AE%80%E5%8D%95%E5%B0%81%E8%A3%85/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="cc12210">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="曹小诚的个人空间">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/19/2018-11-19-ajax%E7%9A%84%E7%AE%80%E5%8D%95%E5%B0%81%E8%A3%85/" itemprop="url">ajax的简单封装</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-19T12:37:00+08:00">
-                2018-11-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/" itemprop="url" rel="index">
-                    <span itemprop="name">默认分类</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sendAjax</span>(<span class="params">url, options</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//设置默认值</span></span><br><span class="line">  <span class="keyword">var</span> _default = &#123;</span><br><span class="line">    method: <span class="string">"GET"</span>,</span><br><span class="line">    data: <span class="literal">null</span>,</span><br><span class="line">    success: <span class="literal">null</span>,</span><br><span class="line">    error: <span class="literal">null</span>,</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">// 替换默认值</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> options) &#123;</span><br><span class="line">    _default[i] = options[i];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 解决缓存， 保证每一次请求地址都不一样，就可以解决</span></span><br><span class="line">  <span class="comment">//拼接字符串， get请求</span></span><br><span class="line">  <span class="keyword">if</span> (_default.method.toUpperCase() == <span class="string">"GET"</span>) &#123;</span><br><span class="line">    <span class="comment">// 如果url中存在?, 默认添加&amp;符号</span></span><br><span class="line">    <span class="keyword">var</span> f = url.indexOf(<span class="string">"?"</span>) &gt; <span class="number">-1</span> ? <span class="string">"&amp;"</span> : <span class="string">"?"</span>;</span><br><span class="line">    url += f + <span class="string">"_="</span> + <span class="built_in">Date</span>.now();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> j <span class="keyword">in</span> _default.data) &#123;</span><br><span class="line">      url += <span class="string">"&amp;"</span> + j + <span class="string">"="</span> + _default.data[j];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// url拼接成功, get请求send中不需要参数,把他转换为null;</span></span><br><span class="line">    _default.data = <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">  xhr.open(_default.method, url, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 在发送时, 先把对象转换为json字符串(传输格式为字符串)</span></span><br><span class="line">  _default.data = <span class="built_in">JSON</span>.stringify(_default.data);</span><br><span class="line">  xhr.send(_default.data);</span><br><span class="line">  xhr.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (xhr.readyState == <span class="number">4</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (xhr.status == <span class="number">200</span>) &#123;</span><br><span class="line">        <span class="comment">// 获取返回的内容</span></span><br><span class="line">        <span class="keyword">var</span> val = xhr.responseText;</span><br><span class="line">        val = <span class="built_in">JSON</span>.parse(val);</span><br><span class="line">        <span class="keyword">if</span> (val.msg == <span class="number">200</span>) &#123;</span><br><span class="line">          <span class="keyword">if</span> (<span class="keyword">typeof</span> _default.success === <span class="string">"function"</span>) &#123;</span><br><span class="line">            _default.success(val);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> _default.error === <span class="string">"function"</span>) &#123;</span><br><span class="line">          _default.error(val);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/05/2018-11-05-%E5%89%8D%E7%AB%AF%E5%86%B7%E9%97%A8%E7%9F%A5%E8%AF%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="cc12210">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="曹小诚的个人空间">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/05/2018-11-05-%E5%89%8D%E7%AB%AF%E5%86%B7%E9%97%A8%E7%9F%A5%E8%AF%86/" itemprop="url">前端冷门知识</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-05T14:54:00+08:00">
-                2018-11-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/" itemprop="url" rel="index">
-                    <span itemprop="name">默认分类</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.body.contentEditable = <span class="string">"true"</span>;</span><br></pre></td></tr></table></figure>
-
-<p>你只要在控制台运行了这段代码,那么你这个页面就变成可编辑的状态了<br>想要复制的文本内容，直接复制就行</p>
-<h3 id="加载-CDN-文件时，可以省掉-HTTP-标识"><a href="#加载-CDN-文件时，可以省掉-HTTP-标识" class="headerlink" title="加载 CDN 文件时，可以省掉 HTTP 标识"></a>加载 CDN 文件时，可以省掉 HTTP 标识</h3><p>现在很流行的 CDN 即从专门的服务器加载一些通用的 JS 和 CSS 文件，出于安全考虑有的 CDN 服务器使用 HTTPS 方式连接，而有的是传统的 HTTP，其实我们在使用时可以忽略掉这个，将它从 URL 中省去。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"//domain.com/path/to/script.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="一个非常有意思的-css"><a href="#一个非常有意思的-css" class="headerlink" title="一个非常有意思的 css"></a>一个非常有意思的 css</h3><h4 id="你的这个页面将没有了鼠标光标"><a href="#你的这个页面将没有了鼠标光标" class="headerlink" title="你的这个页面将没有了鼠标光标"></a>你的这个页面将没有了鼠标光标</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  <span class="attribute">cursor</span>: none <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="不声明第三个变量的值交换"><a href="#不声明第三个变量的值交换" class="headerlink" title="不声明第三个变量的值交换"></a>不声明第三个变量的值交换</h3><p>我们都知道交换两个变量值的常规做法，那就是声明一个中间变量来暂存。但鲜有人去挑战不声明中间变量的情况，下面的代码给出了这种实现。蛮有创意 的。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=<span class="number">1</span>,</span><br><span class="line">    b=<span class="number">2</span>;</span><br><span class="line">a=[b,b=a][<span class="number">0</span>];</span><br><span class="line">输出结果:a:<span class="number">2</span> b:<span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/">&lt;i class&#x3D;&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/6/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/4/">&lt;i class&#x3D;&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/6/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
   </nav>
 
 
@@ -1922,7 +1994,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-count">103</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

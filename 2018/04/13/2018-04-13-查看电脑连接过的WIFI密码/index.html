@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="电脑连接过别人的 WIFI，但是密码又想不起来了这个时候你需要通过 CMD 命令来查看你电脑的 WiFi 密码 首先先复制下面这段代码1for &#x2F;f &quot;skip&#x3D;9 tokens&#x3D;1,2 delims&#x3D;:&quot; %i in (&#39;netsh wlan show profiles&#39;) do  @echo %j | findstr -i -v echo | netsh wlan show profiles">
+<meta name="description" content="电脑连接过别人的 WIFI，但是密码又想不起来了 这个时候你需要通过 CMD 命令来查看你电脑的 WiFi 密码 首先先复制下面这段代码 1for &#x2F;f &quot;skip&#x3D;9 tokens&#x3D;1,2 delims&#x3D;:&quot; %i in (&#39;netsh wlan show profiles&#39;) do  @echo %j | findstr -i -v echo | netsh wlan show profile">
 <meta property="og:type" content="article">
 <meta property="og:title" content="查看电脑连接过的WIFI密码">
 <meta property="og:url" content="http://yoursite.com/2018/04/13/2018-04-13-%E6%9F%A5%E7%9C%8B%E7%94%B5%E8%84%91%E8%BF%9E%E6%8E%A5%E8%BF%87%E7%9A%84WIFI%E5%AF%86%E7%A0%81/index.html">
 <meta property="og:site_name" content="曹小诚的个人空间">
-<meta property="og:description" content="电脑连接过别人的 WIFI，但是密码又想不起来了这个时候你需要通过 CMD 命令来查看你电脑的 WiFi 密码 首先先复制下面这段代码1for &#x2F;f &quot;skip&#x3D;9 tokens&#x3D;1,2 delims&#x3D;:&quot; %i in (&#39;netsh wlan show profiles&#39;) do  @echo %j | findstr -i -v echo | netsh wlan show profiles">
+<meta property="og:description" content="电脑连接过别人的 WIFI，但是密码又想不起来了 这个时候你需要通过 CMD 命令来查看你电脑的 WiFi 密码 首先先复制下面这段代码 1for &#x2F;f &quot;skip&#x3D;9 tokens&#x3D;1,2 delims&#x3D;:&quot; %i in (&#39;netsh wlan show profiles&#39;) do  @echo %j | findstr -i -v echo | netsh wlan show profile">
 <meta property="og:image" content="http://www.cc12210.xyz/usr/uploads/2018/12/85062147.png">
 <meta property="og:image" content="http://www.cc12210.xyz/usr/uploads/2018/12/4019267611.png">
 <meta property="og:image" content="http://www.cc12210.xyz/usr/uploads/2018/12/1130558730.png">
@@ -369,12 +369,17 @@
       
 
       
-        <h2 id="电脑连接过别人的-WIFI，但是密码又想不起来了"><a href="#电脑连接过别人的-WIFI，但是密码又想不起来了" class="headerlink" title="电脑连接过别人的 WIFI，但是密码又想不起来了"></a>电脑连接过别人的 WIFI，但是密码又想不起来了</h2><p>这个时候你需要通过 CMD 命令来查看你电脑的 WiFi 密码</p>
-<h3 id="首先先复制下面这段代码"><a href="#首先先复制下面这段代码" class="headerlink" title="首先先复制下面这段代码"></a>首先先复制下面这段代码</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> /f <span class="string">"skip=9 tokens=1,2 delims=:"</span> %i <span class="keyword">in</span> (<span class="string">'netsh wlan show profiles'</span>) <span class="keyword">do</span>  @echo %j | findstr -i -v echo | netsh wlan show profiles %j key=clear</span><br></pre></td></tr></table></figure>
-
-<h3 id="按下-win-加-R-打开运行"><a href="#按下-win-加-R-打开运行" class="headerlink" title="按下 win 加 R 打开运行"></a>按下 win 加 R 打开运行</h3><p><img src="http://www.cc12210.xyz/usr/uploads/2018/12/85062147.png" alt="运行.png"></p>
-<h3 id="接下来将代码复制进命令行"><a href="#接下来将代码复制进命令行" class="headerlink" title="接下来将代码复制进命令行"></a>接下来将代码复制进命令行</h3><p><img src="http://www.cc12210.xyz/usr/uploads/2018/12/4019267611.png" alt="命令行.png"><br>回车执行</p>
-<h3 id="第一个箭头的等号分割是一个连接过的信息，第二个是-WiFi-名称，第三个是-WiFi-密码"><a href="#第一个箭头的等号分割是一个连接过的信息，第二个是-WiFi-名称，第三个是-WiFi-密码" class="headerlink" title="第一个箭头的等号分割是一个连接过的信息，第二个是 WiFi 名称，第三个是 WiFi 密码"></a>第一个箭头的等号分割是一个连接过的信息，第二个是 WiFi 名称，第三个是 WiFi 密码</h3><p><img src="http://www.cc12210.xyz/usr/uploads/2018/12/1130558730.png" alt="密码.png"></p>
+        <h2 id="电脑连接过别人的-WIFI，但是密码又想不起来了">电脑连接过别人的 WIFI，但是密码又想不起来了</h2>
+<p>这个时候你需要通过 CMD 命令来查看你电脑的 WiFi 密码</p>
+<h3 id="首先先复制下面这段代码">首先先复制下面这段代码</h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> /f <span class="string">"skip=9 tokens=1,2 delims=:"</span> %i <span class="keyword">in</span> (<span class="string">'netsh wlan show profiles'</span>) <span class="keyword">do</span>  @echo %j | findstr -i -v echo | netsh wlan show profiles %j key=clear</span><br></pre></td></tr></table></figure>
+<h3 id="按下-win-加-R-打开运行">按下 win 加 R 打开运行</h3>
+<p><img src="http://www.cc12210.xyz/usr/uploads/2018/12/85062147.png" alt="运行.png"></p>
+<h3 id="接下来将代码复制进命令行">接下来将代码复制进命令行</h3>
+<p><img src="http://www.cc12210.xyz/usr/uploads/2018/12/4019267611.png" alt="命令行.png"><br>
+回车执行</p>
+<h3 id="第一个箭头的等号分割是一个连接过的信息，第二个是-WiFi-名称，第三个是-WiFi-密码">第一个箭头的等号分割是一个连接过的信息，第二个是 WiFi 名称，第三个是 WiFi 密码</h3>
+<p><img src="http://www.cc12210.xyz/usr/uploads/2018/12/1130558730.png" alt="密码.png"></p>
 
       
     </div>
@@ -488,7 +493,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-count">103</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

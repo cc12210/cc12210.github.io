@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="配置个人信息–global 等价于-g 代指全局12git config --global user.name &quot;你的名字&quot;git config --global user.email &quot;你的邮箱&quot;  创建 ssh 密钥密钥的意义在于和你的 GitHub 识别，添加密钥之后就可以往你的 GitHub 仓库里提交代码了123ssh-keygen -t rsa">
+<meta name="description" content="配置个人信息 –global 等价于-g 代指全局 12git config --global user.name &quot;你的名字&quot;git config --global user.email &quot;你的邮箱&quot; 创建 ssh 密钥 密钥的意义在于和你的 GitHub 识别，添加密钥之后就可以往你的 GitHub 仓库里提交代码了 123ssh-keygen -t r">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git命令">
 <meta property="og:url" content="http://yoursite.com/2018/07/17/2018-07-17-Git%E5%91%BD%E4%BB%A4/index.html">
 <meta property="og:site_name" content="曹小诚的个人空间">
-<meta property="og:description" content="配置个人信息–global 等价于-g 代指全局12git config --global user.name &quot;你的名字&quot;git config --global user.email &quot;你的邮箱&quot;  创建 ssh 密钥密钥的意义在于和你的 GitHub 识别，添加密钥之后就可以往你的 GitHub 仓库里提交代码了123ssh-keygen -t rsa">
+<meta property="og:description" content="配置个人信息 –global 等价于-g 代指全局 12git config --global user.name &quot;你的名字&quot;git config --global user.email &quot;你的邮箱&quot; 创建 ssh 密钥 密钥的意义在于和你的 GitHub 识别，添加密钥之后就可以往你的 GitHub 仓库里提交代码了 123ssh-keygen -t r">
 <meta property="article:published_time" content="2018-07-17T00:12:00.000Z">
 <meta property="article:modified_time" content="2018-12-05T01:36:47.000Z">
 <meta property="article:author" content="cc12210">
@@ -366,20 +366,19 @@
       
 
       
-        <h3 id="配置个人信息"><a href="#配置个人信息" class="headerlink" title="配置个人信息"></a>配置个人信息</h3><h4 id="–global-等价于-g-代指全局"><a href="#–global-等价于-g-代指全局" class="headerlink" title="–global 等价于-g 代指全局"></a>–global 等价于-g 代指全局</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;你的名字&quot;</span><br><span class="line">git config --global user.email &quot;你的邮箱&quot;</span><br></pre></td></tr></table></figure>
-
-<h3 id="创建-ssh-密钥"><a href="#创建-ssh-密钥" class="headerlink" title="创建 ssh 密钥"></a>创建 ssh 密钥</h3><h4 id="密钥的意义在于和你的-GitHub-识别，添加密钥之后就可以往你的-GitHub-仓库里提交代码了"><a href="#密钥的意义在于和你的-GitHub-识别，添加密钥之后就可以往你的-GitHub-仓库里提交代码了" class="headerlink" title="密钥的意义在于和你的 GitHub 识别，添加密钥之后就可以往你的 GitHub 仓库里提交代码了"></a>密钥的意义在于和你的 GitHub 识别，添加密钥之后就可以往你的 GitHub 仓库里提交代码了</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;youeamil@explode.com&quot;</span><br><span class="line">linux ~&#x2F;.ssh    window C盘&gt;用户&gt;用户名&gt;ssh</span><br><span class="line">复制id_rsa.pub中文件，在GitHub上SSH Keys中，点击Add SSH key把复制的信息粘贴就可以使用git了</span><br></pre></td></tr></table></figure>
-
+        <h3 id="配置个人信息">配置个人信息</h3>
+<h4 id="–global-等价于-g-代指全局">–global 等价于-g 代指全局</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;你的名字&quot;</span><br><span class="line">git config --global user.email &quot;你的邮箱&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="创建-ssh-密钥">创建 ssh 密钥</h3>
+<h4 id="密钥的意义在于和你的-GitHub-识别，添加密钥之后就可以往你的-GitHub-仓库里提交代码了">密钥的意义在于和你的 GitHub 识别，添加密钥之后就可以往你的 GitHub 仓库里提交代码了</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;youeamil@explode.com&quot;</span><br><span class="line">linux ~&#x2F;.ssh    window C盘&gt;用户&gt;用户名&gt;ssh</span><br><span class="line">复制id_rsa.pub中文件，在GitHub上SSH Keys中，点击Add SSH key把复制的信息粘贴就可以使用git了</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-
-<h3 id="git-仓库的基本命令"><a href="#git-仓库的基本命令" class="headerlink" title="git 仓库的基本命令"></a>git 仓库的基本命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git init                      初始化仓库,会生成一个.git的隐藏文件夹</span><br><span class="line">git add 文件名                 把文件添加到git仓库暂存区</span><br><span class="line">git status                    查看仓库状态</span><br><span class="line">git commit -m &quot;提交说明&quot;       把文件提交到仓库</span><br><span class="line">commit 是一次性提交，add可以多次添加不同文件，add . 表示添加所有文件</span><br><span class="line">最后git push 即可提交代码</span><br><span class="line">git pull origin master&#x2F;git pull  是拉取远程仓库代码，一般用于多人协作开发，碰到冲突之后必须pull，然后手动解决冲突</span><br></pre></td></tr></table></figure>
-
+<h3 id="git-仓库的基本命令">git 仓库的基本命令</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git init                      初始化仓库,会生成一个.git的隐藏文件夹</span><br><span class="line">git add 文件名                 把文件添加到git仓库暂存区</span><br><span class="line">git status                    查看仓库状态</span><br><span class="line">git commit -m &quot;提交说明&quot;       把文件提交到仓库</span><br><span class="line">commit 是一次性提交，add可以多次添加不同文件，add . 表示添加所有文件</span><br><span class="line">最后git push 即可提交代码</span><br><span class="line">git pull origin master&#x2F;git pull  是拉取远程仓库代码，一般用于多人协作开发，碰到冲突之后必须pull，然后手动解决冲突</span><br></pre></td></tr></table></figure>
 <p>###版本回退</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD^      回退到上一个版本</span><br><span class="line">git reset --hard commit-id  到达commit-id版本 commit-id是每次提交之后有的一段唯一的hash值</span><br><span class="line">git reflog                  记录你的每一次命令</span><br><span class="line">在git中，用HEAD表示当前版本，上一个版本就是HEAD^，上上一个版本就是HEAD^^，第一百个版本HEAD~100</span><br></pre></td></tr></table></figure>
-
 <p>###创建分支</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git branch                  查看当前分支，前面有*号的是当前分支</span><br><span class="line">git branch  -a              查看所有分支</span><br><span class="line">git branch 分支名            创建分支</span><br><span class="line">git checkout -b dev         git checkout 切换分支，-b 表示创建并切换</span><br></pre></td></tr></table></figure>
-
 <p>###合并分支</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git merge dev    git merge 用于合并指定分支到当前分支</span><br><span class="line">Fast-forward     表示这次合并是快进模式，合并速度很快</span><br></pre></td></tr></table></figure>
 
@@ -501,7 +500,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-count">103</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

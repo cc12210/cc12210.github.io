@@ -262,7 +262,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/31/2021-03-31-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%9A%97%E8%89%B2%E6%A8%A1%E5%BC%8F%E9%80%82%E9%85%8D/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/05/17/2021-05-17-%E6%B8%85%E7%A9%BARedis%E7%9A%84%E7%BC%93%E5%AD%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cc12210">
@@ -281,7 +281,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2021/03/31/2021-03-31-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%9A%97%E8%89%B2%E6%A8%A1%E5%BC%8F%E9%80%82%E9%85%8D/" itemprop="url">2021-03-31-小程序暗色模式适配</a></h1>
+                <a class="post-title-link" href="/2021/05/17/2021-05-17-%E6%B8%85%E7%A9%BARedis%E7%9A%84%E7%BC%93%E5%AD%98/" itemprop="url">清空Redis的缓存</a></h1>
         
 
         <div class="post-meta">
@@ -293,8 +293,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-31T09:55:59+08:00">
-                2021-03-31
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-05-17T10:43:33+08:00">
+                2021-05-17
               </time>
             
 
@@ -332,12 +332,424 @@
 
       
         
-          <h4 id="小程序暗色模式适配"><a href="#小程序暗色模式适配" class="headerlink" title="小程序暗色模式适配"></a>小程序暗色模式适配</h4><p>小程序的暗色模式适配可以直接在工具直接点击生成wxss文件，非常的方便<br><img src="http://image.unknown-host.com/wx-darkmode-init.png" alt="darkmode"></p>
-<h4 id="1、点击生成darkmode适配"><a href="#1、点击生成darkmode适配" class="headerlink" title="1、点击生成darkmode适配"></a>1、点击生成darkmode适配</h4><p>编辑器会为你当前的页面生成一份wxss文件，并且在当前page下面的wxss的最下方引入</p>
-<h5 id="文件示例：主要是通过媒体查询进行样式覆盖"><a href="#文件示例：主要是通过媒体查询进行样式覆盖" class="headerlink" title="文件示例：主要是通过媒体查询进行样式覆盖"></a>文件示例：主要是通过媒体查询进行样式覆盖</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> (<span class="attribute">prefers-color-scheme:</span> dark) &#123;</span><br><span class="line">  <span class="selector-class">.article-search-page</span> &#123;</span><br><span class="line">        <span class="attribute">background</span>: <span class="built_in">rgb</span>(<span class="number">33</span>, <span class="number">33</span>, <span class="number">34</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h5 id="1、首先查找到Redis的安装位置">1、首先查找到Redis的安装位置</h5>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef|grep redis</span><br></pre></td></tr></table></figure>
+<p>得到结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">redis     6301     1  0 Apr13 ?        00:42:42 &#x2F;usr&#x2F;bin&#x2F;redis-server 127.0.0.1:6379</span><br><span class="line">root     32195 30473  0 09:12 pts&#x2F;0    00:00:00 grep --color&#x3D;auto redis</span><br></pre></td></tr></table></figure>
+<p>得到进程位置  <strong>6301</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l &#x2F;proc&#x2F;6301&#x2F;cwd</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@VM-8-2-centos hitokoto-api]# ls -l &#x2F;proc&#x2F;6301&#x2F;cwd</span><br><span class="line">lrwxrwxrwx 1 redis redis 0 Apr 13 17:47 &#x2F;proc&#x2F;6301&#x2F;cwd -&gt; &#x2F;var&#x2F;lib&#x2F;redis</span><br></pre></td></tr></table></figure>
+<h5 id="2、进入对应文件夹">2、进入对应文件夹</h5>
+<p>打开对应端口号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;bin&#x2F;</span><br><span class="line">.&#x2F;redis-cli</span><br></pre></td></tr></table></figure>
+<p>此时会进入redis的控制台</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AUTH 你的密码</span><br></pre></td></tr></table></figure>
+<p>验证通过后就可以进行操作了</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2021/03/31/2021-03-31-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%9A%97%E8%89%B2%E6%A8%A1%E5%BC%8F%E9%80%82%E9%85%8D/#more" rel="contents">
+            <a class="btn" href="/2021/05/17/2021-05-17-%E6%B8%85%E7%A9%BARedis%E7%9A%84%E7%BC%93%E5%AD%98/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/04/27/2021-04-27-markdown%E4%B8%AD%E4%BD%BF%E7%94%A8emoji/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cc12210">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="曹小诚的个人空间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/04/27/2021-04-27-markdown%E4%B8%AD%E4%BD%BF%E7%94%A8emoji/" itemprop="url">如何在markdown中使用emoji</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-27T19:15:36+08:00">
+                2021-04-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>纯文字的文案看的不如带一些表情信息表达的更加生动😆</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="comment">//www.webfx.com/tools/emoji-cheat-sheet/</span></span><br></pre></td></tr></table></figure>
+<p>在markdown中添加<code>emoji</code>目前找到的有<b>三种方案</b></p>
+<h4 id="推荐使用第三种">推荐使用第三种</h4>
+<h4 id="1、数据库存储emoji-—-百度的😋">1、数据库存储emoji — 百度的😋</h4>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>. 修改my.ini [mysqld] character-<span class="built_in">set</span>-server=utf8mb4</span><br><span class="line"><span class="number">2</span>. 在Connector/J的连接参数中，不要加characterEncoding参数。 不加这个参数时，默认值就时autodetect。</span><br><span class="line"><span class="number">3</span>. 将已经建好的表也转换成utf8mb4 </span><br><span class="line">   命令：ALTER TABLE `TABLE_NAME` <span class="built_in">CONVERT</span> TO CHARACTER <span class="built_in">SET</span> utf8mb4 COLLATE utf8mb4_general_ci; （将TABLE_NAME替换成你的表名）</span><br><span class="line"><span class="number">4</span>. 将需要使用emoji的字段设置类型为： </span><br><span class="line">   命令：ALTER TABLE `TABLE_NAME`MODIFY COLUMN `COLUMN_NAME`  text CHARACTER <span class="built_in">SET</span> utf8mb4 COLLATE utf8mb4_general_ci;</span><br></pre></td></tr></table></figure>
+<h5 id="我这边修改成功了，但是接口返回的emoji还是为一个">我这边修改成功了，但是接口返回的emoji还是为一个 ?</h5>
+<p>说明对接口还要进行对应的改造，成本较高，放弃</p>
+<h4 id="2、转义emoji后存入数据库">2、转义emoji后存入数据库</h4>
+<blockquote>
+<p>转义成字符串放入到数据库，使用的时候反转义可以直接转义成表情<br>
+比较复杂，还要对应的函数支持</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//对emoji表情转义</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">emoji_encode</span>(<span class="params">$str</span>)</span>&#123;</span><br><span class="line">    $strEncode = <span class="string">''</span>;</span><br><span class="line">    $length = mb_strlen($str,<span class="string">'utf-8'</span>);</span><br><span class="line">    <span class="keyword">for</span> ($i=<span class="number">0</span>; $i &lt; $length; $i++) &#123;</span><br><span class="line">        $_tmpStr = mb_substr($str,$i,<span class="number">1</span>,<span class="string">'utf-8'</span>);    </span><br><span class="line">        <span class="keyword">if</span> (strlen($_tmpStr) &gt;= <span class="number">4</span>)&#123;</span><br><span class="line">            $strEncode .= <span class="string">'[[EMOJI:'</span>.rawurlencode($_tmpStr).<span class="string">']]'</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            $strEncode .= $_tmpStr;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $strEncode;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//对emoji表情转反义</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">emoji_decode</span>(<span class="params">$str</span>)</span>&#123;</span><br><span class="line">    $strDecode = preg_replace_callback(<span class="string">'|\[\[EMOJI:(.*?)\]\]|'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$matches</span>)</span>&#123;  </span><br><span class="line">        <span class="keyword">return</span> rawurldecode($matches[<span class="number">1</span>]);</span><br><span class="line">    &#125;, $str);</span><br><span class="line">    <span class="keyword">return</span> $strDecode;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3、直接使用markdown支持的字符，该方法支持绝大多数emoji，仅极少数不支持">3、直接使用markdown支持的字符，该方法支持绝大多数emoji，仅极少数不支持</h4>
+<h5 id="emoji字符对照网址，这个地址里面的比较全面">emoji字符对照网址，这个地址里面的比较全面</h5>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;www.webfx.com&#x2F;tools&#x2F;emoji-cheat-sheet&#x2F;</span><br></pre></td></tr></table></figure>
+<p>字符的拼接规则是</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:emoji_name:</span><br><span class="line">两个冒号（英文半角）中间写上指定的emoji名称</span><br><span class="line">下面我列举一些常用的</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/04/27/2021-04-27-markdown%E4%B8%AD%E4%BD%BF%E7%94%A8emoji/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/04/20/2021-04-20-%E5%A6%82%E4%BD%95%E6%8B%A5%E6%9C%89BTC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cc12210">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="曹小诚的个人空间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/04/20/2021-04-20-%E5%A6%82%E4%BD%95%E6%8B%A5%E6%9C%89BTC/" itemprop="url">如何拥有BTC</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-20T19:15:36+08:00">
+                2021-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>强调说明，一定不要将大量资金投入虚拟币，在自己承受范围内合理投资，虚拟币的风险比基金股票要大得多 😓</p>
+</blockquote>
+<p>1、首先我们需要选择购买虚拟币的平台，这里我以火币做示例</p>
+<p>2、通过以下二维码（我的推荐下载），安卓直接下载安装包，IOS需要安装testflight来测试app，进入下载页就知道了</p>
+<p><img src="http://image.unknown-host.com/btc_platform_erweima.png" alt="二维码"></p>
+<p>3、安装完成之后按照注册步骤进行账号注册及实名认证，下方tab选择到行情页面</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/04/20/2021-04-20-%E5%A6%82%E4%BD%95%E6%8B%A5%E6%9C%89BTC/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/04/01/2021-03-31-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%9A%97%E8%89%B2%E6%A8%A1%E5%BC%8F%E9%80%82%E9%85%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cc12210">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="曹小诚的个人空间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/04/01/2021-03-31-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%9A%97%E8%89%B2%E6%A8%A1%E5%BC%8F%E9%80%82%E9%85%8D/" itemprop="url">小程序暗色模式适配</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-01T17:08:46+08:00">
+                2021-04-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="小程序暗色模式适配">小程序暗色模式适配</h4>
+<p>小程序的暗色模式适配可以直接在工具直接点击生成wxss文件，非常的方便<br>
+<img src="http://image.unknown-host.com/wx-darkmode-init.png" alt="darkmode"></p>
+<h4 id="1、点击生成darkmode适配">1、点击生成darkmode适配</h4>
+<p>编辑器会为你当前的页面生成一份wxss文件，并且在当前page下面的wxss的最下方引入</p>
+<h5 id="文件示例：主要是通过媒体查询进行样式覆盖">文件示例：主要是通过媒体查询进行样式覆盖</h5>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> (<span class="attribute">prefers-color-scheme:</span> dark) &#123;</span><br><span class="line">  <span class="selector-class">.article-search-page</span> &#123;</span><br><span class="line">        <span class="attribute">background</span>: <span class="built_in">rgb</span>(<span class="number">33</span>, <span class="number">33</span>, <span class="number">34</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/04/01/2021-03-31-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%9A%97%E8%89%B2%E6%A8%A1%E5%BC%8F%E9%80%82%E9%85%8D/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -458,11 +870,13 @@
 
       
         
-          <h3 id="Linux下升级node版本"><a href="#Linux下升级node版本" class="headerlink" title="Linux下升级node版本"></a>Linux下升级node版本</h3><h4 id="今天碰到一个问题，服务器上部署一个开源一言api项目，提示node版本过低，项目要求版本至少为14"><a href="#今天碰到一个问题，服务器上部署一个开源一言api项目，提示node版本过低，项目要求版本至少为14" class="headerlink" title="今天碰到一个问题，服务器上部署一个开源一言api项目，提示node版本过低，项目要求版本至少为14"></a>今天碰到一个问题，服务器上部署一个开源一言api项目，提示node版本过低，项目要求版本至少为14</h4><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line"></span><br><span class="line">v12.<span class="number">16</span>.<span class="number">1</span></span><br></pre></td></tr></table></figure>
-
+          <h3 id="Linux下升级node版本">Linux下升级node版本</h3>
+<h4 id="今天碰到一个问题，服务器上部署一个开源一言api项目，提示node版本过低，项目要求版本至少为14">今天碰到一个问题，服务器上部署一个开源一言api项目，提示node版本过低，项目要求版本至少为14</h4>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line"></span><br><span class="line">v12.<span class="number">16</span>.<span class="number">1</span></span><br></pre></td></tr></table></figure>
 <p><img src="http://image.unknown-host.com/node-v.png" alt="node版本"></p>
-<h4 id="windows下的node版本管理器叫NVM，之前的文章有介绍"><a href="#windows下的node版本管理器叫NVM，之前的文章有介绍" class="headerlink" title="windows下的node版本管理器叫NVM，之前的文章有介绍"></a>windows下的node版本管理器叫NVM，之前的文章有介绍</h4><p>但是我们在linux下需要用到另一个版本管理工具</p>
-<h1 id="n"><a href="#n" class="headerlink" title="n"></a>n</h1>
+<h4 id="windows下的node版本管理器叫NVM，之前的文章有介绍">windows下的node版本管理器叫NVM，之前的文章有介绍</h4>
+<p>但是我们在linux下需要用到另一个版本管理工具</p>
+<h1>n</h1>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2021/03/30/2021-03-30-linux%E4%B8%8B%E5%8D%87%E7%BA%A7node%E7%89%88%E6%9C%AC/#more" rel="contents">
@@ -619,14 +1033,16 @@
 
       
         
-          <h3 id="Electron-中的通信"><a href="#Electron-中的通信" class="headerlink" title="Electron 中的通信"></a>Electron 中的通信</h3><p>首先看一下<code>Electron</code>提供的脚手架<code>electron-quick-start</code>的文件结构</p>
+          <h3 id="Electron-中的通信">Electron 中的通信</h3>
+<p>首先看一下<code>Electron</code>提供的脚手架<code>electron-quick-start</code>的文件结构</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">main.js; <span class="comment">// 这个文件是electron可以用来调用系统能力的地方，比如创建新的window，ipcMain的通信</span></span><br><span class="line">HTML文件; <span class="comment">// 页面展示以及css等静态资源</span></span><br><span class="line">各个页面引入的js文件可以使用es6语法, node方法可以同时使用;</span><br></pre></td></tr></table></figure>
-
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h3><h4 id="home-页面"><a href="#home-页面" class="headerlink" title="home 页面"></a>home 页面</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; ipcRenderer &#125; = <span class="built_in">require</span>(<span class="string">"electron"</span>);</span><br><span class="line"><span class="comment">// 页面js引入ipcRenderer，调用send方法发送事件，第二个参数是想要传递的参数，不限格式</span></span><br><span class="line"><span class="comment">// <span class="doctag">TODO:</span>  test push</span></span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">"add"</span>).addEventListener(<span class="string">"click"</span>, () =&gt; &#123;</span><br><span class="line">  ipcRenderer.send(<span class="string">"add-click"</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="main-js"><a href="#main-js" class="headerlink" title="main.js"></a>main.js</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 注意是只有main.js中才可以引入ipcMain</span></span><br><span class="line">ipcMain.on(<span class="string">"add-click"</span>, (event, arg) =&gt; &#123;</span><br><span class="line">  <span class="comment">// 监听到方法，执行对应的操作</span></span><br><span class="line">  <span class="comment">// 其中event就是触发该方法的实例，如 我从home页面触发点击，那么这个event就能获取到实例并且给他返回对应的参数</span></span><br><span class="line">  event.sender.send(<span class="string">"get-msg"</span>, <span class="string">"i get your message"</span>);</span><br><span class="line">  <span class="comment">// 当然，你也可以直接使用该window窗口的实例，效果是一样的直接窗口实例名.send()方法调用即可</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="electron-中的窗口类-BrowserWindow"><a href="#electron-中的窗口类-BrowserWindow" class="headerlink" title="electron 中的窗口类 BrowserWindow"></a>electron 中的窗口类 BrowserWindow</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">  width: <span class="number">800</span>, <span class="comment">// 新建窗体的宽度</span></span><br><span class="line">  height: <span class="number">600</span>, <span class="comment">// 新建窗体的高度，此高宽可以设置最小高度及最大值，与ccs类似</span></span><br><span class="line">  webPreferences: &#123;</span><br><span class="line">    nodeIntegration: <span class="literal">true</span>, <span class="comment">// 创建的windows实例允许使用node方法</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="示例">示例:</h3>
+<h4 id="home-页面">home 页面</h4>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; ipcRenderer &#125; = <span class="built_in">require</span>(<span class="string">"electron"</span>);</span><br><span class="line"><span class="comment">// 页面js引入ipcRenderer，调用send方法发送事件，第二个参数是想要传递的参数，不限格式</span></span><br><span class="line"><span class="comment">// <span class="doctag">TODO:</span>  test push</span></span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">"add"</span>).addEventListener(<span class="string">"click"</span>, () =&gt; &#123;</span><br><span class="line">  ipcRenderer.send(<span class="string">"add-click"</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="main-js">main.js</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 注意是只有main.js中才可以引入ipcMain</span></span><br><span class="line">ipcMain.on(<span class="string">"add-click"</span>, (event, arg) =&gt; &#123;</span><br><span class="line">  <span class="comment">// 监听到方法，执行对应的操作</span></span><br><span class="line">  <span class="comment">// 其中event就是触发该方法的实例，如 我从home页面触发点击，那么这个event就能获取到实例并且给他返回对应的参数</span></span><br><span class="line">  event.sender.send(<span class="string">"get-msg"</span>, <span class="string">"i get your message"</span>);</span><br><span class="line">  <span class="comment">// 当然，你也可以直接使用该window窗口的实例，效果是一样的直接窗口实例名.send()方法调用即可</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="electron-中的窗口类-BrowserWindow">electron 中的窗口类 BrowserWindow</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">  width: <span class="number">800</span>, <span class="comment">// 新建窗体的宽度</span></span><br><span class="line">  height: <span class="number">600</span>, <span class="comment">// 新建窗体的高度，此高宽可以设置最小高度及最大值，与ccs类似</span></span><br><span class="line">  webPreferences: &#123;</span><br><span class="line">    nodeIntegration: <span class="literal">true</span>, <span class="comment">// 创建的windows实例允许使用node方法</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2021/03/19/2020-08-29-Electron%E4%B8%AD%E7%9A%84%E9%80%9A%E4%BF%A1/#more" rel="contents">
@@ -783,11 +1199,13 @@
 
       
         
-          <h2 id="defer-的用法"><a href="#defer-的用法" class="headerlink" title="defer 的用法"></a>defer 的用法</h2><h4 id="用途："><a href="#用途：" class="headerlink" title="用途："></a>用途：</h4><p>含有 defer 语句的函数，会在该函数将要返回之前，调用另一个函数。</p>
+          <h2 id="defer-的用法">defer 的用法</h2>
+<h4 id="用途：">用途：</h4>
+<p>含有 defer 语句的函数，会在该函数将要返回之前，调用另一个函数。</p>
 <p>defer 后面的函数在 defer 语句所在的函数执行结束的时候会被调用。</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//defer后面必须是函数调用语句或方法调用语句，不能是其他语句，否则编译器会出错。</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  fmt.Println(<span class="string">"1"</span>)</span><br><span class="line">	fmt.Println(<span class="string">"2"</span>)</span><br><span class="line">	<span class="keyword">defer</span> fmt.Println(<span class="string">"3"</span>)</span><br><span class="line">	fmt.Println(<span class="string">"4"</span>)</span><br><span class="line">	fmt.Println(<span class="string">"5"</span>)</span><br><span class="line">	<span class="keyword">defer</span> fmt.Println(<span class="string">"6"</span>)</span><br><span class="line">	<span class="keyword">defer</span> fmt.Println(<span class="string">"7"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="执行结果为："><a href="#执行结果为：" class="headerlink" title="执行结果为："></a>执行结果为：</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">7</span></span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+<h3 id="执行结果为：">执行结果为：</h3>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">7</span></span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/07/05/2020-07-05-GO%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84defer/#more" rel="contents">
@@ -944,11 +1362,11 @@
 
       
         
-          <h3 id="map"><a href="#map" class="headerlink" title="map"></a>map</h3><h4 id="map-是一种无序的基于-key-value-的数据结构，Go-语言中的-map-是引用类型，必须初始化才能使用。"><a href="#map-是一种无序的基于-key-value-的数据结构，Go-语言中的-map-是引用类型，必须初始化才能使用。" class="headerlink" title="map 是一种无序的基于 key-value 的数据结构，Go 语言中的 map 是引用类型，必须初始化才能使用。"></a>map 是一种无序的基于 key-value 的数据结构，Go 语言中的 map 是引用类型，必须初始化才能使用。</h4><p>简单理解就是对象</p>
+          <h3 id="map">map</h3>
+<h4 id="map-是一种无序的基于-key-value-的数据结构，Go-语言中的-map-是引用类型，必须初始化才能使用。">map 是一种无序的基于 key-value 的数据结构，Go 语言中的 map 是引用类型，必须初始化才能使用。</h4>
+<p>简单理解就是对象</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个map</span></span><br><span class="line"><span class="keyword">map</span>[KeyType]ValueType</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">make</span>(<span class="keyword">map</span>[KeyType]ValueType, [<span class="built_in">cap</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">// cap为map的容量，在定以前应该给与合适的大小</span></span><br></pre></td></tr></table></figure>
-
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 声明示例</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	userInfo := <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>&#123;</span><br><span class="line">		<span class="string">"姓名"</span>: <span class="string">"曹小诚"</span>,</span><br><span class="line">		<span class="string">"性别"</span>: <span class="string">"男"</span>,</span><br><span class="line">	&#125;</span><br><span class="line">  fmt.Println(userInfo)</span><br><span class="line">  <span class="comment">// map[姓名:曹小诚 性别:男]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
@@ -1273,477 +1691,7 @@
         
           
             <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string.replace(<span class="keyword">new</span> <span class="built_in">RegExp</span>(key, <span class="string">"g"</span>), <span class="string">"b"</span>);</span><br></pre></td></tr></table></figure>
-
 <p>以前做百度智能纠错的时候写的，这段时间又有个类似的需求。写个文章记录一下这个方法</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/15/2020-05-15-%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95%E5%88%A9%E5%99%A8Performance/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="cc12210">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="曹小诚的个人空间">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/15/2020-05-15-%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95%E5%88%A9%E5%99%A8Performance/" itemprop="url">谷歌浏览器调试利器Performance</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-15T16:26:00+08:00">
-                2020-05-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/" itemprop="url" rel="index">
-                    <span itemprop="name">默认分类</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>工具点击控制台左上角录制，刷新页面，然后页面完成加载点击 stop，通过分析页面的渲染时间得出页面加载的性能。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/14/2020-04-14-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="cc12210">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="曹小诚的个人空间">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/14/2020-04-14-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" itemprop="url">git常用命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-14T09:37:00+08:00">
-                2020-04-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/" itemprop="url" rel="index">
-                    <span itemprop="name">默认分类</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote prune origin</span><br></pre></td></tr></table></figure>
-
-<p>有一些远程删除的分支，但是在本地还有记录，通过此命令删除</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch</span><br></pre></td></tr></table></figure>
-
-<p>同步远程分支到本地</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git cherry-pick 后面接上需要提交的commitId即可</span><br><span class="line">通过git log查看提交的commitId  可以将A分支的某个或某些commit提交到B分支</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git stash 暂存当前的更改</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git stash pop</span><br><span class="line">恢复上次更改  （A 切换到---》B  可以实现A分支的更改stash到B分支去）</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/2020-02-06-2020_0206_%E5%B0%8F%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="cc12210">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="曹小诚的个人空间">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/06/2020-02-06-2020_0206_%E5%B0%8F%E8%AE%B0/" itemprop="url">2020/0206 小记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-06T22:20:00+08:00">
-                2020-02-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/" itemprop="url" rel="index">
-                    <span itemprop="name">默认分类</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>原因我的嘴太笨，从来不会疼人哄人</p>
 
           
         
@@ -1783,7 +1731,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/2/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
   </nav>
 
 
@@ -1829,7 +1777,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-count">103</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

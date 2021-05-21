@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="最近接触的项目框架由 VUE 脚手架变成了 Nuxt,之前看过官网文档有些地方不甚理解。果然还是实践出真知  nuxt.config.js&#x2F;&#x2F; 这个配置文件为项目的配置项 123456789101112131415161718192021222324head标签module.exports &#x3D; &amp;#123;  head: &amp;#123;    titleTemplate: &#39;%s - Nuxt.j">
+<meta name="description" content="最近接触的项目框架由 VUE 脚手架变成了 Nuxt,之前看过官网文档有些地方不甚理解。果然还是实践出真知  nuxt.config.js &#x2F;&#x2F; 这个配置文件为项目的配置项 123456789101112131415161718192021222324head标签module.exports &#x3D; &amp;#123;  head: &amp;#123;    titleTemplate: &#39;%s - Nuxt.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nuxt使用感受">
 <meta property="og:url" content="http://yoursite.com/2019/11/01/2019-11-01-Nuxt%E4%BD%BF%E7%94%A8%E6%84%9F%E5%8F%97/index.html">
 <meta property="og:site_name" content="曹小诚的个人空间">
-<meta property="og:description" content="最近接触的项目框架由 VUE 脚手架变成了 Nuxt,之前看过官网文档有些地方不甚理解。果然还是实践出真知  nuxt.config.js&#x2F;&#x2F; 这个配置文件为项目的配置项 123456789101112131415161718192021222324head标签module.exports &#x3D; &amp;#123;  head: &amp;#123;    titleTemplate: &#39;%s - Nuxt.j">
+<meta property="og:description" content="最近接触的项目框架由 VUE 脚手架变成了 Nuxt,之前看过官网文档有些地方不甚理解。果然还是实践出真知  nuxt.config.js &#x2F;&#x2F; 这个配置文件为项目的配置项 123456789101112131415161718192021222324head标签module.exports &#x3D; &amp;#123;  head: &amp;#123;    titleTemplate: &#39;%s - Nuxt.">
 <meta property="article:published_time" content="2019-11-01T03:18:00.000Z">
 <meta property="article:modified_time" content="2019-11-01T03:18:11.000Z">
 <meta property="article:author" content="cc12210">
@@ -370,25 +370,22 @@
         <blockquote>
 <p>最近接触的项目框架由 VUE 脚手架变成了 Nuxt,之前看过官网文档有些地方不甚理解。果然还是实践出真知</p>
 </blockquote>
-<h4 id="nuxt-config-js"><a href="#nuxt-config-js" class="headerlink" title="nuxt.config.js"></a>nuxt.config.js</h4><p>// 这个配置文件为项目的配置项</p>
+<h4 id="nuxt-config-js">nuxt.config.js</h4>
+<p>// 这个配置文件为项目的配置项</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">head标签</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  head: &#123;</span><br><span class="line">    titleTemplate: <span class="string">'%s - Nuxt.js'</span>,</span><br><span class="line">    meta: [</span><br><span class="line">      &#123; <span class="attr">charset</span>: <span class="string">'utf-8'</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">'viewport'</span>, <span class="attr">content</span>: <span class="string">'width=device-width, initial-scale=1'</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">hid</span>: <span class="string">'description'</span>, <span class="attr">name</span>: <span class="string">'description'</span>, <span class="attr">content</span>: <span class="string">'Meta description'</span> &#125;</span><br><span class="line">    ],</span><br><span class="line">    link: [</span><br><span class="line">       &#123;</span><br><span class="line">        rel: <span class="string">''</span>,</span><br><span class="line">        type: <span class="string">''</span>,</span><br><span class="line">        href: <span class="string">''</span>,</span><br><span class="line">        &#125;</span><br><span class="line">     ],</span><br><span class="line">     script: [</span><br><span class="line">        &#123;</span><br><span class="line">         src: <span class="string">''</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">meta写入meta标签，link引入css，script可以引入一些需要提前注入的js文件</span><br></pre></td></tr></table></figure>
-
 <a id="more"></a>
-
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// plugins插件的配置，该配置文件的配置会读取plugins下的文件夹下对应的js文件，读取的名字取决于你在plugins引入的文件名</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  plugins: [<span class="string">"~plugins/demo"</span>],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="demo-js"><a href="#demo-js" class="headerlink" title="demo.js"></a>demo.js</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">"vue"</span>;</span><br><span class="line"><span class="keyword">import</span> ElementUI <span class="keyword">from</span> <span class="string">"element-ui"</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">"element-ui/lib/theme-chalk/index.css"</span>;</span><br><span class="line">Vue.use(ElementUI);</span><br></pre></td></tr></table></figure>
-
+<h3 id="demo-js">demo.js</h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">"vue"</span>;</span><br><span class="line"><span class="keyword">import</span> ElementUI <span class="keyword">from</span> <span class="string">"element-ui"</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">"element-ui/lib/theme-chalk/index.css"</span>;</span><br><span class="line">Vue.use(ElementUI);</span><br></pre></td></tr></table></figure>
 <p>这样你本地就能使用到从 npm 下载下来的插件了，其他框架参考对应文档引入即可</p>
-<h4 id="Window-或-Document-对象未定义？"><a href="#Window-或-Document-对象未定义？" class="headerlink" title="Window 或 Document 对象未定义？"></a>Window 或 Document 对象未定义？</h4><p>这是因为一些只兼容客户端的脚本被打包进了服务端的执行脚本中去。 对于只适合在客户端运行的脚本，需要通过使用 process.client 变量来判断导入。</p>
+<h4 id="Window-或-Document-对象未定义？">Window 或 Document 对象未定义？</h4>
+<p>这是因为一些只兼容客户端的脚本被打包进了服务端的执行脚本中去。 对于只适合在客户端运行的脚本，需要通过使用 process.client 变量来判断导入。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">举个例子， 在你的 .vue 文件中：</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (process.client) &#123;</span><br><span class="line">  <span class="built_in">require</span>(<span class="string">'external_library'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="生命周期一些需要注意的点"><a href="#生命周期一些需要注意的点" class="headerlink" title="生命周期一些需要注意的点"></a>生命周期一些需要注意的点</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">需要注意的是，在任何 Vue 组件的生命周期内， 只有 beforeCreate 和 created 这两个方法会在 客户端和服务端被调用。其他生命周期函数仅在客户端被调用。</span><br></pre></td></tr></table></figure>
-
-<h4 id="静态资源文件的引入方式"><a href="#静态资源文件的引入方式" class="headerlink" title="静态资源文件的引入方式"></a>静态资源文件的引入方式</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如果需要引入<span class="keyword">static</span>中的文件》》》》/<span class="keyword">static</span>/demoStatic.js 》》》》 等价于/demoStatic.js/</span><br><span class="line">assets文件下的文件引入方式 》》》》 &lt;img src=<span class="string">"~/assets/my-image-2.png"</span>/&gt;</span><br></pre></td></tr></table></figure>
-
+<h4 id="生命周期一些需要注意的点">生命周期一些需要注意的点</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">需要注意的是，在任何 Vue 组件的生命周期内， 只有 beforeCreate 和 created 这两个方法会在 客户端和服务端被调用。其他生命周期函数仅在客户端被调用。</span><br></pre></td></tr></table></figure>
+<h4 id="静态资源文件的引入方式">静态资源文件的引入方式</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如果需要引入<span class="keyword">static</span>中的文件》》》》/<span class="keyword">static</span>/demoStatic.js 》》》》 等价于/demoStatic.js/</span><br><span class="line">assets文件下的文件引入方式 》》》》 &lt;img src=<span class="string">"~/assets/my-image-2.png"</span>/&gt;</span><br></pre></td></tr></table></figure>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 引用 static 目录下的图片 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/my-image.png"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/static/my-image.png"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 引用 assets 目录下经过 webpack 构建处理后的图片 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"~/assets/my-image-2.png"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
 <p>有些情况下 window 和 document 还是不可使用，这个还需要再钻研一下</p>
 
       
@@ -511,7 +508,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-count">103</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

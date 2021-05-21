@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="前端路由实现起来其实很简单，本质就是监听 URL 的变化，然后匹配路由规则，显示相应的页面，并且无须刷新。目前单页面使用的路由就只有两种实现方式 hash 模式 history 模式">
+<meta name="description" content="前端路由实现起来其实很简单，本质就是监听 URL 的变化，然后匹配路由规则，显示相应的页面，并且无须刷新。目前单页面使用的路由就只有两种实现方式  hash 模式 history 模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="路由原理">
 <meta property="og:url" content="http://yoursite.com/2018/06/28/2018-06-28-%E8%B7%AF%E7%94%B1%E5%8E%9F%E7%90%86/index.html">
 <meta property="og:site_name" content="曹小诚的个人空间">
-<meta property="og:description" content="前端路由实现起来其实很简单，本质就是监听 URL 的变化，然后匹配路由规则，显示相应的页面，并且无须刷新。目前单页面使用的路由就只有两种实现方式 hash 模式 history 模式">
+<meta property="og:description" content="前端路由实现起来其实很简单，本质就是监听 URL 的变化，然后匹配路由规则，显示相应的页面，并且无须刷新。目前单页面使用的路由就只有两种实现方式  hash 模式 history 模式">
 <meta property="og:image" content="http://www.cc12210.xyz/usr/uploads/2018/12/303575652.png">
 <meta property="og:image" content="http://www.cc12210.xyz/usr/uploads/2018/12/910244050.png">
 <meta property="article:published_time" content="2018-06-28T05:21:00.000Z">
@@ -369,16 +369,18 @@
       
 
       
-        <h3 id="前端路由实现起来其实很简单，本质就是监听-URL-的变化，然后匹配路由规则，显示相应的页面，并且无须刷新。目前单页面使用的路由就只有两种实现方式"><a href="#前端路由实现起来其实很简单，本质就是监听-URL-的变化，然后匹配路由规则，显示相应的页面，并且无须刷新。目前单页面使用的路由就只有两种实现方式" class="headerlink" title="前端路由实现起来其实很简单，本质就是监听 URL 的变化，然后匹配路由规则，显示相应的页面，并且无须刷新。目前单页面使用的路由就只有两种实现方式"></a>前端路由实现起来其实很简单，本质就是监听 URL 的变化，然后匹配路由规则，显示相应的页面，并且无须刷新。目前单页面使用的路由就只有两种实现方式</h3><ol>
+        <h3 id="前端路由实现起来其实很简单，本质就是监听-URL-的变化，然后匹配路由规则，显示相应的页面，并且无须刷新。目前单页面使用的路由就只有两种实现方式">前端路由实现起来其实很简单，本质就是监听 URL 的变化，然后匹配路由规则，显示相应的页面，并且无须刷新。目前单页面使用的路由就只有两种实现方式</h3>
+<ol>
 <li>hash 模式</li>
 <li>history 模式</li>
 </ol>
 <hr>
 <a id="more"></a>
-
-<h3 id="www-test-com-就是-Hash-URL，当-后面的哈希值发生变化时，不会向服务器请求数据，可以通过-hashchange-事件来监听到-URL-的变化，从而进行跳转页面。"><a href="#www-test-com-就是-Hash-URL，当-后面的哈希值发生变化时，不会向服务器请求数据，可以通过-hashchange-事件来监听到-URL-的变化，从而进行跳转页面。" class="headerlink" title="www.test.com/##/ 就是 Hash URL，当 ## 后面的哈希值发生变化时，不会向服务器请求数据，可以通过 hashchange 事件来监听到 URL 的变化，从而进行跳转页面。"></a><a href="http://www.test.com/##/" target="_blank" rel="noopener">www.test.com/##/</a> 就是 Hash URL，当 ## 后面的哈希值发生变化时，不会向服务器请求数据，可以通过 hashchange 事件来监听到 URL 的变化，从而进行跳转页面。</h3><p><img src="http://www.cc12210.xyz/usr/uploads/2018/12/303575652.png" alt="hash模式.png"></p>
+<h3 id="www-test-com-就是-Hash-URL，当-后面的哈希值发生变化时，不会向服务器请求数据，可以通过-hashchange-事件来监听到-URL-的变化，从而进行跳转页面。"><a href="http://www.test.com/##/" target="_blank" rel="noopener">www.test.com/##/</a> 就是 Hash URL，当 ## 后面的哈希值发生变化时，不会向服务器请求数据，可以通过 hashchange 事件来监听到 URL 的变化，从而进行跳转页面。</h3>
+<p><img src="http://www.cc12210.xyz/usr/uploads/2018/12/303575652.png" alt="hash模式.png"></p>
 <hr>
-<h3 id="History-模式是-HTML5-新推出的功能，比之-Hash-URL-更加美观"><a href="#History-模式是-HTML5-新推出的功能，比之-Hash-URL-更加美观" class="headerlink" title="History 模式是 HTML5 新推出的功能，比之 Hash URL 更加美观"></a>History 模式是 HTML5 新推出的功能，比之 Hash URL 更加美观</h3><p><img src="http://www.cc12210.xyz/usr/uploads/2018/12/910244050.png" alt="history模式.png"></p>
+<h3 id="History-模式是-HTML5-新推出的功能，比之-Hash-URL-更加美观">History 模式是 HTML5 新推出的功能，比之 Hash URL 更加美观</h3>
+<p><img src="http://www.cc12210.xyz/usr/uploads/2018/12/910244050.png" alt="history模式.png"></p>
 
       
     </div>
@@ -498,7 +500,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-count">103</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="为什么需要 Virtual Dom?众所周知，操作 DOM 是很耗费性能的一件事情，既然如此，我们可以考虑通过 JS 对象来模拟 DOM 对象，毕竟操作 JS 对象比操作 DOM 省时的多。可以说虚拟 dom 节点就是 js 对象,在 js 中创建对象是消耗的性能是可以忽略不计的在创建 dom 节点时创建一个 js 对象，当新的修改时创建一个新的 dom 的 js 对象，通过新旧对象对比来修改部分">
+<meta name="description" content="为什么需要 Virtual Dom? 众所周知，操作 DOM 是很耗费性能的一件事情，既然如此，我们可以考虑通过 JS 对象来模拟 DOM 对象，毕竟操作 JS 对象比操作 DOM 省时的多。 可以说虚拟 dom 节点就是 js 对象,在 js 中创建对象是消耗的性能是可以忽略不计的 在创建 dom 节点时创建一个 js 对象，当新的修改时创建一个新的 dom 的 js 对象，通过新旧对象对比来修">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Virtual Dom(虚拟dom节点)">
 <meta property="og:url" content="http://yoursite.com/2018/07/03/2018-07-03-Virtual_Dom(%E8%99%9A%E6%8B%9Fdom%E8%8A%82%E7%82%B9)/index.html">
 <meta property="og:site_name" content="曹小诚的个人空间">
-<meta property="og:description" content="为什么需要 Virtual Dom?众所周知，操作 DOM 是很耗费性能的一件事情，既然如此，我们可以考虑通过 JS 对象来模拟 DOM 对象，毕竟操作 JS 对象比操作 DOM 省时的多。可以说虚拟 dom 节点就是 js 对象,在 js 中创建对象是消耗的性能是可以忽略不计的在创建 dom 节点时创建一个 js 对象，当新的修改时创建一个新的 dom 的 js 对象，通过新旧对象对比来修改部分">
+<meta property="og:description" content="为什么需要 Virtual Dom? 众所周知，操作 DOM 是很耗费性能的一件事情，既然如此，我们可以考虑通过 JS 对象来模拟 DOM 对象，毕竟操作 JS 对象比操作 DOM 省时的多。 可以说虚拟 dom 节点就是 js 对象,在 js 中创建对象是消耗的性能是可以忽略不计的 在创建 dom 节点时创建一个 js 对象，当新的修改时创建一个新的 dom 的 js 对象，通过新旧对象对比来修">
 <meta property="article:published_time" content="2018-07-03T11:05:00.000Z">
 <meta property="article:modified_time" content="2018-12-03T02:30:05.000Z">
 <meta property="article:author" content="cc12210">
@@ -366,18 +366,23 @@
       
 
       
-        <h2 id="为什么需要-Virtual-Dom"><a href="#为什么需要-Virtual-Dom" class="headerlink" title="为什么需要 Virtual Dom?"></a>为什么需要 Virtual Dom?</h2><h4 id="众所周知，操作-DOM-是很耗费性能的一件事情，既然如此，我们可以考虑通过-JS-对象来模拟-DOM-对象，毕竟操作-JS-对象比操作-DOM-省时的多。"><a href="#众所周知，操作-DOM-是很耗费性能的一件事情，既然如此，我们可以考虑通过-JS-对象来模拟-DOM-对象，毕竟操作-JS-对象比操作-DOM-省时的多。" class="headerlink" title="众所周知，操作 DOM 是很耗费性能的一件事情，既然如此，我们可以考虑通过 JS 对象来模拟 DOM 对象，毕竟操作 JS 对象比操作 DOM 省时的多。"></a>众所周知，操作 DOM 是很耗费性能的一件事情，既然如此，我们可以考虑通过 JS 对象来模拟 DOM 对象，毕竟操作 JS 对象比操作 DOM 省时的多。</h4><h3 id="可以说虚拟-dom-节点就是-js-对象-在-js-中创建对象是消耗的性能是可以忽略不计的"><a href="#可以说虚拟-dom-节点就是-js-对象-在-js-中创建对象是消耗的性能是可以忽略不计的" class="headerlink" title="可以说虚拟 dom 节点就是 js 对象,在 js 中创建对象是消耗的性能是可以忽略不计的"></a>可以说虚拟 dom 节点就是 js 对象,在 js 中创建对象是消耗的性能是可以忽略不计的</h3><p>在创建 dom 节点时创建一个 js 对象，当新的修改时创建一个新的 dom 的 js 对象，通过新旧对象对比来修改部分需要修改的 dom 节点</p>
-<h2 id="Virtual-Dom-算法简述"><a href="#Virtual-Dom-算法简述" class="headerlink" title="Virtual Dom 算法简述"></a>Virtual Dom 算法简述</h2><p>既然我们已经通过 JS 来模拟实现了 DOM，那么接下来的难点就在于如何判断旧的对象和新的对象之间的差异。</p>
+        <h2 id="为什么需要-Virtual-Dom">为什么需要 Virtual Dom?</h2>
+<h4 id="众所周知，操作-DOM-是很耗费性能的一件事情，既然如此，我们可以考虑通过-JS-对象来模拟-DOM-对象，毕竟操作-JS-对象比操作-DOM-省时的多。">众所周知，操作 DOM 是很耗费性能的一件事情，既然如此，我们可以考虑通过 JS 对象来模拟 DOM 对象，毕竟操作 JS 对象比操作 DOM 省时的多。</h4>
+<h3 id="可以说虚拟-dom-节点就是-js-对象-在-js-中创建对象是消耗的性能是可以忽略不计的">可以说虚拟 dom 节点就是 js 对象,在 js 中创建对象是消耗的性能是可以忽略不计的</h3>
+<p>在创建 dom 节点时创建一个 js 对象，当新的修改时创建一个新的 dom 的 js 对象，通过新旧对象对比来修改部分需要修改的 dom 节点</p>
+<h2 id="Virtual-Dom-算法简述">Virtual Dom 算法简述</h2>
+<p>既然我们已经通过 JS 来模拟实现了 DOM，那么接下来的难点就在于如何判断旧的对象和新的对象之间的差异。</p>
 <p>DOM 是多叉树的结构，如果需要完整的对比两颗树的差异，那么需要的时间复杂度会是 O(n ^ 3)，这个复杂度肯定是不能接受的。于是 React 团队优化了算法，实现了 O(n) 的复杂度来对比差异。</p>
 <p>实现 O(n) 复杂度的关键就是只对比同层的节点，而不是跨层对比，这也是考虑到在实际业务中很少会去跨层的移动 DOM 元素。</p>
 <a id="more"></a>
-
 <p>所以判断差异的算法就分为了两步</p>
 <ul>
 <li>首先从上至下，从左往右遍历对象，也就是树的深度遍历，这一步中会给每个节点添加索引，便于最后渲染差异</li>
 <li>一旦节点有子元素，就去判断子元素是否有不同</li>
 </ul>
-<h2 id="Virtual-Dom-算法实现"><a href="#Virtual-Dom-算法实现" class="headerlink" title="Virtual Dom 算法实现"></a>Virtual Dom 算法实现</h2><h3 id="树的递归"><a href="#树的递归" class="headerlink" title="树的递归"></a>树的递归</h3><ul>
+<h2 id="Virtual-Dom-算法实现">Virtual Dom 算法实现</h2>
+<h3 id="树的递归">树的递归</h3>
+<ul>
 <li>新的节点的 tagName 或者 key 和旧的不同，这种情况代表需要替换旧的节点，并且也不再需要遍历新旧节点的子元素了，因为整个旧节点都被删掉了</li>
 <li>新的节点的 tagName 和 key（可能都没有）和旧的相同，开始遍历子树</li>
 <li>没有新的节点，那么什么都不用做</li>
@@ -501,7 +506,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-count">103</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

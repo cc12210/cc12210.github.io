@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="在 websocket 出现之前，服务器与客户端的通信一般分为长连接和短连接长连接就是服务器和客户端一直保持通讯来实现消息的实时更新，但是这样做是十分的吃服务器资源的，用户一多就会特别卡短连接就是每次新建一个 socket，处理完了就关闭掉 socket，然后再次请求就再建一个 socket 连接，短连接很浪费带宽和时间两者互为优缺点，合理选择最重要。银行就一般采用短连接，为安全性考虑  长连接">
+<meta name="description" content="在 websocket 出现之前，服务器与客户端的通信一般分为长连接和短连接 长连接就是服务器和客户端一直保持通讯来实现消息的实时更新，但是这样做是十分的吃服务器资源的，用户一多就会特别卡 短连接就是每次新建一个 socket，处理完了就关闭掉 socket，然后再次请求就再建一个 socket 连接，短连接很浪费带宽和时间 两者互为优缺点，合理选择最重要。银行就一般采用短连接，为安全性考虑">
 <meta property="og:type" content="article">
 <meta property="og:title" content="WebSocket通讯">
 <meta property="og:url" content="http://yoursite.com/2017/12/29/2017-12-29-WebSocket%E9%80%9A%E8%AE%AF/index.html">
 <meta property="og:site_name" content="曹小诚的个人空间">
-<meta property="og:description" content="在 websocket 出现之前，服务器与客户端的通信一般分为长连接和短连接长连接就是服务器和客户端一直保持通讯来实现消息的实时更新，但是这样做是十分的吃服务器资源的，用户一多就会特别卡短连接就是每次新建一个 socket，处理完了就关闭掉 socket，然后再次请求就再建一个 socket 连接，短连接很浪费带宽和时间两者互为优缺点，合理选择最重要。银行就一般采用短连接，为安全性考虑  长连接">
+<meta property="og:description" content="在 websocket 出现之前，服务器与客户端的通信一般分为长连接和短连接 长连接就是服务器和客户端一直保持通讯来实现消息的实时更新，但是这样做是十分的吃服务器资源的，用户一多就会特别卡 短连接就是每次新建一个 socket，处理完了就关闭掉 socket，然后再次请求就再建一个 socket 连接，短连接很浪费带宽和时间 两者互为优缺点，合理选择最重要。银行就一般采用短连接，为安全性考虑">
 <meta property="og:image" content="http://www.cc12210.xyz/usr/uploads/2018/10/2019420270.png">
 <meta property="og:image" content="http://www.cc12210.xyz/usr/uploads/2018/10/3327238247.jpg">
 <meta property="og:image" content="http://www.cc12210.xyz/usr/uploads/2018/10/3820947272.png">
@@ -370,13 +370,30 @@
 
       
         <hr>
-<p>在 websocket 出现之前，服务器与客户端的通信一般分为长连接和短连接<br>长连接就是服务器和客户端一直保持通讯来实现消息的实时更新，但是这样做是十分的吃服务器资源的，用户一多就会特别卡<br>短连接就是每次新建一个 socket，处理完了就关闭掉 socket，然后再次请求就再建一个 socket 连接，短连接很浪费带宽和时间<br>两者互为优缺点，合理选择最重要。银行就一般采用短连接，为安全性考虑</p>
+<p>在 websocket 出现之前，服务器与客户端的通信一般分为长连接和短连接<br>
+长连接就是服务器和客户端一直保持通讯来实现消息的实时更新，但是这样做是十分的吃服务器资源的，用户一多就会特别卡<br>
+短连接就是每次新建一个 socket，处理完了就关闭掉 socket，然后再次请求就再建一个 socket 连接，短连接很浪费带宽和时间<br>
+两者互为优缺点，合理选择最重要。银行就一般采用短连接，为安全性考虑</p>
 <hr>
-<p><strong>长连接短连接操作过程</strong><br>短连接的操作步骤是：<br>建立连接——数据传输——关闭连接…建立连接——数据传输——关闭连接<br>长连接的操作步骤是：<br>建立连接——数据传输…（保持连接）…数据传输——关闭连接</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>在 websocket 出现之前，想要实现在线聊天室需要使用到 ajax 轮询技术<br>客户端：有消息没？<br>服务器：没有<br>客户端：有消息没？<br>服务器：没有，滚<br>客户端：怎么还没有消息吗？<br>服务器：行吧，xxx 说了一句这个客户端真垃圾</p>
-<h2 id="-1"><a href="#-1" class="headerlink" title=""></a><img src="http://www.cc12210.xyz/usr/uploads/2018/10/2019420270.png" alt="通信流程"></h2><p>websocket 是 HTML5 中一个非常重要的特性，他可以实现客户端服务器的双向通信。<br>服务器发生了更新，不需要客户端主动去请求或者刷新页面去获得消息，服务器会主动将信息发送给客户端。</p>
+<p><strong>长连接短连接操作过程</strong><br>
+短连接的操作步骤是：<br>
+建立连接——数据传输——关闭连接…建立连接——数据传输——关闭连接<br>
+长连接的操作步骤是：<br>
+建立连接——数据传输…（保持连接）…数据传输——关闭连接</p>
+<h2 id="more"><a id="more"></a></h2>
+<p>在 websocket 出现之前，想要实现在线聊天室需要使用到 ajax 轮询技术<br>
+客户端：有消息没？<br>
+服务器：没有<br>
+客户端：有消息没？<br>
+服务器：没有，滚<br>
+客户端：怎么还没有消息吗？<br>
+服务器：行吧，xxx 说了一句这个客户端真垃圾</p>
+<h2 id="通信流程"><img src="http://www.cc12210.xyz/usr/uploads/2018/10/2019420270.png" alt="通信流程"></h2>
+<p>websocket 是 HTML5 中一个非常重要的特性，他可以实现客户端服务器的双向通信。<br>
+服务器发生了更新，不需要客户端主动去请求或者刷新页面去获得消息，服务器会主动将信息发送给客户端。</p>
 <hr>
-<p><img src="http://www.cc12210.xyz/usr/uploads/2018/10/3327238247.jpg" alt="u=3071664683,2322847154&amp;fm=26&amp;gp=0.jpg"><br><img src="http://www.cc12210.xyz/usr/uploads/2018/10/3820947272.png" alt="9f43c6459d89706d3e7ccbc19f2bcbae.png"></p>
+<p><img src="http://www.cc12210.xyz/usr/uploads/2018/10/3327238247.jpg" alt="u=3071664683,2322847154&amp;fm=26&amp;gp=0.jpg"><br>
+<img src="http://www.cc12210.xyz/usr/uploads/2018/10/3820947272.png" alt="9f43c6459d89706d3e7ccbc19f2bcbae.png"></p>
 <p><strong>WebSocket 如何工作？</strong></p>
 <p>Web 浏览器和服务器都必须实现 WebSockets 协议来建立和维护连接。由于 WebSockets 连接长期存在，与典型的 HTTP 连接不同，对服务器有重要的影响。</p>
 <p>基于多线程或多进程的服务器无法适用于 WebSockets，因为它旨在打开连接，尽可能快地处理请求，然后关闭连接。任何实际的 WebSockets 服务器端实现都需要一个异步服务器。</p>
@@ -493,7 +510,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-count">103</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -548,7 +565,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-1"><span class="nav-number">2.</span> <span class="nav-text"></span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#more"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通信流程"><span class="nav-number">2.</span> <span class="nav-text"></span></a></li></ol></div>
             
 
           </div>

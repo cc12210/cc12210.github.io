@@ -262,6 +262,499 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/21/2018-02-21-vue%E8%B7%AF%E7%94%B1$route%E7%9A%84%E4%BC%A0%E5%8F%82/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cc12210">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="曹小诚的个人空间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/21/2018-02-21-vue%E8%B7%AF%E7%94%B1$route%E7%9A%84%E4%BC%A0%E5%8F%82/" itemprop="url">vue路由$route的传参</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-21T20:28:00+08:00">
+                2018-02-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">默认分类</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1>路由的传参方式有很多种</h1>
+<h2 id="这里先介绍一下通过-route-传参">这里先介绍一下通过$route 传参</h2>
+<hr>
+<h1>使用$route，注意：这个是$route 不是$router</h1>
+<h3 id="route是路由的数据-router为VueRouter的实例，相当于一个全局的路由器对象，里面含有很多属性和子对象，例如history对象。。。经常用的跳转链接就可以用this-router-push，和-router-link-跳转一样。route-相当于当前正在跳转的路由对象。。可以从里面获取-name-path-params-query-等。">$route是路由的数据,router为VueRouter的实例，相当于一个全局的路由器对象，里面含有很多属性和子对象，例如history对象。。。经常用的跳转链接就可以用this.$router.push，和 router-link 跳转一样。route 相当于当前正在跳转的路由对象。。可以从里面获取 name,path,params,query 等。</h3>
+<p>首先你需要在对路由的 path 配置进行更改<br>
+在 path 的配置中你需要在 path 后面配置好,若设置了一个那就传一个</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">routes: [</span><br><span class="line">  &#123;</span><br><span class="line">    component: Home,</span><br><span class="line">    path: <span class="string">"/home"</span>,</span><br><span class="line">    children: [</span><br><span class="line">      &#123;</span><br><span class="line">        path: <span class="string">"detail/:name"</span>, <span class="comment">//在配置路径时后面加/:想要传递的字段,可以添加任意个数</span></span><br><span class="line">        component: Detail,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<h2 id="Home-vue-这个是需要传递参数的组件">Home.vue 这个是需要传递参数的组件</h2>
+<p>使用 router-link 的 to 属性传值,这个 good。title 是下面的商品名称,需要进行一下字符串拼接</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:to=<span class="string">"'/home/detail/'+good.title"</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/21/2018-02-21-vue%E8%B7%AF%E7%94%B1$route%E7%9A%84%E4%BC%A0%E5%8F%82/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/19/2018-02-19-vue%E8%B7%AF%E7%94%B1%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cc12210">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="曹小诚的个人空间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/19/2018-02-19-vue%E8%B7%AF%E7%94%B1%E5%9F%BA%E7%A1%80/" itemprop="url">vue路由基础</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-19T06:13:00+08:00">
+                2018-02-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">默认分类</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1>介绍</h1>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vue-router 就是路由，地址栏输什么，到什么页面</span><br><span class="line">可以理解为通过地址栏的url来实现组件的切换</span><br><span class="line">而且vue-router可以通过html5的history实现单页面应用</span><br><span class="line">不刷新跳转，你切地址，只是页面上的组件的切换。</span><br><span class="line">另外vue-router还可以实现页面间传参等其他功能。</span><br></pre></td></tr></table></figure>
+<h1>安装</h1>
+<p>使用脚手架创建项目的时候,需要配置一下选项,勾选路由<br>
+<code>自定义配置</code><br>
+<img src="http://www.cc12210.xyz/usr/uploads/2018/11/2829399723.png" alt="自定义配置"><br>
+<code>勾选路由</code><br>
+<img src="http://www.cc12210.xyz/usr/uploads/2018/11/888195747.png" alt="勾选路由"><br>
+后续操作和之前一样,就可以完成创建了</p>
+<h2 id="more">
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/19/2018-02-19-vue%E8%B7%AF%E7%94%B1%E5%9F%BA%E7%A1%80/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/17/2018-02-17-keep-alive%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95(errorCaptured%E6%8B%93%E5%B1%95)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cc12210">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="曹小诚的个人空间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/17/2018-02-17-keep-alive%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95(errorCaptured%E6%8B%93%E5%B1%95)/" itemprop="url">keep-alive的使用方法(errorCaptured拓展)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-17T13:15:00+08:00">
+                2018-02-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">默认分类</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>在单页面应用(Single Page Application)中,我们需要多个 tab 页中不断切换。同时,用户在某个页面中输入了数据,在提交前切换到了另一个页面,但是他的数据必须要保留,我们使用的 v-if 作为判断时,每次切换都会重新走一遍实例的生命周期,所以我们不能让页面进行销毁,这样用户的之前的数据丢失会很没有用户体验<br>
+这时候需要用到<code>keep-alive</code>来缓存数据,阻止生命周期销毁</p>
+<hr>
+<p>在下面这个实例中,三个按钮分别切换三个页面,用 keep-alive 标签包裹即可使得页面不进行销毁</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/17/2018-02-17-keep-alive%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95(errorCaptured%E6%8B%93%E5%B1%95)/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/15/2018-02-15-slot%E6%8F%92%E6%A7%BD%E7%9A%84%E4%BD%BF%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -367,7 +860,6 @@
         
           <p>当我们在一个根组件中引入了子组件,然后子组件中的内容是由子组件进行渲染的,往子组件的标签中插入内容是无效的</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">比如本次例子中引入了一个wrap组件</span><br><span class="line"><span class="tag">&lt;<span class="name">wrap</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>新增的内容<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  //自行添加进组件的内容</span><br><span class="line"><span class="tag">&lt;/<span class="name">wrap</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <p>在页面进行渲染的时候,这个 h1 并不会出现,因为它会被 wrap 组件中的内容给覆盖掉</p>
           <!--noindex-->
           <div class="post-button text-center">
@@ -525,11 +1017,11 @@
 
       
         
-          <p>ref 被用来给元素或子组件注册引用信息。引用信息将会注册在父组件的 $refs 对象上。<br>如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如果用在子组件上，引用就指向组件实例</p>
+          <p>ref 被用来给元素或子组件注册引用信息。引用信息将会注册在父组件的 $refs 对象上。<br>
+如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如果用在子组件上，引用就指向组件实例</p>
 <hr>
 <p>这里需要注意的是 ref 绑定的值不要取名为一样的，给多个元素绑定的 ref 名字相同的话,只会找到最后一个 dom 对象,后面会覆盖前面的</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>根组件<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span> <span class="attr">ref</span>=<span class="string">"h1"</span>&gt;</span>hello world<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span> <span class="attr">ref</span>=<span class="string">"h2"</span>&gt;</span>hello world<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span> <span class="attr">ref</span>=<span class="string">"h3"</span>&gt;</span>hello world<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span> <span class="attr">ref</span>=<span class="string">"h4"</span>&gt;</span>hello world<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line">    mounted() &#123;</span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(<span class="keyword">this</span>.$refs);</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(<span class="keyword">this</span>.$refs.h1);</span></span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <p><img src="http://www.cc12210.xyz/usr/uploads/2018/11/2073000328.png" alt="测试1"></p>
           <!--noindex-->
           <div class="post-button text-center">
@@ -687,15 +1179,23 @@
 
       
         
-          <h1 id="Vue-CLI-是一个基于-Vue-js-进行快速开发的完整系统"><a href="#Vue-CLI-是一个基于-Vue-js-进行快速开发的完整系统" class="headerlink" title="Vue CLI 是一个基于 Vue.js 进行快速开发的完整系统"></a>Vue CLI 是一个基于 Vue.js 进行快速开发的完整系统</h1><p>先进行全局的安装</p>
+          <h1>Vue CLI 是一个基于 Vue.js 进行快速开发的完整系统</h1>
+<p>先进行全局的安装</p>
 <blockquote>
-<p>npm install -g @vue/cli<br>或者<br>yarn global add @vue/cli<br>推荐直接复制,手敲可能敲错<br><img src="https://i.loli.net/2018/11/09/5be53755ea25c.bmp" alt="错误.bmp"><br>如果出现了安装失败的提示的话可以切换一下国内镜像<br>npm config set registry <a href="http://registry.cnpmjs.org" target="_blank" rel="noopener">http://registry.cnpmjs.org</a></p>
+<p>npm install -g @vue/cli<br>
+或者<br>
+yarn global add @vue/cli<br>
+推荐直接复制,手敲可能敲错<br>
+<img src="https://i.loli.net/2018/11/09/5be53755ea25c.bmp" alt="错误.bmp"><br>
+如果出现了安装失败的提示的话可以切换一下国内镜像<br>
+npm config set registry <a href="http://registry.cnpmjs.org" target="_blank" rel="noopener">http://registry.cnpmjs.org</a></p>
 </blockquote>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="http://www.cc12210.xyz/usr/uploads/2018/11/258540437.png" alt="错误.png"></h2><p>安装完毕之后可以对脚手架的版本进行检查</p>
+<h2 id="错误-png"><img src="http://www.cc12210.xyz/usr/uploads/2018/11/258540437.png" alt="错误.png"></h2>
+<p>安装完毕之后可以对脚手架的版本进行检查</p>
 <blockquote>
-<p>vue –version</p>
+<p>vue --version</p>
 </blockquote>
-<h2 id="-1"><a href="#-1" class="headerlink" title=""></a>
+<h2 id="more">
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/02/11/2018-02-11-vue%E8%84%9A%E6%89%8B%E6%9E%B6Vue_CLI3/#more" rel="contents">
@@ -854,9 +1354,13 @@
         
           <p>非父子组件传值主要有两种方法</p>
 <hr>
-<h1 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h1><p>利用一个中间的文件进行传值<br><code>center.js</code><br>主要的实现思想是需要传值的组件将值传给 center.js 再由 center 转发给需要值的组件<br>使用到的主要是$emit()和$on()事件<br>新 new 一个 vue 实例对象,然后将这两个方法挂载到这个对象,两个组件都引用这个实例对象的文件就可以通信了</p>
+<h1>方法一</h1>
+<p>利用一个中间的文件进行传值<br>
+<code>center.js</code><br>
+主要的实现思想是需要传值的组件将值传给 center.js 再由 center 转发给需要值的组件<br>
+使用到的主要是$emit()和$on()事件<br>
+新 new 一个 vue 实例对象,然后将这两个方法挂载到这个对象,两个组件都引用这个实例对象的文件就可以通信了</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">"vue"</span>;</span><br><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue();</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> vm;</span><br><span class="line"><span class="comment">//发布订阅模式：</span></span><br><span class="line"><span class="comment">// 多对多</span></span><br><span class="line"><span class="comment">// 先订阅后发布才有效</span></span><br><span class="line"><span class="comment">// 先监听，后触发，监听的回调函数才会执行。</span></span><br><span class="line"><span class="comment">// 监听自定义事件</span></span><br><span class="line"><span class="comment">// 参数1：事件名字</span></span><br><span class="line"><span class="comment">// 参数2：回调函数，事件触发后就执行</span></span><br><span class="line">vm.$on(<span class="string">"my-event"</span>, (params) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"监听到了事件执行了1"</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 触发事件，自定义事件</span></span><br><span class="line"><span class="comment">// 参数1：事件名字</span></span><br><span class="line"><span class="comment">// 参数2：执行事件的参数</span></span><br><span class="line">vm.$emit(<span class="string">"my-event"</span>, <span class="string">"参数"</span>);</span><br></pre></td></tr></table></figure>
-
 <p>需要传值的 add.vue 通过点击事件手动触发$emit()方法,将值挂载在后面传过去</p>
           <!--noindex-->
           <div class="post-button text-center">
@@ -1016,13 +1520,12 @@
         
           <p><strong>组件之间的相互传值</strong></p>
 <hr>
-<p><strong>父组件向子组件传值</strong><br>父组件在想要传值的子组件添加自定义属性 <code>:属性名="值"</code></p>
+<p><strong>父组件向子组件传值</strong><br>
+父组件在想要传值的子组件添加自定义属性 <code>:属性名=“值”</code></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"father"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>这是父组件<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">son</span> <span class="attr">:newInfo</span>=<span class="string">"Maininfo"</span>&gt;</span><span class="tag">&lt;/<span class="name">son</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <p>子组件通过 props 接收对应的属性名来获取到传过来的值,如果 props 写成对象的形式,可以在后面写上对应的数据类型进行属性校验,主要是为了团队开发方便查看传值的类型</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="comment">// 接收标签中的属性。接收父组件传的值</span></span><br><span class="line">  <span class="comment">//外部属性</span></span><br><span class="line">  <span class="comment">// props: ['newInfo'],</span></span><br><span class="line">  props: &#123;</span><br><span class="line">    <span class="comment">//属性校验</span></span><br><span class="line">    newInfo: <span class="built_in">String</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id=""><a href="#" class="headerlink" title=""></a>
+<h2 id="more">
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/02/06/2018-02-06-vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BC%A0%E5%80%BC/#more" rel="contents">
@@ -1180,7 +1683,14 @@
       
         
           
-            <p>视频资源本来也是想交给百度云的,但是百度云比较过分的将视频资源的真实地址隐藏了<br>!!!<br><img src="../../../blogImg/dizhi.png" alt="被隐藏的资源地址"><br>!!!<br>由于短视频比较火爆,所以注册了一个秒拍，将视频资源上传到秒拍之后<br>截取视频的地址，因为这个小服务器资源请求速度比较慢，部分视频放在秒拍，部分放在本地解析<br>再试试其他云盘的视频资源路径,找找有没有没加密的<br>放置了两个小游戏的链接,推荐手机端玩耍,有时间就再加一个 pc 的 html5 游戏放上来</p>
+            <p>视频资源本来也是想交给百度云的,但是百度云比较过分的将视频资源的真实地址隐藏了<br>
+!!!<br>
+<img src="../../../blogImg/dizhi.png" alt="被隐藏的资源地址"><br>
+!!!<br>
+由于短视频比较火爆,所以注册了一个秒拍，将视频资源上传到秒拍之后<br>
+截取视频的地址，因为这个小服务器资源请求速度比较慢，部分视频放在秒拍，部分放在本地解析<br>
+再试试其他云盘的视频资源路径,找找有没有没加密的<br>
+放置了两个小游戏的链接,推荐手机端玩耍,有时间就再加一个 pc 的 html5 游戏放上来</p>
 <hr>
 <p>2018.6.27 补充</p>
 <p>微博的视频也是可以直接拉资源地址下来的，暂不知道会不会过期</p>
@@ -1337,9 +1847,7 @@
         
           <p>vue 中可以自定义组件,定义了之后就可以在 html 中使用了</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">hello-world</span>&gt;</span><span class="tag">&lt;/<span class="name">hello-world</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">hello-world</span>&gt;</span><span class="tag">&lt;/<span class="name">hello-world</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">hello-world</span>&gt;</span><span class="tag">&lt;/<span class="name">hello-world</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// 声明组件 // 参数1：组件的名字(不能跟已有的标签名字重复,</span><br><span class="line">dom中标签名字不能用大写字符) // 参数2：组件的内容 // Vue.component('HelloWorld',</span><br><span class="line">&#123; // Vue.component('helloWorld', &#123; Vue.component('hello-world', &#123;</span><br><span class="line">//声明组件的dom结构，必须有一个根节点 template: `</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h3</span>&gt;</span>&#123;&#123;title&#125;&#125;<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>test component<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span>test div<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">`, //可以把组件理解成是一个小的vue实例 // 一个vue实例由多个组件组合而成 data:</span><br><span class="line">function () &#123; //在data函数中return得到的值就是组件的属性 return &#123; title:</span><br><span class="line">'这是我的第一个组件' &#125; &#125; //其他的配置项跟vue实例是一样的： // computed: //</span><br><span class="line">methods: // watch: //生命周期方法 &#125;); var vm = new Vue(&#123; el: '#app', data: &#123; &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
 <p>值得注意的是在组件中组件也可以当作一个 vue 实例去对待,在组件中也可以创建组件,但是每个组件只能在创建组件的地方使用,还有一点是组件中的 data 和 vue 实例中的 data 不一样</p>
           <!--noindex-->
           <div class="post-button text-center">
@@ -1381,488 +1889,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/23/2018-01-23-Vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="cc12210">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="曹小诚的个人空间">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/23/2018-01-23-Vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/" itemprop="url">Vue自定义指令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-23T12:32:00+08:00">
-                2018-01-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/" itemprop="url" rel="index">
-                    <span itemprop="name">默认分类</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>除了 Vue 给我们提供的默认指令之外,Vue 也允许我们注册自定义指令。就是自己定义一个指令,对这个指令赋予函数完成想要的功能,然后就可以跟默认指令一样使用<code>v-指令名</code>来调用这个自定义指令</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/23/2018-01-23-Vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/16/2018-01-16-vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="cc12210">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="曹小诚的个人空间">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/16/2018-01-16-vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" itemprop="url">vue生命周期</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-16T12:20:00+08:00">
-                2018-01-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/" itemprop="url" rel="index">
-                    <span itemprop="name">默认分类</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="http://www.cc12210.xyz/usr/uploads/2018/11/2073613615.png" alt="1460000012510450.png"></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/16/2018-01-16-vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/15/2018-01-15-Vue%E7%9A%84%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E5%92%8C%E4%BE%A6%E5%90%AC%E5%99%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="cc12210">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="曹小诚的个人空间">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/15/2018-01-15-Vue%E7%9A%84%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E5%92%8C%E4%BE%A6%E5%90%AC%E5%99%A8/" itemprop="url">Vue的计算属性和侦听器</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-15T12:17:00+08:00">
-                2018-01-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/" itemprop="url" rel="index">
-                    <span itemprop="name">默认分类</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><strong>计算属性</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">    a:</span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"number"</span> <span class="attr">v-model.number</span>=<span class="string">"a"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">    b:</span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"number"</span> <span class="attr">v-model.number</span>=<span class="string">"b"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  总价：&#123;&#123;count1&#125;&#125;<span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">  总价：&#123;&#123;count1&#125;&#125;<span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">  总价：&#123;&#123;count2()&#125;&#125;<span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">  总价：&#123;&#123;count2()&#125;&#125;<span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">"#app"</span>,</span><br><span class="line">  <span class="comment">//属性</span></span><br><span class="line">  data: &#123;</span><br><span class="line">    a: <span class="number">1</span>,</span><br><span class="line">    b: <span class="number">2</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 计算属性</span></span><br><span class="line">  <span class="comment">// 也是属性的一种</span></span><br><span class="line">  <span class="comment">// 通过其他的属性，计算得到的属性结果</span></span><br><span class="line">  <span class="comment">// 计算属性，第一次调用会对结果进行缓存，下一次访问，直接使用缓存的结果</span></span><br><span class="line">  <span class="comment">// 如果相关联的属性发生变化，计算属性会重新计算并缓存。</span></span><br><span class="line">  computed: &#123;</span><br><span class="line">    count1() &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"count1计算属性执行了"</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.a + <span class="keyword">this</span>.b;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">//方法,调用多少次，就执行多少次</span></span><br><span class="line">  methods: &#123;</span><br><span class="line">    count2() &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"count2方法执行了"</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.a + <span class="keyword">this</span>.b;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>计算属性中的值会进行缓存,且第一次调用时会对结果进行缓存,如果页面中有相同的引用就会使用缓存,而放在 methods 中的方法每次调用都会进行一次计算,这样对性能是有损耗的,引用多次会进行重复的计算,消耗计算性能</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/15/2018-01-15-Vue%E7%9A%84%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E5%92%8C%E4%BE%A6%E5%90%AC%E5%99%A8/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/">&lt;i class&#x3D;&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/10/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/8/">&lt;i class&#x3D;&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/10/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
   </nav>
 
 
@@ -1908,7 +1939,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-count">103</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

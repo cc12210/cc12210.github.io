@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="避免在定义对象方法时使用箭头函数的 this 指向是由其上下文决定的此时 this 指向为函数的调用者 obj打印的 this.name 为 obj.name 箭头函数由于箭头函数自身没有 this 会自动继承外层的 this 导致打印出的变量出错 避免在 prototype 上使用因为没有 this 导致 this 指向错误，所以在定义 prototype 方法上一定记得不要使用箭头函数">
+<meta name="description" content="避免在定义对象方法时使用 箭头函数的 this 指向是由其上下文决定的 此时 this 指向为函数的调用者 obj  打印的 this.name 为 obj.name  箭头函数  由于箭头函数自身没有 this 会自动继承外层的 this 导致打印出的变量出错  避免在 prototype 上使用 因为没有 this 导致 this 指向错误，所以在定义 prototype 方法上一定记得不要使">
 <meta property="og:type" content="article">
 <meta property="og:title" content="几种应该避免使用箭头函数的情况">
 <meta property="og:url" content="http://yoursite.com/2019/04/25/2019-04-25-%E5%87%A0%E7%A7%8D%E5%BA%94%E8%AF%A5%E9%81%BF%E5%85%8D%E4%BD%BF%E7%94%A8%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E7%9A%84%E6%83%85%E5%86%B5/index.html">
 <meta property="og:site_name" content="曹小诚的个人空间">
-<meta property="og:description" content="避免在定义对象方法时使用箭头函数的 this 指向是由其上下文决定的此时 this 指向为函数的调用者 obj打印的 this.name 为 obj.name 箭头函数由于箭头函数自身没有 this 会自动继承外层的 this 导致打印出的变量出错 避免在 prototype 上使用因为没有 this 导致 this 指向错误，所以在定义 prototype 方法上一定记得不要使用箭头函数">
+<meta property="og:description" content="避免在定义对象方法时使用 箭头函数的 this 指向是由其上下文决定的 此时 this 指向为函数的调用者 obj  打印的 this.name 为 obj.name  箭头函数  由于箭头函数自身没有 this 会自动继承外层的 this 导致打印出的变量出错  避免在 prototype 上使用 因为没有 this 导致 this 指向错误，所以在定义 prototype 方法上一定记得不要使">
 <meta property="og:image" content="http://www.cc12210.xyz/usr/uploads/2019/04/267063489.png">
 <meta property="og:image" content="http://www.cc12210.xyz/usr/uploads/2019/04/2428173053.png">
 <meta property="og:image" content="http://www.cc12210.xyz/usr/uploads/2019/04/1844895864.png">
@@ -371,17 +371,26 @@
       
 
       
-        <h3 id="避免在定义对象方法时使用"><a href="#避免在定义对象方法时使用" class="headerlink" title="避免在定义对象方法时使用"></a>避免在定义对象方法时使用</h3><h4 id="箭头函数的-this-指向是由其上下文决定的"><a href="#箭头函数的-this-指向是由其上下文决定的" class="headerlink" title="箭头函数的 this 指向是由其上下文决定的"></a>箭头函数的 this 指向是由其上下文决定的</h4><p>此时 this 指向为函数的调用者 obj<br><img src="http://www.cc12210.xyz/usr/uploads/2019/04/267063489.png" alt="BaiduHi_2019-4-25_11-2-11.png"><br>打印的 this.name 为 obj.name<br><img src="http://www.cc12210.xyz/usr/uploads/2019/04/2428173053.png" alt="BaiduHi_2019-4-25_11-2-22.png"></p>
-<h4 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h4><p><img src="http://www.cc12210.xyz/usr/uploads/2019/04/1844895864.png" alt="BaiduHi_2019-4-25_11-1-23.png"><br>由于箭头函数自身没有 this 会自动继承外层的 this 导致打印出的变量出错<br><img src="http://www.cc12210.xyz/usr/uploads/2019/04/4019100955.png" alt="BaiduHi_2019-4-25_11-1-39.png"></p>
-<h3 id="避免在-prototype-上使用"><a href="#避免在-prototype-上使用" class="headerlink" title="避免在 prototype 上使用"></a>避免在 prototype 上使用</h3><h4 id="因为没有-this-导致-this-指向错误，所以在定义-prototype-方法上一定记得不要使用箭头函数"><a href="#因为没有-this-导致-this-指向错误，所以在定义-prototype-方法上一定记得不要使用箭头函数" class="headerlink" title="因为没有 this 导致 this 指向错误，所以在定义 prototype 方法上一定记得不要使用箭头函数"></a>因为没有 this 导致 this 指向错误，所以在定义 prototype 方法上一定记得不要使用箭头函数</h4><a id="more"></a>
-
+        <h3 id="避免在定义对象方法时使用">避免在定义对象方法时使用</h3>
+<h4 id="箭头函数的-this-指向是由其上下文决定的">箭头函数的 this 指向是由其上下文决定的</h4>
+<p>此时 this 指向为函数的调用者 obj<br>
+<img src="http://www.cc12210.xyz/usr/uploads/2019/04/267063489.png" alt="BaiduHi_2019-4-25_11-2-11.png"><br>
+打印的 <a href="http://this.name" target="_blank" rel="noopener">this.name</a> 为 <a href="http://obj.name" target="_blank" rel="noopener">obj.name</a><br>
+<img src="http://www.cc12210.xyz/usr/uploads/2019/04/2428173053.png" alt="BaiduHi_2019-4-25_11-2-22.png"></p>
+<h4 id="箭头函数">箭头函数</h4>
+<p><img src="http://www.cc12210.xyz/usr/uploads/2019/04/1844895864.png" alt="BaiduHi_2019-4-25_11-1-23.png"><br>
+由于箭头函数自身没有 this 会自动继承外层的 this 导致打印出的变量出错<br>
+<img src="http://www.cc12210.xyz/usr/uploads/2019/04/4019100955.png" alt="BaiduHi_2019-4-25_11-1-39.png"></p>
+<h3 id="避免在-prototype-上使用">避免在 prototype 上使用</h3>
+<h4 id="因为没有-this-导致-this-指向错误，所以在定义-prototype-方法上一定记得不要使用箭头函数">因为没有 this 导致 this 指向错误，所以在定义 prototype 方法上一定记得不要使用箭头函数</h4>
+<a id="more"></a>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.name = <span class="string">"cc"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.say = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">  <span class="comment">// 箭头函数中没有this，从外部继承会导致错误</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> Person();</span><br><span class="line">p.say();</span><br></pre></td></tr></table></figure>
-
-<h3 id="避免在动态上下文中的回调函数里使用"><a href="#避免在动态上下文中的回调函数里使用" class="headerlink" title="避免在动态上下文中的回调函数里使用"></a>避免在动态上下文中的回调函数里使用</h3><h4 id="如果你需要你的上下文是可变的，动态的，那么不要使用箭头函数"><a href="#如果你需要你的上下文是可变的，动态的，那么不要使用箭头函数" class="headerlink" title="如果你需要你的上下文是可变的，动态的，那么不要使用箭头函数"></a>如果你需要你的上下文是可变的，动态的，那么不要使用箭头函数</h4><p>比如在一个页面中，我们需要为每一个 p 元素增加一个事件处理函数，那么：</p>
+<h3 id="避免在动态上下文中的回调函数里使用">避免在动态上下文中的回调函数里使用</h3>
+<h4 id="如果你需要你的上下文是可变的，动态的，那么不要使用箭头函数">如果你需要你的上下文是可变的，动态的，那么不要使用箭头函数</h4>
+<p>比如在一个页面中，我们需要为每一个 p 元素增加一个事件处理函数，那么：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">document.querySelectorAll(&#39;p&#39;).forEach(elem &#x3D;&gt; &#123;</span><br><span class="line">    elem.addEventListener(&#39;click&#39;, () &#x3D;&gt; &#123;</span><br><span class="line">        console.log(this.innerText.length) &#x2F;&#x2F; ❌ 这个时候 this 指向 window，因此会报错</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h4 id="改为普通函数才可以正确访问到预期的-this："><a href="#改为普通函数才可以正确访问到预期的-this：" class="headerlink" title="改为普通函数才可以正确访问到预期的 this："></a>改为普通函数才可以正确访问到预期的 this：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelectorAll(<span class="string">"p"</span>).forEach(<span class="function">(<span class="params">elem</span>) =&gt;</span> &#123;</span><br><span class="line">  elem.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.innerText.length); <span class="comment">// ✅ 这个时候 this 指向 elem</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
+<h4 id="改为普通函数才可以正确访问到预期的-this：">改为普通函数才可以正确访问到预期的 this：</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelectorAll(<span class="string">"p"</span>).forEach(<span class="function">(<span class="params">elem</span>) =&gt;</span> &#123;</span><br><span class="line">  elem.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.innerText.length); <span class="comment">// ✅ 这个时候 this 指向 elem</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -501,7 +510,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-count">103</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

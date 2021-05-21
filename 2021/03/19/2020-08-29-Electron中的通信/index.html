@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="Electron 中的通信首先看一下Electron提供的脚手架electron-quick-start的文件结构 123main.js; &#x2F;&#x2F; 这个文件是electron可以用来调用系统能力的地方，比如创建新的window，ipcMain的通信HTML文件; &#x2F;&#x2F; 页面展示以及css等静态资源各个页面引入的js文件可以使用es6语法, node方法可以同时使用;  示例:home 页面12345">
+<meta name="description" content="Electron 中的通信 首先看一下Electron提供的脚手架electron-quick-start的文件结构 123main.js; &#x2F;&#x2F; 这个文件是electron可以用来调用系统能力的地方，比如创建新的window，ipcMain的通信HTML文件; &#x2F;&#x2F; 页面展示以及css等静态资源各个页面引入的js文件可以使用es6语法, node方法可以同时使用; 示例: home 页面 123">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Electron中的通信">
 <meta property="og:url" content="http://yoursite.com/2021/03/19/2020-08-29-Electron%E4%B8%AD%E7%9A%84%E9%80%9A%E4%BF%A1/index.html">
 <meta property="og:site_name" content="曹小诚的个人空间">
-<meta property="og:description" content="Electron 中的通信首先看一下Electron提供的脚手架electron-quick-start的文件结构 123main.js; &#x2F;&#x2F; 这个文件是electron可以用来调用系统能力的地方，比如创建新的window，ipcMain的通信HTML文件; &#x2F;&#x2F; 页面展示以及css等静态资源各个页面引入的js文件可以使用es6语法, node方法可以同时使用;  示例:home 页面12345">
+<meta property="og:description" content="Electron 中的通信 首先看一下Electron提供的脚手架electron-quick-start的文件结构 123main.js; &#x2F;&#x2F; 这个文件是electron可以用来调用系统能力的地方，比如创建新的window，ipcMain的通信HTML文件; &#x2F;&#x2F; 页面展示以及css等静态资源各个页面引入的js文件可以使用es6语法, node方法可以同时使用; 示例: home 页面 123">
 <meta property="article:published_time" content="2021-03-19T01:50:07.680Z">
 <meta property="article:modified_time" content="2021-03-19T01:50:07.681Z">
 <meta property="article:author" content="cc12210">
@@ -366,18 +366,19 @@
       
 
       
-        <h3 id="Electron-中的通信"><a href="#Electron-中的通信" class="headerlink" title="Electron 中的通信"></a>Electron 中的通信</h3><p>首先看一下<code>Electron</code>提供的脚手架<code>electron-quick-start</code>的文件结构</p>
+        <h3 id="Electron-中的通信">Electron 中的通信</h3>
+<p>首先看一下<code>Electron</code>提供的脚手架<code>electron-quick-start</code>的文件结构</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">main.js; <span class="comment">// 这个文件是electron可以用来调用系统能力的地方，比如创建新的window，ipcMain的通信</span></span><br><span class="line">HTML文件; <span class="comment">// 页面展示以及css等静态资源</span></span><br><span class="line">各个页面引入的js文件可以使用es6语法, node方法可以同时使用;</span><br></pre></td></tr></table></figure>
-
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h3><h4 id="home-页面"><a href="#home-页面" class="headerlink" title="home 页面"></a>home 页面</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; ipcRenderer &#125; = <span class="built_in">require</span>(<span class="string">"electron"</span>);</span><br><span class="line"><span class="comment">// 页面js引入ipcRenderer，调用send方法发送事件，第二个参数是想要传递的参数，不限格式</span></span><br><span class="line"><span class="comment">// <span class="doctag">TODO:</span>  test push</span></span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">"add"</span>).addEventListener(<span class="string">"click"</span>, () =&gt; &#123;</span><br><span class="line">  ipcRenderer.send(<span class="string">"add-click"</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="main-js"><a href="#main-js" class="headerlink" title="main.js"></a>main.js</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 注意是只有main.js中才可以引入ipcMain</span></span><br><span class="line">ipcMain.on(<span class="string">"add-click"</span>, (event, arg) =&gt; &#123;</span><br><span class="line">  <span class="comment">// 监听到方法，执行对应的操作</span></span><br><span class="line">  <span class="comment">// 其中event就是触发该方法的实例，如 我从home页面触发点击，那么这个event就能获取到实例并且给他返回对应的参数</span></span><br><span class="line">  event.sender.send(<span class="string">"get-msg"</span>, <span class="string">"i get your message"</span>);</span><br><span class="line">  <span class="comment">// 当然，你也可以直接使用该window窗口的实例，效果是一样的直接窗口实例名.send()方法调用即可</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="electron-中的窗口类-BrowserWindow"><a href="#electron-中的窗口类-BrowserWindow" class="headerlink" title="electron 中的窗口类 BrowserWindow"></a>electron 中的窗口类 BrowserWindow</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">  width: <span class="number">800</span>, <span class="comment">// 新建窗体的宽度</span></span><br><span class="line">  height: <span class="number">600</span>, <span class="comment">// 新建窗体的高度，此高宽可以设置最小高度及最大值，与ccs类似</span></span><br><span class="line">  webPreferences: &#123;</span><br><span class="line">    nodeIntegration: <span class="literal">true</span>, <span class="comment">// 创建的windows实例允许使用node方法</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
+<h3 id="示例">示例:</h3>
+<h4 id="home-页面">home 页面</h4>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; ipcRenderer &#125; = <span class="built_in">require</span>(<span class="string">"electron"</span>);</span><br><span class="line"><span class="comment">// 页面js引入ipcRenderer，调用send方法发送事件，第二个参数是想要传递的参数，不限格式</span></span><br><span class="line"><span class="comment">// <span class="doctag">TODO:</span>  test push</span></span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">"add"</span>).addEventListener(<span class="string">"click"</span>, () =&gt; &#123;</span><br><span class="line">  ipcRenderer.send(<span class="string">"add-click"</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="main-js">main.js</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 注意是只有main.js中才可以引入ipcMain</span></span><br><span class="line">ipcMain.on(<span class="string">"add-click"</span>, (event, arg) =&gt; &#123;</span><br><span class="line">  <span class="comment">// 监听到方法，执行对应的操作</span></span><br><span class="line">  <span class="comment">// 其中event就是触发该方法的实例，如 我从home页面触发点击，那么这个event就能获取到实例并且给他返回对应的参数</span></span><br><span class="line">  event.sender.send(<span class="string">"get-msg"</span>, <span class="string">"i get your message"</span>);</span><br><span class="line">  <span class="comment">// 当然，你也可以直接使用该window窗口的实例，效果是一样的直接窗口实例名.send()方法调用即可</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="electron-中的窗口类-BrowserWindow">electron 中的窗口类 BrowserWindow</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">  width: <span class="number">800</span>, <span class="comment">// 新建窗体的宽度</span></span><br><span class="line">  height: <span class="number">600</span>, <span class="comment">// 新建窗体的高度，此高宽可以设置最小高度及最大值，与ccs类似</span></span><br><span class="line">  webPreferences: &#123;</span><br><span class="line">    nodeIntegration: <span class="literal">true</span>, <span class="comment">// 创建的windows实例允许使用node方法</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-
-<p>调用<code>new BrowserWindow(config)</code><br>可以创建窗口</p>
+<p>调用<code>new BrowserWindow(config)</code><br>
+可以创建窗口</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">获得窗口的实例;</span><br><span class="line"><span class="keyword">this</span>.loadFile(fileLocation); <span class="comment">// 使用loadFile加载本地html资源,也可以通过lodaUrl来加载网络页面，我们可以通过这个功能与其他h5框架做一个混合开发</span></span><br><span class="line"><span class="keyword">this</span>.once(<span class="string">"ready-to-show"</span>, () =&gt; &#123;</span><br><span class="line">  <span class="comment">// 该方法是窗口初次展示的时候会触发该方法</span></span><br><span class="line">  <span class="keyword">this</span>.show();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
       
@@ -498,7 +499,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-count">103</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

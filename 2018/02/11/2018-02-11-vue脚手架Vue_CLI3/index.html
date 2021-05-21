@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="Vue CLI 是一个基于 Vue.js 进行快速开发的完整系统先进行全局的安装  npm install -g @vue&#x2F;cli或者yarn global add @vue&#x2F;cli推荐直接复制,手敲可能敲错如果出现了安装失败的提示的话可以切换一下国内镜像npm config set registry http:&#x2F;&#x2F;registry.cnpmjs.org  安装完毕之后可以对脚手架的版本进行检查">
+<meta name="description" content="Vue CLI 是一个基于 Vue.js 进行快速开发的完整系统 先进行全局的安装  npm install -g @vue&#x2F;cli 或者 yarn global add @vue&#x2F;cli 推荐直接复制,手敲可能敲错  如果出现了安装失败的提示的话可以切换一下国内镜像 npm config set registry http:&#x2F;&#x2F;registry.cnpmjs.org   安装完毕之后可以对脚手架">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue脚手架Vue CLI3">
 <meta property="og:url" content="http://yoursite.com/2018/02/11/2018-02-11-vue%E8%84%9A%E6%89%8B%E6%9E%B6Vue_CLI3/index.html">
 <meta property="og:site_name" content="曹小诚的个人空间">
-<meta property="og:description" content="Vue CLI 是一个基于 Vue.js 进行快速开发的完整系统先进行全局的安装  npm install -g @vue&#x2F;cli或者yarn global add @vue&#x2F;cli推荐直接复制,手敲可能敲错如果出现了安装失败的提示的话可以切换一下国内镜像npm config set registry http:&#x2F;&#x2F;registry.cnpmjs.org  安装完毕之后可以对脚手架的版本进行检查">
+<meta property="og:description" content="Vue CLI 是一个基于 Vue.js 进行快速开发的完整系统 先进行全局的安装  npm install -g @vue&#x2F;cli 或者 yarn global add @vue&#x2F;cli 推荐直接复制,手敲可能敲错  如果出现了安装失败的提示的话可以切换一下国内镜像 npm config set registry http:&#x2F;&#x2F;registry.cnpmjs.org   安装完毕之后可以对脚手架">
 <meta property="og:image" content="https://i.loli.net/2018/11/09/5be53755ea25c.bmp">
 <meta property="og:image" content="http://www.cc12210.xyz/usr/uploads/2018/11/258540437.png">
 <meta property="og:image" content="http://www.cc12210.xyz/usr/uploads/2018/11/1139446198.png">
@@ -376,19 +376,42 @@
       
 
       
-        <h1 id="Vue-CLI-是一个基于-Vue-js-进行快速开发的完整系统"><a href="#Vue-CLI-是一个基于-Vue-js-进行快速开发的完整系统" class="headerlink" title="Vue CLI 是一个基于 Vue.js 进行快速开发的完整系统"></a>Vue CLI 是一个基于 Vue.js 进行快速开发的完整系统</h1><p>先进行全局的安装</p>
+        <h1>Vue CLI 是一个基于 Vue.js 进行快速开发的完整系统</h1>
+<p>先进行全局的安装</p>
 <blockquote>
-<p>npm install -g @vue/cli<br>或者<br>yarn global add @vue/cli<br>推荐直接复制,手敲可能敲错<br><img src="https://i.loli.net/2018/11/09/5be53755ea25c.bmp" alt="错误.bmp"><br>如果出现了安装失败的提示的话可以切换一下国内镜像<br>npm config set registry <a href="http://registry.cnpmjs.org" target="_blank" rel="noopener">http://registry.cnpmjs.org</a></p>
+<p>npm install -g @vue/cli<br>
+或者<br>
+yarn global add @vue/cli<br>
+推荐直接复制,手敲可能敲错<br>
+<img src="https://i.loli.net/2018/11/09/5be53755ea25c.bmp" alt="错误.bmp"><br>
+如果出现了安装失败的提示的话可以切换一下国内镜像<br>
+npm config set registry <a href="http://registry.cnpmjs.org" target="_blank" rel="noopener">http://registry.cnpmjs.org</a></p>
 </blockquote>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="http://www.cc12210.xyz/usr/uploads/2018/11/258540437.png" alt="错误.png"></h2><p>安装完毕之后可以对脚手架的版本进行检查</p>
+<h2 id="错误-png"><img src="http://www.cc12210.xyz/usr/uploads/2018/11/258540437.png" alt="错误.png"></h2>
+<p>安装完毕之后可以对脚手架的版本进行检查</p>
 <blockquote>
-<p>vue –version</p>
+<p>vue --version</p>
 </blockquote>
-<h2 id="-1"><a href="#-1" class="headerlink" title=""></a><a id="more"></a></h2><h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><blockquote>
-<p>vue create hello-world 后面的 hello-world 是项目名称,可以自行定义<br>安装中的选项：<br>新手先选择最后一个选项<br><img src="http://www.cc12210.xyz/usr/uploads/2018/11/1139446198.png" alt="QQ截图20181107224457.png"><br>Liner 是语法检查,特别的严格,只要有多点空格回车就会报警告,如果不需要就取消掉<br>上下键控制选择 Liner 的选项,按空格是取消,回车是执行下一步,如果出错了连续按两次 ctrl 加 c 退出重新来一遍就好<br><img src="http://www.cc12210.xyz/usr/uploads/2018/11/1916656905.png" alt="QQ截图20181107224553.png"><br>然后后面碰到的一路 y 就可以了,取名字也是随意<br><img src="http://www.cc12210.xyz/usr/uploads/2018/11/2646669564.png" alt="QQ截图20181107224641.png"><br><img src="http://www.cc12210.xyz/usr/uploads/2018/11/1413786429.png" alt="QQ截图20181107224717.png"><br><img src="http://www.cc12210.xyz/usr/uploads/2018/11/4066170144.png" alt="QQ截图20181107224758.png"><br><img src="http://www.cc12210.xyz/usr/uploads/2018/11/2807254052.png" alt="QQ截图20181107224814.png"></p>
+<h2 id="more"><a id="more"></a></h2>
+<h2 id="创建项目">创建项目</h2>
+<blockquote>
+<p>vue create hello-world 后面的 hello-world 是项目名称,可以自行定义<br>
+安装中的选项：<br>
+新手先选择最后一个选项<br>
+<img src="http://www.cc12210.xyz/usr/uploads/2018/11/1139446198.png" alt="QQ截图20181107224457.png"><br>
+Liner 是语法检查,特别的严格,只要有多点空格回车就会报警告,如果不需要就取消掉<br>
+上下键控制选择 Liner 的选项,按空格是取消,回车是执行下一步,如果出错了连续按两次 ctrl 加 c 退出重新来一遍就好<br>
+<img src="http://www.cc12210.xyz/usr/uploads/2018/11/1916656905.png" alt="QQ截图20181107224553.png"><br>
+然后后面碰到的一路 y 就可以了,取名字也是随意<br>
+<img src="http://www.cc12210.xyz/usr/uploads/2018/11/2646669564.png" alt="QQ截图20181107224641.png"><br>
+<img src="http://www.cc12210.xyz/usr/uploads/2018/11/1413786429.png" alt="QQ截图20181107224717.png"><br>
+<img src="http://www.cc12210.xyz/usr/uploads/2018/11/4066170144.png" alt="QQ截图20181107224758.png"><br>
+<img src="http://www.cc12210.xyz/usr/uploads/2018/11/2807254052.png" alt="QQ截图20181107224814.png"></p>
 </blockquote>
 <hr>
-<p>安装完毕之后可以打开 ReadMe.md 文件查看<br>在项目路径打开命令行工具 输入 npm run serve 即可开启服务器 输入 localhost:8080 就能看到你的第一个 vue 项目了<br><img src="http://www.cc12210.xyz/usr/uploads/2018/11/1076575047.png" alt="QQ截图20181107225434.png"></p>
+<p>安装完毕之后可以打开 <a href="http://ReadMe.md" target="_blank" rel="noopener">ReadMe.md</a> 文件查看<br>
+在项目路径打开命令行工具 输入 npm run serve 即可开启服务器 输入 localhost:8080 就能看到你的第一个 vue 项目了<br>
+<img src="http://www.cc12210.xyz/usr/uploads/2018/11/1076575047.png" alt="QQ截图20181107225434.png"></p>
 
       
     </div>
@@ -508,7 +531,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-count">103</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -563,7 +586,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue-CLI-是一个基于-Vue-js-进行快速开发的完整系统"><span class="nav-number">1.</span> <span class="nav-text">Vue CLI 是一个基于 Vue.js 进行快速开发的完整系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-1"><span class="nav-number">1.2.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建项目"><span class="nav-number">1.3.</span> <span class="nav-text">创建项目</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">Vue CLI 是一个基于 Vue.js 进行快速开发的完整系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#错误-png"><span class="nav-number">1.1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#more"><span class="nav-number">1.2.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建项目"><span class="nav-number">1.3.</span> <span class="nav-text">创建项目</span></a></li></ol></li></ol></div>
             
 
           </div>
